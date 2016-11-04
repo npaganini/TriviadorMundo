@@ -37,6 +37,11 @@ public class Board {
 		territories.remove(territory);
 		return;
 	}
+    private void setStartingPlayer(Player player) {
+        if(activePlayer == null) {
+            activePlayer = player;
+        }
+    }
 	public void addPlayer(Player player) {
         if(players.isEmpty()) {
             setStartingPlayer(player);
@@ -63,19 +68,13 @@ public class Board {
 //	}
 	public AproximationQuestion getAproximationQuestions() {
         for(AproximationQuestion q: aproximationQuestions) {
-            if(q.asked == false) {
-                q.asked = true;
                 return q;
-            }
         }
         return null;
 	}
 	public MultipleChoiceQuestion getMultipleChoiceQuestions() {
         for(MultipleChoiceQuestion q: multipleChoiceQuestions) {
-            if(q.asked == false) {
-                q.asked = true;
                 return q;
-            }
         }
         return null;
 	}
@@ -106,11 +105,7 @@ public class Board {
         }
         nextPlayer();
 	}
-	private void setStartingPlayer(Player player) {
-		if(activePlayer == null) {
-			activePlayer = player;
-		}
-	}
+
 	public void distributeTerritories() {
 		int i = 0;  /* Este metodo solo se usa al principio de la partida! */
 		for(Territory t: territories) {
@@ -119,21 +114,22 @@ public class Board {
             i++;
 		}
 	}
-	public void battle(Territory active, Territory defending) {
-//        Player p = activePlayer;
+//	public void battle(Territory active, Territory defending) throws Exception {
+//        Player pAux = activePlayer;
+//        if(!defending.isAdjacent(active)) {
+//            throw new NotAdjacentException("" + active.getName() + " can't attack " + defending.getName());
+//        }
 //        // Deberia fijarse si los territorios son adyacentes
-//        getMultipleChoiceQuestions().print();   // Esto no deberia estar aca, sino en MVC
-//        // Ask for answer?
-//        if(answer1 == answer2) {
+//        getMultipleChoiceQuestions().print();   // Llamado a controller para que muestre pregunta y devuelva las rtas
+//        // Ask for answer, get an object "Answer" with the 2 answers from the different players
+//        if(answer.player1 == answer.player2) {
 //            getAproximationQuestions().print(); // Devuelta no deberia estar aca
 //        }
-//        p = assignWinner();
-//        if(p == activePlayer) {
+//        pAux = assignWinner();         // A este le deberia llegar el ganador de la pregunta
+//        if(pAux == activePlayer) {
 //            active.setOwner(activePlayer);
 //        }
-
-		return;
-	}
+//	}
 	public Player getWinner() {
         Integer max = 0;
         for(Player p: players) {
