@@ -1,3 +1,6 @@
+package triviadormundo;
+
+import java.util.HashSet;
 import java.util.Set;
 
 public class Player {
@@ -7,9 +10,9 @@ public class Player {
 	private Set<Territory> territories;
 	private Integer amountArmies;
 	
-	public Player(String name, Set<Territory> territories, Integer amountArmies) {
+	public Player(String name, Integer amountArmies) {
 		this.name = name;
-		this.territories = territories;
+		this.territories = new HashSet<Territory>();
 		this.amountArmies = amountArmies;
 	}
 
@@ -33,8 +36,8 @@ public class Player {
 		return territories;
 	}
 	
-	public void setTerritories(Set<Territory> territories) {
-		this.territories = territories;
+	public void addTerritories(Territory territory) {
+		territories.add(territory);
 	}
 	
 	public Integer getAmountArmies() {
@@ -45,7 +48,7 @@ public class Player {
 		this.amountArmies = amountArmies;
 	}
 	
-	public void moveArmies( Integer quantity, Territory t1, Territory t2)throws IllegalArgumentException {
+	public void moveArmies(Integer quantity, Territory t1, Territory t2)throws IllegalArgumentException {
 		Integer available= t1.getAmountArmies();
 		if ( available <= quantity ) {
 			t2.addArmies(quantity);

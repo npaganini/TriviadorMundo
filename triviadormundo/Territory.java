@@ -1,3 +1,5 @@
+package triviadormundo;
+
 import java.util.Set;
 
 public class Territory {
