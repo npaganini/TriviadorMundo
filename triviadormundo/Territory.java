@@ -9,10 +9,10 @@ public class Territory {
 	private Integer amountArmies;
 	private Player owner;
 	
-	public Territory(String name, Set<Territory> adjacents, Integer amountArmies, Player owner) {
+	public Territory(String name, Integer amountArmies, Player owner) {
 		super();
 		this.name = name;
-		this.adjacents = adjacents;
+		this.adjacents = new HashSet<Territory>();
 		this.amountArmies = amountArmies;
 		this.owner = owner;
 	}
@@ -29,8 +29,12 @@ public class Territory {
 		return adjacents;
 	}
 	
-	public void setAdjacents(Set<Territory> adjacents) {
-		this.adjacents = adjacents;
+	public void addAdjacents(Territory adjacentTerritory) {
+		adjacents.add(adjacentTerritory);
+	}
+
+	public void removeAdjacents(Territory adjacentTerritory) {
+		adjacents.remove(adjacentTerritory);
 	}
 	
 	public Integer getAmountArmies() {

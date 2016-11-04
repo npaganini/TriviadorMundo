@@ -39,6 +39,10 @@ public class Player {
 	public void addTerritories(Territory territory) {
 		territories.add(territory);
 	}
+
+	public void removeTerritories(Territory territory) {
+		territories.remove(territory);
+	}
 	
 	public Integer getAmountArmies() {
 		return amountArmies;
