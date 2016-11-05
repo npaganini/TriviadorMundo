@@ -1,6 +1,8 @@
 package model;
 
-public class AproximationQuestion extends Question {
+import java.io.Serializable;
+
+public class AproximationQuestion extends Question implements Serializable {
     private Integer answer;
 
     public AproximationQuestion(String question, Integer answer){

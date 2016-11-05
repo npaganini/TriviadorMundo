@@ -1,5 +1,7 @@
 package view;
 
+import java.io.Serializable;
+
 import java.awt.BorderLayout;
 
 import javax.swing.JButton;
@@ -14,7 +16,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.JTextField;
 import java.awt.Font;
 
-public class GameBoard {
+public class GameBoard implements Serializable {
 	public GameBoard(){
 	final JLabel backgroundImage = new JLabel("");
 	final JButton btnNextTurn = new JButton("Pasar Turno");

@@ -1,6 +1,8 @@
 package model;
 
-public abstract class Question {
+import java.io.Serializable;
+
+public abstract class Question implements Serializable {
     private String question;
 
     public Question(String question){

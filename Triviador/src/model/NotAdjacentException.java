@@ -1,6 +1,8 @@
 package model;
 
-public class NotAdjacentException extends Exception {
+import java.io.Serializable;
+
+public class NotAdjacentException extends Exception implements Serializable {
     /**
 	 * 
 	 */

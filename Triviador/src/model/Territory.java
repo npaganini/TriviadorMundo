@@ -1,9 +1,11 @@
 package model;
 
+import java.io.Serializable;
+
 import java.util.HashSet;
 import java.util.Set;
 
-public class Territory {
+public class Territory implements Serializable {
 
 	private String name;
 	private Set<Territory> adjacents;

@@ -1,9 +1,11 @@
 package model;
 
+import java.io.Serializable;
+
 import java.util.HashSet;
 import java.util.Set;
 
-public class Player {
+public class Player implements Serializable {
 
 	private Integer playerNumber;
 	private String name;
