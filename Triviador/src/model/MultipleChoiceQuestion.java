@@ -3,7 +3,9 @@ package model;
 import java.io.Serializable;
 
 public class MultipleChoiceQuestion extends Question implements Serializable {
-    private String answer[];
+
+	private static final long serialVersionUID = 1L;
+	private String answer[];
     private Integer correctAnswerIndex; /** aca guardo el numero de la respuesta correcta en array answer */
     private final static Integer ANSWERS = 4; /*esta es la cantidad total de respuestas que guardamos, CONSTANTE */
 

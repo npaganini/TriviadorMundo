@@ -7,6 +7,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Board implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 	private Set<Territory> territories;
 	private ArrayList<Player> players;
 	private Set<MultipleChoiceQuestion> multipleChoiceQuestions;

@@ -7,6 +7,7 @@ import java.util.Set;
 
 public class Player implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private Integer playerNumber;
 	private String name;
 	private Set<Territory> territories;

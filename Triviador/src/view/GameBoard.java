@@ -17,6 +17,9 @@ import javax.swing.JTextField;
 import java.awt.Font;
 
 public class GameBoard implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	public GameBoard(){
 	final JLabel backgroundImage = new JLabel("");
 	final JButton btnNextTurn = new JButton("Pasar Turno");

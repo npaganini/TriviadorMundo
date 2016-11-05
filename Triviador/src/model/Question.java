@@ -3,7 +3,9 @@ package model;
 import java.io.Serializable;
 
 public abstract class Question implements Serializable {
-    private String question;
+
+	private static final long serialVersionUID = 1L;
+	private String question;
 
     public Question(String question){
         this.question=question;
