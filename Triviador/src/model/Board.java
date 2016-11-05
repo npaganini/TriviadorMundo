@@ -60,15 +60,6 @@ public class Board implements Serializable {
 	public void addQuestion(AproximationQuestion question) {
 		aproximationQuestions.add(question);
 	}
-//	private Question pickAQuestion(HashSet<Question> set) {
-//		for(Question q: set) {
-//			if(q.asked == false) {
-//				q.asked = true;
-//				return q;
-//			}
-//		}
-//		return null;
-//	}
 	public AproximationQuestion getAproximationQuestions() {
         for(AproximationQuestion q: aproximationQuestions) {
                 return q;

@@ -15,5 +15,7 @@ public class GameController implements Serializable {
 		this.view = view;
 	}
 	
-	
+	public void battle(Territory attacking, Territory defending) {
+		
+	}
 }
