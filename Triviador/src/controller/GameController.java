@@ -15,6 +15,16 @@ public class GameController implements Serializable {
 		this.view = view;
 	}
 	
+	/** displayPlayerTerritory
+	 * recorre el set de players y se fija en sus territorios y
+	 * devuelve un String[] con los nombres de estos
+	 * Me devuelve un String con uno de ellos seleccionados
+	 * ahi debo hacer un contains para el set de territorios del player
+	 */
+	public void displayPlayerTerritory() {
+		// TO DO
+	}
+	
 	public void battle(Territory attacking, Territory defending) {
 		
 	}
