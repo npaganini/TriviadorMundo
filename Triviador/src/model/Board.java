@@ -50,9 +50,13 @@ public class Board implements Serializable {
             setStartingPlayer(player);
         }
 		players.add(player);
+		player.setPlayerNumber(players.size()-1);
 	}
 	public void removePlayer(Player player) {
 		players.remove(player);
+	}
+	public ArrayList<Player> getPlayers() {
+		return players;
 	}
 	public void addQuestion(MultipleChoiceQuestion question) {
 		multipleChoiceQuestions.add(question);
