@@ -11,7 +11,6 @@ INDEX VERSION 1.129+/Users/Diego/Desktop/POO/TPE/poo-2016b-07/.metadata/.plugins
 2117113611.index
 3157663476.index
 995153890.index
-1531629704.index
 1931402068.index
 2932191785.index
 3302703152.index
