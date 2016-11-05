@@ -35,6 +35,9 @@ public class GameBoard {
 	      f.setSize(800, 600);
 	      f.setLocation(300,200);
 	      
+	      JCharacter character = new JCharacter();
+	      character.setVisible(true);
+	      
 	      f.getContentPane().add(layeredPane, BorderLayout.CENTER);
 	      turnNumber.setBounds(509, 546, 103, 26);
 	      layeredPane.add(turnNumber);
@@ -69,7 +72,7 @@ public class GameBoard {
 	      
 	      layeredPane.add(playerOneArmy);
 	      btnNewButton.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-	      btnNewButton.setSelectedIcon(new ImageIcon(GameBoard.class.getResource("/Resources/Textures/flag.png")));
+	      btnNewButton.setSelectedIcon(new ImageIcon(GameBoard.class.getResource("resources/flag.png")));
 	      btnNewButton.setBounds(218, 367, 71, 29);
 	      
 	      layeredPane.add(btnNewButton);
@@ -77,7 +80,7 @@ public class GameBoard {
 	      layeredPane.add(btnNextTurn);
 	      backgroundImage.setBounds(0, 0, 799, 509);
 	      layeredPane.add(backgroundImage);
-	      backgroundImage.setIcon(new ImageIcon(GameBoard.class.getResource("/Resources/Textures/map.jpg")));
+	      backgroundImage.setIcon(new ImageIcon(GameBoard.class.getResource("resources/map.jpg")));
 	      btnNextTurn.addActionListener(new ActionListener() {
 	      	public void actionPerformed(ActionEvent e) {
 	      	}
