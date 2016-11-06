@@ -119,7 +119,7 @@ public class GameBoard extends JFrame implements Serializable, ActionListener{
 	    
 	    layeredPane.add(playerOneArmyField);
 	    attackButton.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
-	    attackButton.setSelectedIcon(new ImageIcon(GameBoard.class.getResource("resources/flag.png")));
+	    attackButton.setSelectedIcon(new ImageIcon(GameBoard.class.getResource("view/resources/flag.png")));
 	    attackButton.setBounds(451, 519, 71, 54);
 	    
 	    layeredPane.add(attackButton);
@@ -135,7 +135,7 @@ public class GameBoard extends JFrame implements Serializable, ActionListener{
 	    layeredPane.add(NextTurnButton);
 	    backgroundImage.setBounds(0, -4, 799, 484);
 	    layeredPane.add(backgroundImage);
-	    backgroundImage.setIcon(new ImageIcon(GameBoard.class.getResource("resources/map.jpg")));
+	    backgroundImage.setIcon(new ImageIcon(GameBoard.class.getResource("view/resources/map.jpg")));
 	    attackFromLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 	    attackFromLabel.setBounds(210, 519, 94, 16);
 	    
