@@ -33,8 +33,16 @@ public class GameController implements Serializable {
 	 * Me devuelve un String con uno de ellos seleccionados
 	 * ahi debo hacer un contains para el set de territorios del player
 	 */
-	public String[] displayAdjEnemyTerritories(Player p, Territory t) {
-		// TO DO
+	public String[] displayAdjEnemyTerritories(String territory) {
+		for(Territory t: model.getActivePlayer().getTerritories().size()] {
+			if(territory.equals(t.getName())) {
+				String[] ans = new String[t.getAdjacents().size()];
+				int i = 0;
+				for(Territory adj: t.getAdjacents()) {
+					ans[i] = adj.getName();
+				}
+			return ans;
+		}
 		return null;
 	}
 	
