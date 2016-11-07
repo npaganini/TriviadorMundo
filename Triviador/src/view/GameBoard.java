@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JComboBox;
+import javax.swing.UIManager;
 
 public class GameBoard extends JFrame implements Serializable, ActionListener{
 	
@@ -70,7 +71,7 @@ public class GameBoard extends JFrame implements Serializable, ActionListener{
 	    
 	    JButton btnAmericaCentral = new JButton("America Central");
 	    btnAmericaCentral.setBounds(138, 256, 117, 41);
-	    btnAmericaCentral.setBackground(Color.GREEN);
+	    btnAmericaCentral.setBackground(UIManager.getColor("Button.background"));
 	    layeredPane.add(btnAmericaCentral);
 	    
 	    JButton btnPoloNorte = new JButton("Polo Norte");
@@ -86,7 +87,7 @@ public class GameBoard extends JFrame implements Serializable, ActionListener{
 	    layeredPane.add(btnEuropa);
 	    
 	    JButton btnAsia_1 = new JButton("Medio Oriente");
-	    btnAsia_1.setBounds(508, 188, 117, 29);
+	    btnAsia_1.setBounds(508, 188, 136, 29);
 	    layeredPane.add(btnAsia_1);
 	    
 	    JButton btnAsia = new JButton("Asia");
@@ -94,7 +95,7 @@ public class GameBoard extends JFrame implements Serializable, ActionListener{
 	    layeredPane.add(btnAsia);
 	    
 	    JButton btnAmericaDelNorte = new JButton("America del Norte");
-	    btnAmericaDelNorte.setBounds(88, 159, 136, 46);
+	    btnAmericaDelNorte.setBounds(88, 159, 136, 58);
 	    layeredPane.add(btnAmericaDelNorte);
 	    
 	    JButton btnNewButton = new JButton("Africa");
@@ -103,7 +104,7 @@ public class GameBoard extends JFrame implements Serializable, ActionListener{
 	    
 	    JButton btnAmerica = new JButton("America del Sur");
 	    btnAmerica.setForeground(Color.BLACK);
-	    btnAmerica.setBackground(Color.CYAN);
+	    btnAmerica.setBackground(UIManager.getColor("Button.background"));
 	    btnAmerica.setBounds(187, 346, 117, 54);
 	    layeredPane.add(btnAmerica);
 	    playerThreeArmyField.setBounds(138, 546, 60, 26);
@@ -145,7 +146,6 @@ public class GameBoard extends JFrame implements Serializable, ActionListener{
 	    
 	    layeredPane.add(attackLabel);
 	    attackFromComboBox.setBounds(208, 544, 112, 27);
-	    attackFromComboBox.setSelectedIndex(0);
 	    attackFromComboBox.addActionListener(this);
 	    
 	    layeredPane.add(attackFromComboBox);
