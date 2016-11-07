@@ -21,25 +21,6 @@ public class MultipleQuestionsInterface {
 	private JFrame frame;
 	private JLabel textField;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MultipleQuestionsInterface window = new MultipleQuestionsInterface(null);
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
 	private Answer answer;
 	private JLabel textField_1;
 	private JLabel textField_2;
