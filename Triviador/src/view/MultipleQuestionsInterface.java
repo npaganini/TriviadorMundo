@@ -7,7 +7,9 @@ import javax.swing.JTextField;
 
 import model.MultipleChoiceQuestion;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 public class MultipleQuestionsInterface {
 
@@ -66,5 +68,10 @@ public class MultipleQuestionsInterface {
 		JButton button_1 = new JButton(question.getAnswer(3));
 		button_1.setBounds(30, 410, 740, 50);
 		frame.getContentPane().add(button_1);
+		
+		JLabel backgroundImage = new JLabel("");
+		backgroundImage.setBounds(0, -4, 799, 484);
+		frame.getContentPane().add(backgroundImage);
+		backgroundImage.setIcon(new ImageIcon(GameBoard.class.getResource("/view/resources/map.jpg")));
 	}
 }
