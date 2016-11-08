@@ -19,8 +19,8 @@ public class MultipleChoiceQuestion extends Question implements Serializable {
         return answer;
     }
 
-    public Integer getCorrectAnswerIndex(){
-        return correctAnswerIndex;
+    public String getCorrectAnswer(){
+        return answer[correctAnswerIndex];
     }
 
     public String getAnswer(int index){

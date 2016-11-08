@@ -1,150 +1,198 @@
 package view;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
-import javax.swing.JTextField;
-
 import model.Answer;
 import model.MultipleChoiceQuestion;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.UIManager;
 import java.awt.Color;
+import java.awt.EventQueue;
 
 public class MultipleQuestionsInterface {
 
-	private JFrame frame;
-	private JLabel textField;
-
 	private Answer answer;
-	private JLabel textField_1;
-	private JLabel textField_2;
-	private JLabel textField_3;
-	private JLabel textField_4;
+	
+	private JFrame frame;
+	
+	private JLabel questionLabel;
+	private JLabel answerALabel;
+	private JLabel answerBLabel;
+	private JLabel answerCLabel;
+	private JLabel answerDLabel;
+	
+	private JButton AP1Button;
+	private JButton BP1Button;
+	private JButton CP1Button;
+	private JButton DP1Button;
+	
+	private JButton AP2Button;
+	private JButton BP2Button;
+	private JButton CP2Button;
+	private JButton DP2Button;
+	
+	private JButton okButton;
+	
+	private JLabel backgroundImage;
+	
 	public MultipleQuestionsInterface(MultipleChoiceQuestion question) {
-		initialize(question);
 		answer = new Answer();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize(MultipleChoiceQuestion question) {
+		
 		frame = new JFrame();
 		frame.setBounds(300, 200, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		textField = new JLabel(question.getQuestion());
-		textField.setBackground(new Color(255, 255, 255));
-		textField.setBounds(30, 15, 740, 100);
-		frame.getContentPane().add(textField);
+		questionLabel = new JLabel(question.getQuestion());
+		questionLabel.setBackground(new Color(255, 255, 255));
+		questionLabel.setBounds(30, 15, 740, 100);
+		frame.getContentPane().add(questionLabel);
 		
-		JButton btnNewButton = new JButton("A");
-		btnNewButton.addActionListener(new ActionListener() {
+		AP1Button = new JButton("A");
+		AP1Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
 				if(answer.getAnswerP1() == null)
 					answer.setAnswerP1(question.getAnswer(0));
 			}
 		});
-		btnNewButton.setBounds(30, 226, 50, 50);
-		frame.getContentPane().add(btnNewButton);
+		AP1Button.setBounds(30, 226, 50, 50);
+		frame.getContentPane().add(AP1Button);
 		
-		JButton btnNewButton_1 = new JButton("B");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		BP1Button = new JButton("B");
+		BP1Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(answer.getAnswerP1() == null)
 					answer.setAnswerP1(question.getAnswer(1));
 			}
 		});
-		btnNewButton_1.setBounds(30, 286, 50, 50);
-		frame.getContentPane().add(btnNewButton_1);
+		BP1Button.setBounds(30, 286, 50, 50);
+		frame.getContentPane().add(BP1Button);
 		
-		JButton button = new JButton("C");
-		button.addActionListener(new ActionListener() {
+		CP1Button = new JButton("C");
+		CP1Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(answer.getAnswerP1() == null)
 					answer.setAnswerP1(question.getAnswer(2));
 			}
 		});
-		button.setBounds(30, 348, 50, 50);
-		frame.getContentPane().add(button);
+		CP1Button.setBounds(30, 348, 50, 50);
+		frame.getContentPane().add(CP1Button);
 		
-		JButton button_1 = new JButton("D");
-		button_1.addActionListener(new ActionListener() {
+		DP1Button = new JButton("D");
+		DP1Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(answer.getAnswerP1() == null)
 					answer.setAnswerP1(question.getAnswer(3));
 			}
 		});
-		button_1.setBounds(30, 410, 50, 50);
-		frame.getContentPane().add(button_1);
+		DP1Button.setBounds(30, 410, 50, 50);
+		frame.getContentPane().add(DP1Button);
 		
-		JButton button_2 = new JButton("A");
-		button_2.addActionListener(new ActionListener() {
+		AP2Button = new JButton("A");
+		AP2Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(answer.getAnswerP2() == null)
 					answer.setAnswerP2(question.getAnswer(0));
 			}
 		});
-		button_2.setBounds(720, 226, 50, 50);
-		frame.getContentPane().add(button_2);
+		AP2Button.setBounds(720, 226, 50, 50);
+		frame.getContentPane().add(AP2Button);
 		
-		JButton button_3 = new JButton("B");
-		button_3.addActionListener(new ActionListener() {
+		BP2Button = new JButton("B");
+		BP2Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(answer.getAnswerP2() == null)
 					answer.setAnswerP2(question.getAnswer(1));
 			}
 		});
-		button_3.setBounds(720, 286, 50, 50);
-		frame.getContentPane().add(button_3);
+		BP2Button.setBounds(720, 286, 50, 50);
+		frame.getContentPane().add(BP2Button);
 		
-		JButton button_4 = new JButton("C");
-		button_4.addActionListener(new ActionListener() {
+		CP2Button = new JButton("C");
+		CP2Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(answer.getAnswerP2() == null)
 					answer.setAnswerP2(question.getAnswer(2));
 			}
 		});
-		button_4.setBounds(720, 348, 50, 50);
-		frame.getContentPane().add(button_4);
+		CP2Button.setBounds(720, 348, 50, 50);
+		frame.getContentPane().add(CP2Button);
 		
-		JButton button_5 = new JButton("D");
-		button_5.addActionListener(new ActionListener() {
+		DP2Button = new JButton("D");
+		DP2Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(answer.getAnswerP2() == null)
 					answer.setAnswerP2(question.getAnswer(3));
 			}
 		});
-		button_5.setBounds(720, 410, 50, 50);
-		frame.getContentPane().add(button_5);
+		DP2Button.setBounds(720, 410, 50, 50);
+		frame.getContentPane().add(DP2Button);
 		
-		textField_1 = new JLabel(question.getAnswer(0));
-		textField_1.setBounds(100, 226, 600, 50);
-		frame.getContentPane().add(textField_1);
+		answerALabel = new JLabel(question.getAnswer(0));
+		answerALabel.setBounds(100, 226, 600, 50);
+		frame.getContentPane().add(answerALabel);
 		
-		textField_2 = new JLabel(question.getAnswer(1));
-		textField_2.setBounds(100, 286, 600, 50);
-		frame.getContentPane().add(textField_2);
+		answerBLabel = new JLabel(question.getAnswer(1));
+		answerBLabel.setBounds(100, 286, 600, 50);
+		frame.getContentPane().add(answerBLabel);
 		
-		textField_3 = new JLabel(question.getAnswer(2));
-		textField_3.setBounds(100, 348, 600, 50);
-		frame.getContentPane().add(textField_3);
+		answerCLabel = new JLabel(question.getAnswer(2));
+		answerCLabel.setBounds(100, 348, 600, 50);
+		frame.getContentPane().add(answerCLabel);
 		
-		textField_4 = new JLabel(question.getAnswer(3));
-		textField_4.setBounds(100, 410, 600, 50);
-		frame.getContentPane().add(textField_4);
+		answerDLabel = new JLabel(question.getAnswer(3));
+		answerDLabel.setBounds(100, 410, 600, 50);
+		frame.getContentPane().add(answerDLabel);
 		
-		JLabel backgroundImage = new JLabel("");
+		okButton = new JButton("OK");
+		okButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, getCorrectAnswers(question));
+			}
+		});
+		okButton.setBounds(370, 480, 60, 60);
+		frame.getContentPane().add(okButton);
+		
+		backgroundImage = new JLabel("");
 		backgroundImage.setBackground(new Color(255, 255, 255));
 		backgroundImage.setBounds(0, 0, 800, 600);
 		frame.getContentPane().add(backgroundImage);
 		backgroundImage.setIcon(new ImageIcon(GameBoard.class.getResource("/view/resources/map.jpg")));
+	}
+	
+	public Answer getAnswer() {
+		return answer;
+	}
+	
+	public String getCorrectAnswers(MultipleChoiceQuestion question) {
+		if(question.getCorrectAnswer().equals(answer.getAnswerP1())) {
+			if(question.getCorrectAnswer().equals(answer.getAnswerP2()))
+				return "Both players answered correctly";
+			else
+				return "Player 1 answered correctly";
+		}
+		else if(question.getCorrectAnswer().equals(answer.getAnswerP2()))
+			return "Player 2 has answered correctly";
+		return "Neither player has answered correcly";
+	}
+	
+	public static void main(String[] args) {
+		String[] answers = {"a", "b", "c", "d"};
+		MultipleChoiceQuestion question = new MultipleChoiceQuestion("hola", answers, 0);
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MultipleQuestionsInterface window = new MultipleQuestionsInterface(question);
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 }
