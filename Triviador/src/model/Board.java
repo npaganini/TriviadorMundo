@@ -11,8 +11,8 @@ public class Board implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Set<Territory> territories;
 	private ArrayList<Player> players;
-	private Set<MultipleChoiceQuestion> multipleChoiceQuestions;
-	private Set<AproximationQuestion> aproximationQuestions;
+	private ArrayList<MultipleChoiceQuestion> multipleChoiceQuestions;
+	private ArrayList<AproximationQuestion> aproximationQuestions;
 	private Player activePlayer;
 	private Player defendingPlayer;
 	private Integer turnCount;
@@ -20,11 +20,11 @@ public class Board implements Serializable {
 	private final static Integer MAX_ROUNDS = 9;
 	
 	
-	public Board() {
-        this.territories = new HashSet<>();
-        this.players = new ArrayList<>();
-        this.multipleChoiceQuestions = new HashSet<MultipleChoiceQuestion>();
-        this.aproximationQuestions = new HashSet<AproximationQuestion>();
+	public Board(Set<Territory> territories, ArrayList<Player> players, ArrayList<MultipleChoiceQuestion> multipleChoiceQuestions, ArrayList<AproximationQuestion> aproximationQuestions) {
+        this.territories = territories;
+        this.players = players;
+        this.multipleChoiceQuestions = multipleChoiceQuestions;
+        this.aproximationQuestions = aproximationQuestions;
 		this.activePlayer = null;
 		this.defendingPlayer = null;
 		this.turnCount = 0;
@@ -40,7 +40,15 @@ public class Board implements Serializable {
 		territories.remove(territory);
 		return;
 	}
-    private void setStartingPlayer(Player player) {
+	
+	public Integer getRoundCount(){
+		return roundCount;
+	}
+	
+	public Integer getMaxRounds(){
+		return MAX_ROUNDS;
+	}
+    public void setStartingPlayer(Player player) {
         if(activePlayer == null) {
             activePlayer = player;
         }
