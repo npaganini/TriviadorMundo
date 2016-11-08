@@ -23,22 +23,22 @@ public class GameBoard extends JFrame implements Serializable, ActionListener{
 	private static final long serialVersionUID = 1L;
 	private final JLabel attackFromLabel = new JLabel("Atacar desde:");
 	private final JLabel attackLabel = new JLabel("Atacar a:");
-	private final JComboBox attackFromComboBox = new JComboBox();
+	private final JComboBox<String> attackFromComboBox = new JComboBox();
 	private final JComboBox attackComboBox = new JComboBox();
+	private final JTextField turnCount = new JTextField();
 	private final JTextField currentPlayerField = new JTextField();
 	private final JLabel playerOneLabel = new JLabel("Player 1");
+	private JTextField playerOneArmyField = new JTextField();
 	private final JLabel playerTwoLabel = new JLabel("Player 2");
+	private JTextField playerTwoArmyField = new JTextField();
 	private final JLabel playerThreeLabel = new JLabel("Player 3");
+	private JTextField playerThreeArmyField = new JTextField();
 	
 	public GameBoard(){
 		final JLabel backgroundImage = new JLabel("");
 		final JButton NextTurnButton = new JButton("Pasar Turno");
 		final JLayeredPane layeredPane = new JLayeredPane();
-		final JTextField playerOneArmyField = new JTextField();
 		final JLabel turnLabel = new JLabel("Turno:");
-		final JTextField turnNumber = new JTextField();
-		final JTextField playerTwoArmyField = new JTextField();
-		final JTextField playerThreeArmyField = new JTextField();
 		final JButton attackButton = new JButton("Atacar");
 		JFrame f = new JFrame("A JFrame");
 	    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -50,9 +50,9 @@ public class GameBoard extends JFrame implements Serializable, ActionListener{
 	    character.setVisible(true);
 	    
 	    f.getContentPane().add(layeredPane, BorderLayout.CENTER);
-	    turnNumber.setBounds(531, 543, 51, 26);
-	    layeredPane.add(turnNumber);
-	    turnNumber.setColumns(10);
+	    turnCount.setBounds(531, 543, 51, 26);
+	    layeredPane.add(turnCount);
+	    turnCount.setColumns(10);
 	    turnLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 	    turnLabel.setBounds(530, 524, 49, 16);
 	    layeredPane.add(turnLabel);
@@ -172,10 +172,37 @@ public class GameBoard extends JFrame implements Serializable, ActionListener{
 	    f.setVisible(true);
 	}
 	
+	public void setCurrentPlayer(String name){
+		currentPlayerField.setText(name);
+	}
+	
+	public void setCurrentTurn(String turn){
+		turnCount.setText(turn);
+	}
+	
+	public void setTotalArmiesPlayerOne(String armies){
+		playerOneArmyField.setText(armies);
+	}
+	
+	public void setTotalArmiesPlayerTwo(String armies){
+		playerTwoArmyField.setText(armies);
+	}
+	
+	public void setTotalArmiesPlayerThree(String armies){
+		playerThreeArmyField.setText(armies);
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 			
 	}
+
+	public void setAttackingTerritories(String[] territory) {
+		for(String s: territory){	
+			attackFromComboBox.addItem(s);
+			}
+	}
 	
 }
+	
