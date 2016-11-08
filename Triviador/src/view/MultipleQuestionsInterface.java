@@ -158,11 +158,11 @@ public class MultipleQuestionsInterface {
 		okButton.setBounds(370, 480, 60, 60);
 		frame.getContentPane().add(okButton);
 		
-		backgroundImage = new JLabel("");
+		backgroundImage = new JLabel();
 		backgroundImage.setBackground(new Color(255, 255, 255));
 		backgroundImage.setBounds(0, 0, 800, 600);
 		frame.getContentPane().add(backgroundImage);
-		backgroundImage.setIcon(new ImageIcon(GameBoard.class.getResource("/view/resources/map.jpg")));
+		backgroundImage.setIcon(new ImageIcon(MultipleQuestionsInterface.class.getResource("/view/resources/map.jpg")));
 	}
 	
 	public Answer getAnswer() {
