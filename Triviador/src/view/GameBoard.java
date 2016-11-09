@@ -126,9 +126,10 @@ public class GameBoard extends JFrame implements Serializable, ActionListener{
 	    layeredPane.add(attackButton);
 	    
 	    JButton saveGameButton = new JButton("Guardar");
-	    saveGameButton.addActionListener(new ActionListener() {
-	    	public void actionPerformed(ActionEvent e) {
-	    	}
+	    AttackButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SaveButtonMouseClicked(evt);
+		}
 	    });
 	    saveGameButton.setBounds(691, 518, 103, 57);
 	    layeredPane.add(saveGameButton);
@@ -218,6 +219,10 @@ public class GameBoard extends JFrame implements Serializable, ActionListener{
 		
 		character1.setBounds(257, 21, 57, 102);
 		layeredPane.add(character1);
+	}
+	
+	private void AttackButtonMouseClicked(java.awt.event.MouseEvent evt) {
+		triviador.saveBoard();
 	}
 	
 }
