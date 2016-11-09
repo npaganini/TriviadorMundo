@@ -1,10 +1,13 @@
 package model;
 
+import java.awt.EventQueue;
 import java.io.Serializable;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+
+import view.MultipleQuestionsInterface;
 
 public class Board implements Serializable {
 
@@ -112,12 +115,12 @@ public class Board implements Serializable {
             i++;
 		}
 	}
-//	public void battle(Territory active, Territory defending) throws Exception {
-//        Player pAux = activePlayer;
-//        if(!defending.isAdjacent(active)) {
-//            throw new NotAdjacentException("" + active.getName() + " can't attack " + defending.getName());
-//        }
-//        // Deberia fijarse si los territorios son adyacentes
+	public void battle(Territory active, Territory defending) throws Exception {
+        Player pAux = activePlayer;
+        
+        if(!defending.isAdjacent(active)) {
+            throw new NotAdjacentException("" + active.getName() + " can't attack " + defending.getName());
+        }
 //        getMultipleChoiceQuestions().print();   // Llamado a controller para que muestre pregunta y devuelva las rtas
 //        // Ask for answer, get an object "Answer" with the 2 answers from the different players
 //        if(answer.player1 == answer.player2) {
@@ -127,7 +130,7 @@ public class Board implements Serializable {
 //        if(pAux == activePlayer) {
 //            active.setOwner(activePlayer);
 //        }
-//	}
+	}
 	public Player getWinner() {
         Integer max = 0;
         for(Player p: players) {

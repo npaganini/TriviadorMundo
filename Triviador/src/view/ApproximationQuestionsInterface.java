@@ -109,6 +109,10 @@ public class ApproximationQuestionsInterface {
 		}
 	}
 	
+	public JFrame getFrame() {
+		return frame;
+	}
+	
 	public static void main(String[] args) {
 		AproximationQuestion question = new AproximationQuestion("hola", 100);
 		EventQueue.invokeLater(new Runnable() {
