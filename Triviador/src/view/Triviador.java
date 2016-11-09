@@ -70,6 +70,14 @@ public class Triviador implements Serializable {
 			gameBoard.setCurrentPlayer(board.getActivePlayer().getName());
 			gameBoard.setCurrentTurn("" + board.getRoundCount()); //pongo el "" para convertirlo a string
 			
+			for( Territory territory: territories) {
+				switch(territory.getName()) {
+				case americaDelSur:
+				int x= ;
+				int y= ;
+				break;
+				// le agregamos coordenadas al territory o hago este switch?
+			}
 			
 		}
 		

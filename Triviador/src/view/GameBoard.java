@@ -204,5 +204,21 @@ public class GameBoard extends JFrame implements Serializable, ActionListener{
 			}
 	}
 	
+	public void changeColor(Territory territory, JLabel character, int x, int y) {
+		
+		JLabel character1 = DefaultComponentFactory.getInstance().createLabel("");
+		
+		if( territory.getOwner().getPlayerNumber().equals(1) ){
+			character.setIcon(new ImageIcon(GameBoard.class.getResource("/view/resources/CharacterBlue.png")));
+		} else if (territory.getOwner().getPlayerNumber().equals(2)) {
+			character.setIcon(new ImageIcon(GameBoard.class.getResource("/view/resources/CharacterRed.png")));
+		}else if (territory.getOwner().getPlayerNumber().equals(3)){
+			character.setIcon(new ImageIcon(GameBoard.class.getResource("/view/resources/CharacterGreen.png")));
+		}
+		
+		character1.setBounds(257, 21, 57, 102);
+		layeredPane.add(character1);
+	}
+	
 }
 	
