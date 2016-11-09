@@ -117,9 +117,17 @@ public class Board implements Serializable {
 	}
 	public void battle(Territory active, Territory defending) throws Exception {
         Player pAux = activePlayer;
+        MultipleChoiceQuestion multipleChoiceQuestion = getMultipleChoiceQuestions();
         
         if(!defending.isAdjacent(active)) {
             throw new NotAdjacentException("" + active.getName() + " can't attack " + defending.getName());
+        }
+        
+        MultipleQuestionsInterface window = new MultipleQuestionsInterface(multipleChoiceQuestion, active.getOwner(), defending.getOwner());
+		window.getFrame().setVisible(true);
+		
+        if(window.getAnswer().getWinner().length == 2) {
+        	
         }
 //        getMultipleChoiceQuestions().print();   // Llamado a controller para que muestre pregunta y devuelva las rtas
 //        // Ask for answer, get an object "Answer" with the 2 answers from the different players
@@ -131,6 +139,30 @@ public class Board implements Serializable {
 //            active.setOwner(activePlayer);
 //        }
 	}
+	
+	public static String getCorrectAnswers(Player attackingPlayer, Player defendingPlayer, MultipleChoiceQuestion question, Answer answer) {
+		if(question.getCorrectAnswer().equals(answer.getAnswerAttacking())) {
+			if(question.getCorrectAnswer().equals(answer.getAnswerDefending())) {
+				Player[] winner = {attackingPlayer, defendingPlayer};
+				answer.setWinner(winner);
+				return "Both players answered correctly";
+			}
+			else {
+				Player[] winner = {attackingPlayer};
+				answer.setWinner(winner);
+				return "Attacking player answered correctly";
+			}
+		}
+		else if(question.getCorrectAnswer().equals(answer.getAnswerDefending())) {
+			Player[] winner = {defendingPlayer};
+			answer.setWinner(winner);
+			return "Defending player answered correctly";
+		}
+		else {
+			return "Neither player answered correcly";
+		}
+	}
+	
 	public Player getWinner() {
         Integer max = 0;
         for(Player p: players) {

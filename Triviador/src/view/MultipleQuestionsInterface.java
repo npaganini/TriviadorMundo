@@ -2,7 +2,9 @@ package view;
 
 import javax.swing.JFrame;
 import model.Answer;
+import model.Board;
 import model.MultipleChoiceQuestion;
+import model.Player;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -40,7 +42,7 @@ public class MultipleQuestionsInterface {
 	
 	private JLabel backgroundImage;
 	
-	public MultipleQuestionsInterface(MultipleChoiceQuestion question) {
+	public MultipleQuestionsInterface(MultipleChoiceQuestion question, Player attackingPlayer, Player defendingPlayer) {
 		answer = new Answer();
 		
 		frame = new JFrame();
@@ -56,8 +58,8 @@ public class MultipleQuestionsInterface {
 		AP1Button = new JButton("A");
 		AP1Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e){
-				if(answer.getAnswerP1() == null)
-					answer.setAnswerP1(question.getAnswer(0));
+				if(answer.getAnswerAttacking() == null)
+					answer.setAnswerAttacking(question.getAnswer(0));
 			}
 		});
 		AP1Button.setBounds(30, 226, 50, 50);
@@ -66,8 +68,8 @@ public class MultipleQuestionsInterface {
 		BP1Button = new JButton("B");
 		BP1Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(answer.getAnswerP1() == null)
-					answer.setAnswerP1(question.getAnswer(1));
+				if(answer.getAnswerAttacking() == null)
+					answer.setAnswerAttacking(question.getAnswer(1));
 			}
 		});
 		BP1Button.setBounds(30, 286, 50, 50);
@@ -76,8 +78,8 @@ public class MultipleQuestionsInterface {
 		CP1Button = new JButton("C");
 		CP1Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(answer.getAnswerP1() == null)
-					answer.setAnswerP1(question.getAnswer(2));
+				if(answer.getAnswerAttacking() == null)
+					answer.setAnswerAttacking(question.getAnswer(2));
 			}
 		});
 		CP1Button.setBounds(30, 348, 50, 50);
@@ -86,8 +88,8 @@ public class MultipleQuestionsInterface {
 		DP1Button = new JButton("D");
 		DP1Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(answer.getAnswerP1() == null)
-					answer.setAnswerP1(question.getAnswer(3));
+				if(answer.getAnswerAttacking() == null)
+					answer.setAnswerAttacking(question.getAnswer(3));
 			}
 		});
 		DP1Button.setBounds(30, 410, 50, 50);
@@ -96,8 +98,8 @@ public class MultipleQuestionsInterface {
 		AP2Button = new JButton("A");
 		AP2Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(answer.getAnswerP2() == null)
-					answer.setAnswerP2(question.getAnswer(0));
+				if(answer.getAnswerDefending() == null)
+					answer.setAnswerDefending(question.getAnswer(0));
 			}
 		});
 		AP2Button.setBounds(720, 226, 50, 50);
@@ -106,8 +108,8 @@ public class MultipleQuestionsInterface {
 		BP2Button = new JButton("B");
 		BP2Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(answer.getAnswerP2() == null)
-					answer.setAnswerP2(question.getAnswer(1));
+				if(answer.getAnswerDefending() == null)
+					answer.setAnswerDefending(question.getAnswer(1));
 			}
 		});
 		BP2Button.setBounds(720, 286, 50, 50);
@@ -116,8 +118,8 @@ public class MultipleQuestionsInterface {
 		CP2Button = new JButton("C");
 		CP2Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(answer.getAnswerP2() == null)
-					answer.setAnswerP2(question.getAnswer(2));
+				if(answer.getAnswerDefending() == null)
+					answer.setAnswerDefending(question.getAnswer(2));
 			}
 		});
 		CP2Button.setBounds(720, 348, 50, 50);
@@ -126,8 +128,8 @@ public class MultipleQuestionsInterface {
 		DP2Button = new JButton("D");
 		DP2Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(answer.getAnswerP2() == null)
-					answer.setAnswerP2(question.getAnswer(3));
+				if(answer.getAnswerDefending() == null)
+					answer.setAnswerDefending(question.getAnswer(3));
 			}
 		});
 		DP2Button.setBounds(720, 410, 50, 50);
@@ -152,7 +154,7 @@ public class MultipleQuestionsInterface {
 		okButton = new JButton("OK");
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, getCorrectAnswers(question));				
+				JOptionPane.showMessageDialog(null, Board.getCorrectAnswers(attackingPlayer, defendingPlayer, question, answer));				
 			}
 		});
 		okButton.setBounds(370, 480, 60, 60);
@@ -169,23 +171,11 @@ public class MultipleQuestionsInterface {
 		return answer;
 	}
 	
-	public String getCorrectAnswers(MultipleChoiceQuestion question) {
-		if(question.getCorrectAnswer().equals(answer.getAnswerP1())) {
-			if(question.getCorrectAnswer().equals(answer.getAnswerP2()))
-				return "Both players answered correctly";
-			else
-				return "Player 1 answered correctly";
-		}
-		else if(question.getCorrectAnswer().equals(answer.getAnswerP2()))
-			return "Player 2 has answered correctly";
-		return "Neither player has answered correcly";
-	}
-	
 	public JFrame getFrame() {
 		return frame;
 	}
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		String[] answers = {"a", "b", "c", "d"};
 		MultipleChoiceQuestion question = new MultipleChoiceQuestion("hola", answers, 0);
 		EventQueue.invokeLater(new Runnable() {
@@ -198,5 +188,5 @@ public class MultipleQuestionsInterface {
 				}
 			}
 		});
-	}
+	}*/
 }

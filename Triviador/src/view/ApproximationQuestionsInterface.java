@@ -68,8 +68,8 @@ public class ApproximationQuestionsInterface {
 		okButton = new JButton("OK");
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				answer.setAnswerP1(player1TextField.getText());
-				answer.setAnswerP2(player2TextField.getText());
+				answer.setAnswerAttacking(player1TextField.getText());
+				answer.setAnswerDefending(player2TextField.getText());
 				JOptionPane.showMessageDialog(null, getCorrectAnswers(question));
 			}
 		});
@@ -88,8 +88,8 @@ public class ApproximationQuestionsInterface {
 	}
 	
 	public String getCorrectAnswers(AproximationQuestion question) {
-		Integer answerP1 = Math.abs(question.getAnswer() - Integer.parseInt(answer.getAnswerP1()));
-		Integer answerP2 = Math.abs(question.getAnswer() - Integer.parseInt(answer.getAnswerP2()));
+		Integer answerP1 = Math.abs(question.getAnswer() - Integer.parseInt(answer.getAnswerAttacking()));
+		Integer answerP2 = Math.abs(question.getAnswer() - Integer.parseInt(answer.getAnswerDefending()));
 		
 		if(answerP1 == 0) {
 			if(answerP2 == 0)
