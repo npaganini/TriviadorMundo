@@ -81,6 +81,15 @@ public class Triviador implements Serializable {
 			
 		}
 		
+		public void saveBoard(){
+				ObjectOutputStream file = new ObjectOutputStream(
+			      					new BufferedOutputStream(
+			      					new FileOutputStream("triviador.out")));
+				file.writeObject(triviador.board);
+				file.close();
+		}		
+				
+		
 		System.out.println("Termina loop del juego");
 		
 		
