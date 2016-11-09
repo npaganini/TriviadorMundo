@@ -1,7 +1,6 @@
 package view;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -10,8 +9,12 @@ import javax.swing.JOptionPane;
 
 import model.Answer;
 import model.AproximationQuestion;
+import model.Player;
 
 import javax.swing.JTextField;
+
+import controller.Board;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -34,7 +37,7 @@ public class ApproximationQuestionsInterface {
 	private JLabel backgroundImage;
 	
 
-	public ApproximationQuestionsInterface(AproximationQuestion question) {
+	public ApproximationQuestionsInterface(AproximationQuestion question, Player attackingPlayer, Player defendingPlayer) {
 		answer = new Answer();
 		
 		frame = new JFrame();
@@ -70,7 +73,8 @@ public class ApproximationQuestionsInterface {
 			public void actionPerformed(ActionEvent e) {
 				answer.setAnswerAttacking(player1TextField.getText());
 				answer.setAnswerDefending(player2TextField.getText());
-				JOptionPane.showMessageDialog(null, getCorrectAnswers(question));
+				JOptionPane.showMessageDialog(null, Board.getCorrectAnswers(attackingPlayer, defendingPlayer, question, answer));
+				frame.dispose();
 			}
 		});
 		okButton.setBounds(370, 400, 60, 60);
@@ -87,33 +91,11 @@ public class ApproximationQuestionsInterface {
 		return answer;
 	}
 	
-	public String getCorrectAnswers(AproximationQuestion question) {
-		Integer answerP1 = Math.abs(question.getAnswer() - Integer.parseInt(answer.getAnswerAttacking()));
-		Integer answerP2 = Math.abs(question.getAnswer() - Integer.parseInt(answer.getAnswerDefending()));
-		
-		if(answerP1 == 0) {
-			if(answerP2 == 0)
-				return "Both players answered correctly. Lets try again";
-			else
-				return "Player 1 answered correctly";
-		}
-		else if(answerP2 == 0)
-			return "Player 2 answered correctly";
-		else {
-			if(answerP1 < answerP2)
-				return "Player 1 is closer than Player 2";
-			else if(answerP1 > answerP2)
-				return "Player 2 is closer than Player 1";
-			else
-				return "Its a tie! Lets try again";
-		}
-	}
-	
 	public JFrame getFrame() {
 		return frame;
 	}
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		AproximationQuestion question = new AproximationQuestion("hola", 100);
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -125,5 +107,5 @@ public class ApproximationQuestionsInterface {
 				}
 			}
 		});
-	}
+	}*/
 }

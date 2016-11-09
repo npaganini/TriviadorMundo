@@ -1,12 +1,18 @@
-package model;
+package controller;
 
-import java.awt.EventQueue;
 import java.io.Serializable;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+import model.Answer;
+import model.AproximationQuestion;
+import model.MultipleChoiceQuestion;
+import model.NotAdjacentException;
+import model.Player;
+import model.Territory;
+import view.ApproximationQuestionsInterface;
 import view.MultipleQuestionsInterface;
 
 public class Board implements Serializable {
@@ -116,28 +122,37 @@ public class Board implements Serializable {
 		}
 	}
 	public void battle(Territory active, Territory defending) throws Exception {
-        Player pAux = activePlayer;
-        MultipleChoiceQuestion multipleChoiceQuestion = getMultipleChoiceQuestions();
-        
-        if(!defending.isAdjacent(active)) {
+		Player[] possibleWinner = {active.getOwner(), null};
+		
+		if(!defending.isAdjacent(active)) {
             throw new NotAdjacentException("" + active.getName() + " can't attack " + defending.getName());
         }
         
-        MultipleQuestionsInterface window = new MultipleQuestionsInterface(multipleChoiceQuestion, active.getOwner(), defending.getOwner());
-		window.getFrame().setVisible(true);
+        MultipleChoiceQuestion multipleChoiceQuestion = getMultipleChoiceQuestions();
+        MultipleQuestionsInterface window1 = new MultipleQuestionsInterface(multipleChoiceQuestion, active.getOwner(), defending.getOwner());
+		ApproximationQuestionsInterface window2;
+        window1.getFrame().setVisible(true);
 		
-        if(window.getAnswer().getWinner().length == 2) {
-        	
-        }
-//        getMultipleChoiceQuestions().print();   // Llamado a controller para que muestre pregunta y devuelva las rtas
-//        // Ask for answer, get an object "Answer" with the 2 answers from the different players
-//        if(answer.player1 == answer.player2) {
-//            getAproximationQuestions().print(); // Devuelta no deberia estar aca
-//        }
-//        pAux = assignWinner();         // A este le deberia llegar el ganador de la pregunta
-//        if(pAux == activePlayer) {
-//            active.setOwner(activePlayer);
-//        }
+		if(window1.getAnswer().getWinner().length == 2) {
+			do {
+				AproximationQuestion aproximationQuestion = getAproximationQuestions();
+				window2 = new ApproximationQuestionsInterface(aproximationQuestion, active.getOwner(), defending.getOwner());
+				window2.getFrame().setVisible(true);
+			}
+			while(window2.getAnswer().getWinner().length == 2);
+			
+			if(window2.getAnswer().getWinner().equals(possibleWinner)) {
+				defending.setOwner(active.getOwner());
+				defending.getOwner().removeTerritories(defending);
+				active.getOwner().addTerritories(defending);
+				defending.addArmies(active.getAmountArmies());
+			}
+		} else if(window1.getAnswer().getWinner().equals(possibleWinner)) {
+			defending.setOwner(active.getOwner());
+			defending.getOwner().removeTerritories(defending);
+			active.getOwner().addTerritories(defending);
+			defending.addArmies(active.getAmountArmies());
+		}
 	}
 	
 	public static String getCorrectAnswers(Player attackingPlayer, Player defendingPlayer, MultipleChoiceQuestion question, Answer answer) {
@@ -160,6 +175,27 @@ public class Board implements Serializable {
 		}
 		else {
 			return "Neither player answered correcly";
+		}
+	}
+	
+	public static String getCorrectAnswers(Player attackingPlayer, Player defendingPlayer, AproximationQuestion question, Answer answer) {
+		Integer answerAttacking = Math.abs(question.getAnswer() - Integer.parseInt(answer.getAnswerAttacking()));
+		Integer answerDefending = Math.abs(question.getAnswer() - Integer.parseInt(answer.getAnswerDefending()));
+		
+		if(answerAttacking < answerDefending) {
+			Player[] winner = {attackingPlayer};
+			answer.setWinner(winner);
+			return "Attacking player is closer than defending player";
+		}
+		else if(answerAttacking > answerDefending) {
+			Player[] winner = {defendingPlayer};
+			answer.setWinner(winner);
+			return "Defending player is closer than attacking player";
+		}
+		else {
+			Player[] winner = {attackingPlayer, defendingPlayer};
+			answer.setWinner(winner);
+			return "Both players answered " + answer.getAnswerAttacking() + " and the answer was: " + question.getAnswer() + ". Lets try again";
 		}
 	}
 	

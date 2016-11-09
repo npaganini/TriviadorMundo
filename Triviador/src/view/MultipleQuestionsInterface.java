@@ -2,7 +2,6 @@ package view;
 
 import javax.swing.JFrame;
 import model.Answer;
-import model.Board;
 import model.MultipleChoiceQuestion;
 import model.Player;
 
@@ -11,10 +10,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import controller.Board;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
-import java.awt.EventQueue;
 
 public class MultipleQuestionsInterface {
 
@@ -155,6 +155,7 @@ public class MultipleQuestionsInterface {
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, Board.getCorrectAnswers(attackingPlayer, defendingPlayer, question, answer));				
+				frame.dispose();
 			}
 		});
 		okButton.setBounds(370, 480, 60, 60);
