@@ -2,8 +2,10 @@ package view;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import controller.Board;
 import model.*;
@@ -12,7 +14,7 @@ public class Triviador implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static void main(String args[]){
+	public static void main(String args[]) throws Exception{
 		GameBoard gameBoard = new GameBoard();
 		//CREO Y AGREGO PLAYERS
 		Player player1 = new Player("Player1", 1000);
@@ -24,11 +26,11 @@ public class Triviador implements Serializable {
 		players.add(player3);
 		System.out.println("Agregue Jugadores");
 		//CREO Y AGREGO PREGUNTAS MULTIPLE CHOICE
-		MultipleChoiceQuestion q1 = new MultipleChoiceQuestion("¿En qué deporte se usa tiza?", new String[] {"Futbol", "Tenis", "Golf", "Pool"}, 4 );
-		MultipleChoiceQuestion q2 = new MultipleChoiceQuestion("¿Cuantas manos tiene un caballo?", new String[] {"0", "2", "3", "4"}, 2 );
-		MultipleChoiceQuestion q3 = new MultipleChoiceQuestion("¿Cuales son las dos primeras palabras de la Biblia?", new String[] {"Una vez", "Al comienzo", "Al principio", "En ese"}, 3 );
-		MultipleChoiceQuestion q4 = new MultipleChoiceQuestion("¿En que arbol crecen los datiles?", new String[] {"Palmera", "Sauce", "Tilo", "Ninguno"}, 1 );
-		MultipleChoiceQuestion q5 = new MultipleChoiceQuestion("¿Cual es el segundo idioma mas hablado?", new String[] {"Español", "Ingles", "Frances", "Chino"}, 2 );
+		MultipleChoiceQuestion q1 = new MultipleChoiceQuestion("¿En qué deporte se usa tiza?", new String[] {"Futbol", "Tenis", "Golf", "Pool"}, 3 );
+		MultipleChoiceQuestion q2 = new MultipleChoiceQuestion("¿Cuantas manos tiene un caballo?", new String[] {"0", "2", "3", "4"}, 1 );
+		MultipleChoiceQuestion q3 = new MultipleChoiceQuestion("¿Cuales son las dos primeras palabras de la Biblia?", new String[] {"Una vez", "Al comienzo", "Al principio", "En ese"}, 2 );
+		MultipleChoiceQuestion q4 = new MultipleChoiceQuestion("¿En que arbol crecen los datiles?", new String[] {"Palmera", "Sauce", "Tilo", "Ninguno"}, 0 );
+		MultipleChoiceQuestion q5 = new MultipleChoiceQuestion("¿Cual es el segundo idioma mas hablado?", new String[] {"Español", "Ingles", "Frances", "Chino"}, 1 );
 		ArrayList<MultipleChoiceQuestion> multipleChoiceQuestions = new ArrayList<MultipleChoiceQuestion>();
 		multipleChoiceQuestions.add(q1);
 		multipleChoiceQuestions.add(q2);
@@ -61,15 +63,27 @@ public class Triviador implements Serializable {
 		territories.add(medioOriente);
 		territories.add(asia);
 		territories.add(oceania);
+		americaDelSur.addAdjacents(americaCentral);
+		americaCentral.addAdjacents(americaDelSur);
 		System.out.println("Agregue Territorios");
 		//CREO EL BOARD
 		Board board = new Board(territories, players, multipleChoiceQuestions, aproximationQuestions);
 		board.setStartingPlayer(player1);
 		System.out.println("Cree Board y puse active Player");
+		//CREO INTERFACE DE MULTIPLE CHOICE
+		Collections.shuffle(multipleChoiceQuestions);
+		MultipleQuestionsInterface multipleQuestionInterface = new MultipleQuestionsInterface(multipleChoiceQuestions.get(0), player1, player2);
+		multipleQuestionInterface.setVisible(false);
+		System.out.println("Cree la interfaz de preguntas multiple choice");
 		//LOOP DEL JUEGO
 		while(board.getRoundCount()<board.getMaxRounds()){
 			gameBoard.setCurrentPlayer(board.getActivePlayer().getName());
 			gameBoard.setCurrentTurn("" + board.getRoundCount()); //pongo el "" para convertirlo a string
+			TimeUnit.SECONDS.sleep(3);
+			board.battle(americaDelSur, americaCentral);
+			gameBoard.setVisible(false);
+			multipleQuestionInterface.setVisible(true);
+			multipleQuestionInterface.setVisible(false);
 			
 			
 		}
