@@ -12,7 +12,6 @@ import java.awt.event.ActionListener;
 import java.io.Serializable;
 import java.awt.event.ActionEvent;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JComboBox;
@@ -23,8 +22,8 @@ public class GameBoard extends JFrame implements Serializable, ActionListener{
 	private static final long serialVersionUID = 1L;
 	private final JLabel attackFromLabel = new JLabel("Atacar desde:");
 	private final JLabel attackLabel = new JLabel("Atacar a:");
-	private final JComboBox<String> attackFromComboBox = new JComboBox();
-	private final JComboBox attackComboBox = new JComboBox();
+	private final JComboBox<String> attackFromComboBox = new JComboBox<String>();
+	private final JComboBox<?> attackComboBox = new JComboBox<Object>();
 	private final JTextField turnCount = new JTextField();
 	private final JTextField currentPlayerField = new JTextField();
 	private final JLabel playerOneLabel = new JLabel("Player 1");

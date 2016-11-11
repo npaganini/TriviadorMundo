@@ -14,8 +14,7 @@ public class Triviador implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	public static void main(String args[]) throws Exception{
-		GameBoard gameBoard = new GameBoard();
+	public static void main(String args[]) throws Exception{	
 		//CREO Y AGREGO PLAYERS
 		Player player1 = new Player("Player1", 1000);
 		Player player2 = new Player("Player2", 1000);
@@ -25,6 +24,7 @@ public class Triviador implements Serializable {
 		players.add(player2);
 		players.add(player3);
 		System.out.println("Agregue Jugadores");
+		
 		//CREO Y AGREGO PREGUNTAS MULTIPLE CHOICE
 		MultipleChoiceQuestion q1 = new MultipleChoiceQuestion("¿En qué deporte se usa tiza?", new String[] {"Futbol", "Tenis", "Golf", "Pool"}, 3 );
 		MultipleChoiceQuestion q2 = new MultipleChoiceQuestion("¿Cuantas manos tiene un caballo?", new String[] {"0", "2", "3", "4"}, 1 );
@@ -38,11 +38,13 @@ public class Triviador implements Serializable {
 		multipleChoiceQuestions.add(q4);
 		multipleChoiceQuestions.add(q5);
 		System.out.println("Agregue MultipleChoiceQuestions");
+		
 		//CREO Y AGREGO PREGUNTAS POR APROXIMACION
 		AproximationQuestion a1= new AproximationQuestion("¿En que año se independizo Argentina?", 1816);
 		ArrayList<AproximationQuestion> aproximationQuestions = new ArrayList<AproximationQuestion>();
 		aproximationQuestions.add(a1);
 		System.out.println("Agregue AproximationQuestions");
+		
 		//CREO Y AGREGO TERRITORIOS
 		Territory americaDelSur = new Territory("America del Sur", 100, player1, 187, 346);
 		Territory americaCentral = new Territory("America Central", 100, player2, 138, 256);
@@ -66,15 +68,21 @@ public class Triviador implements Serializable {
 		americaDelSur.addAdjacents(americaCentral);
 		americaCentral.addAdjacents(americaDelSur);
 		System.out.println("Agregue Territorios");
+		
 		//CREO EL BOARD
+		StartGameInterface startingWindow = new StartGameInterface();
+		startingWindow.getFrame().setVisible(true);
 		Board board = new Board(territories, players, multipleChoiceQuestions, aproximationQuestions);
 		board.setStartingPlayer(player1);
+		GameBoard gameBoard = new GameBoard();
 		System.out.println("Cree Board y puse active Player");
+		
 		//CREO INTERFACE DE MULTIPLE CHOICE
 		Collections.shuffle(multipleChoiceQuestions);
 		MultipleQuestionsInterface multipleQuestionInterface = new MultipleQuestionsInterface(multipleChoiceQuestions.get(0), player1, player2);
-		multipleQuestionInterface.setVisible(false);
+		//multipleQuestionInterface.setVisible(false);
 		System.out.println("Cree la interfaz de preguntas multiple choice");
+		
 		//LOOP DEL JUEGO
 		while(board.getRoundCount()<board.getMaxRounds()){
 			gameBoard.setCurrentPlayer(board.getActivePlayer().getName());
