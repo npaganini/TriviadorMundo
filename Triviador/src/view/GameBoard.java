@@ -173,7 +173,11 @@ public class GameBoard extends JFrame implements Serializable{
 	    attackButton.setBounds(451, 519, 71, 54);
 	    attackButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				try {
+					partida.battle(partida.stringToTerritory((String) attackFromComboBox.getSelectedItem()), partida.stringToTerritory((String) attackToComboBox.getSelectedItem()));
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
 			}
 		});
 	    layeredPane.add(attackButton);
