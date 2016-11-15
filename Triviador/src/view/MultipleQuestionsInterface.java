@@ -2,7 +2,6 @@ package view;
 
 import javax.swing.JFrame;
 import model.Answer;
-import model.Board;
 import model.MultipleChoiceQuestion;
 import model.Player;
 
@@ -10,6 +9,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+
+import controller.Triviador;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -158,7 +159,7 @@ public class MultipleQuestionsInterface extends JFrame {
 		okButton = new JButton("OK");
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, Board.getCorrectAnswers(attackingPlayer, defendingPlayer, question, answer));				
+				JOptionPane.showMessageDialog(null, Triviador.getCorrectAnswers(attackingPlayer, defendingPlayer, question, answer));				
 				frame.dispose();
 			}
 		});
