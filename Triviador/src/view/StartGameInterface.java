@@ -15,6 +15,7 @@ public class StartGameInterface extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
+	@SuppressWarnings("unused")
 	private Triviador partida;
 	
 	private JFrame frame;
@@ -34,7 +35,9 @@ public class StartGameInterface extends JFrame {
 		
 		newGameButton = new JButton("New Game");
 		newGameButton.addActionListener(new ActionListener() {
+			@SuppressWarnings({ "unused" })
 			public void actionPerformed(ActionEvent e) {
+				partida.startNewGame();
 				GameBoard gameBoard = new GameBoard(partida);
 				frame.setVisible(false);
 			}
@@ -59,7 +62,7 @@ public class StartGameInterface extends JFrame {
 		
 		frame.setVisible(true);
 	}
-	
+
 	public JFrame getFrame() {
 		return frame;
 	}

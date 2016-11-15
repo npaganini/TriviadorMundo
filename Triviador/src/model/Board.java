@@ -17,15 +17,62 @@ public class Board implements Serializable {
 	}
 	
 	public void addTerritories() {
-		territories.add(new Territory("America del Sur", 100, 187, 346));
-		territories.add(new Territory("America Central", 100, 138, 256));
-		territories.add(new Territory("America del Norte", 100, 88, 159));
-		territories.add(new Territory("Polo Norte", 100, 226, 34));
-		territories.add(new Territory("Europa", 100, 368, 131));
-		territories.add(new Territory("Africa", 100, 368, 294));
-		territories.add(new Territory("MedioOriente", 100, 508, 188));
-		territories.add(new Territory("Asia", 100, 573, 98));
-		territories.add(new Territory("Oceania", 100, 613, 359));
+		Territory americaDelSur = new Territory("America del Sur", 100, 187, 346);
+		Territory americaCentral = new Territory("America Central", 100, 138, 256);
+		Territory americaDelNorte = new Territory("America del Norte", 100, 88, 159);
+		Territory poloNorte = new Territory("Polo Norte", 100, 226, 34);
+		Territory europa = new Territory("Europa", 100, 368, 131);
+		Territory africa = new Territory("Africa", 100, 368, 294);
+		Territory medioOriente = new Territory("MedioOriente", 100, 508, 188);
+		Territory asia = new Territory("Asia", 100, 573, 98);
+		Territory oceania = new Territory("Oceania", 100, 613, 359);
+		
+		americaDelSur.addAdjacents(americaCentral);
+		americaDelSur.addAdjacents(africa);
+		americaDelSur.addAdjacents(oceania);
+		
+		americaCentral.addAdjacents(americaDelSur);
+		americaCentral.addAdjacents(americaDelNorte);
+		
+		americaDelNorte.addAdjacents(americaCentral);
+		americaDelNorte.addAdjacents(poloNorte);
+		americaDelNorte.addAdjacents(asia);
+		
+		poloNorte.addAdjacents(americaDelNorte);
+		poloNorte.addAdjacents(europa);
+		
+		europa.addAdjacents(poloNorte);
+		europa.addAdjacents(asia);
+		europa.addAdjacents(medioOriente);
+		europa.addAdjacents(africa);
+		
+		africa.addAdjacents(americaDelSur);
+		africa.addAdjacents(europa);
+		africa.addAdjacents(medioOriente);
+		africa.addAdjacents(oceania);
+		
+		medioOriente.addAdjacents(europa);
+		medioOriente.addAdjacents(asia);
+		medioOriente.addAdjacents(africa);
+		medioOriente.addAdjacents(oceania);
+		
+		asia.addAdjacents(medioOriente);
+		asia.addAdjacents(europa);
+		asia.addAdjacents(americaDelNorte);
+		
+		oceania.addAdjacents(africa);
+		oceania.addAdjacents(medioOriente);
+		oceania.addAdjacents(americaDelSur);
+		
+		territories.add(americaDelSur);
+		territories.add(americaCentral);
+		territories.add(americaDelNorte);
+		territories.add(poloNorte);
+		territories.add(europa);
+		territories.add(africa);
+		territories.add(medioOriente);
+		territories.add(asia);
+		territories.add(oceania);
 	}
 
 	public void distributeTerritories(ArrayList<Player> players) {
@@ -35,5 +82,9 @@ public class Board implements Serializable {
             players.get(i%3).addTerritories(t);
             i++;
 		}
+	}
+
+	public Set<Territory> getTerritories() {
+		return territories;
 	}
 }

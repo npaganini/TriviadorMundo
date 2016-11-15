@@ -26,7 +26,6 @@ public class Triviador {
 		board = new Board();
 		players = new ArrayList<Player>();
 		addPlayers();
-		board.distributeTerritories(players);
 		multipleChoiceQuestions = new ArrayList<MultipleChoiceQuestion>();
 		addMultipleChoiceQuestions();
 		aproximationQuestions = new ArrayList<AproximationQuestion>();
@@ -188,5 +187,47 @@ public class Triviador {
             return false;
         }
         return true;
+	}
+	
+	public void startNewGame() {
+		board.distributeTerritories(players);
+		activePlayer = players.get(0);
+		roundCount = 1;
+	}
+	
+	public Territory stringToTerritory(String s) {
+		for(Territory t: board.getTerritories()) {
+			if(s == t.getName())
+				return t;
+		}
+		return null;
+	}
+
+	public Player getActivePlayer() {
+		return activePlayer;
+	}
+
+	public Integer getTurnCount() {
+		return turnCount;
+	}
+
+	public Integer getRoundCount() {
+		return roundCount;
+	}
+
+	public static Integer getMaxRounds() {
+		return MAX_ROUNDS;
+	}
+	
+	public Player getPlayer1() {
+		return players.get(0);
+	}
+	
+	public Player getPlayer2() {
+		return players.get(1);
+	}
+	
+	public Player getPlayer3() {
+		return players.get(2);
 	}
 }
