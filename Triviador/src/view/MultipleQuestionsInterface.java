@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.JFrame;
 import model.Answer;
+import model.Board;
 import model.MultipleChoiceQuestion;
 import model.Player;
 
@@ -9,7 +10,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import controller.Board;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

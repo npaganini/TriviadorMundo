@@ -1,11 +1,12 @@
 package view;
 
 import java.awt.Color;
-import java.awt.EventQueue;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import controller.Triviador;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -14,6 +15,9 @@ public class StartGameInterface extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	
+	@SuppressWarnings("unused")
+	private Triviador partida;
+	
 	private JFrame frame;
 	
 	private JButton newGameButton;
@@ -21,22 +25,9 @@ public class StartGameInterface extends JFrame {
 	
 	private JLabel backgroundImage;
 
-
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					StartGameInterface frame = new StartGameInterface();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-
-	public StartGameInterface() {
+	public StartGameInterface(Triviador partida) {
+		this.partida = partida;
+		
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBounds(200, 300, 800, 600);
@@ -44,7 +35,10 @@ public class StartGameInterface extends JFrame {
 		
 		newGameButton = new JButton("New Game");
 		newGameButton.addActionListener(new ActionListener() {
+			@SuppressWarnings({ "unused" })
 			public void actionPerformed(ActionEvent e) {
+				partida.startNewGame();
+				GameBoard gameBoard = new GameBoard(partida);
 				frame.setVisible(false);
 			}
 		});
@@ -65,8 +59,10 @@ public class StartGameInterface extends JFrame {
 		backgroundImage.setBounds(0, 0, 800, 600);
 		frame.getContentPane().add(backgroundImage);
 		backgroundImage.setIcon(new ImageIcon(StartGameInterface.class.getResource("/view/resources/triviadorHome.jpg")));
+		
+		frame.setVisible(true);
 	}
-	
+
 	public JFrame getFrame() {
 		return frame;
 	}
