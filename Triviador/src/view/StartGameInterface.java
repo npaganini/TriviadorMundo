@@ -30,7 +30,7 @@ public class StartGameInterface extends JFrame {
 		
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(200, 300, 800, 600);
+		frame.setBounds(300, 200, 800, 600);
 		frame.getContentPane().setLayout(null);
 		
 		newGameButton = new JButton("New Game");
