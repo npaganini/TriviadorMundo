@@ -17,9 +17,15 @@ import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.UIManager;
 
+import controller.Triviador;
+
 public class GameBoard extends JFrame implements Serializable, ActionListener{
 	
 	private static final long serialVersionUID = 1L;
+	
+	private Triviador partida;
+	
+	private JFrame mainFrame;
 	private final JLabel attackFromLabel = new JLabel("Atacar desde:");
 	private final JLabel attackLabel = new JLabel("Atacar a:");
 	private final JComboBox<String> attackFromComboBox = new JComboBox<String>();
@@ -33,22 +39,23 @@ public class GameBoard extends JFrame implements Serializable, ActionListener{
 	private final JLabel playerThreeLabel = new JLabel("Player 3");
 	private JTextField playerThreeArmyField = new JTextField();
 	
-	public GameBoard(){
-		final JLabel backgroundImage = new JLabel("");
+	public GameBoard(Triviador partida) {
+		
+		this.partida = partida;
+		
+		final JLabel backgroundImage = new JLabel();
 		final JButton NextTurnButton = new JButton("Pasar Turno");
 		final JLayeredPane layeredPane = new JLayeredPane();
 		final JLabel turnLabel = new JLabel("Turno:");
 		final JButton attackButton = new JButton("Atacar");
-		JFrame f = new JFrame("A JFrame");
-	    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    f.setTitle("Triviador");
-	    f.setSize(800, 600);
-	    f.setLocation(300,200);
+		
+		mainFrame = new JFrame();
+	    mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    mainFrame.setTitle("Triviador");
+	    mainFrame.setSize(800, 600);
+	    mainFrame.setLocation(300,200);
 	    
-	    JCharacter character = new JCharacter();
-	    character.setVisible(true);
-	    
-	    f.getContentPane().add(layeredPane, BorderLayout.CENTER);
+	    mainFrame.getContentPane().add(layeredPane, BorderLayout.CENTER);
 	    turnCount.setBounds(531, 543, 51, 26);
 	    layeredPane.add(turnCount);
 	    turnCount.setColumns(10);
@@ -159,8 +166,6 @@ public class GameBoard extends JFrame implements Serializable, ActionListener{
 	    currentPlayerField.setColumns(10);
 	    currentPlayerField.setBounds(163, 487, 64, 26);
 	    
-	    
-	    
 	    layeredPane.add(currentPlayerField);
 	    NextTurnButton.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
@@ -168,7 +173,8 @@ public class GameBoard extends JFrame implements Serializable, ActionListener{
 	    });
 	    JTextArea textArea = new JTextArea(10, 40);
 	    textArea.setBackground(Color.BLACK);
-	    f.setVisible(true);
+	    
+	    mainFrame.setVisible(true);
 	}
 	
 	public void setCurrentPlayer(String name){
@@ -202,6 +208,5 @@ public class GameBoard extends JFrame implements Serializable, ActionListener{
 			attackFromComboBox.addItem(s);
 			}
 	}
-	
 }
 	

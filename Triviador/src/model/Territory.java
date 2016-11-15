@@ -15,12 +15,12 @@ public class Territory implements Serializable {
 	private Integer x;
 	private Integer y;
 	
-	public Territory(String name, Integer amountArmies, Player owner, Integer x, Integer y) {
+	public Territory(String name, Integer amountArmies, Integer x, Integer y) {
 		super();
 		this.name = name;
 		this.adjacents = new HashSet<Territory>();
 		this.amountArmies = amountArmies;
-		this.owner = owner;
+		this.owner = null;
 		this.x=x;
 		this.y=y;
 	}

@@ -9,12 +9,10 @@ import javax.swing.JOptionPane;
 
 import model.Answer;
 import model.AproximationQuestion;
+import model.Board;
 import model.Player;
 
 import javax.swing.JTextField;
-
-import controller.Board;
-
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

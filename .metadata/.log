@@ -71,3 +71,235 @@ Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.
 
 !ENTRY org.eclipse.core.net 1 0 2016-11-05 15:58:08.322
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2016-11-10 11:21:37.486 -----------------------------------------------
+eclipse.buildId=4.6.0.I20160606-1100
+java.version=1.8.0_101
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.java.product -keyring /Users/Diego/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -keyring /Users/Diego/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2016-11-10 11:21:49.419
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2016-11-10 11:37:07.022
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10054 2016-11-10 11:37:07.022
+!MESSAGE Cannot complete the install because of a conflicting dependency.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.022
+!MESSAGE Software being installed: Dynamic Languages Toolkit - Ruby Development Tools 1.0.0.v20090610-1638-7B--E_EkMO1PJYsAZIz-C (org.eclipse.dltk.ruby.feature.group 1.0.0.v20090610-1638-7B--E_EkMO1PJYsAZIz-C)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.022
+!MESSAGE Software currently installed: Eclipse Platform 4.6.0.v20160606-1342 (org.eclipse.platform.feature.group 4.6.0.v20160606-1342)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.022
+!MESSAGE Only one of the following can be installed at once: 
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.022
+!MESSAGE Ant Build Tool Core 3.2.100.v20090817_r351 (org.eclipse.ant.core 3.2.100.v20090817_r351)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.022
+!MESSAGE Ant Build Tool Core 3.4.100.v20160505-0642 (org.eclipse.ant.core 3.4.100.v20160505-0642)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.022
+!MESSAGE Ant Build Tool Core 3.2.101.v20091110_r352 (org.eclipse.ant.core 3.2.101.v20091110_r352)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.022
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.022
+!MESSAGE From: Dynamic Languages Toolkit - Core Frameworks 1.0.1.v20090903-2153-7C-5EAAoOQBPtYaBfKz-L (org.eclipse.dltk.core.feature.group 1.0.1.v20090903-2153-7C-5EAAoOQBPtYaBfKz-L)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.022
+!MESSAGE To: org.eclipse.platform.feature.group [3.3.0,4.0.0)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.022
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.022
+!MESSAGE From: Dynamic Languages Toolkit - Core Frameworks 1.0.2.v20100208-7C-77EAAoORwQXXqBeY-d (org.eclipse.dltk.core.feature.group 1.0.2.v20100208-7C-77EAAoORwQXXqBeY-d)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.022
+!MESSAGE To: org.eclipse.platform.feature.group [3.3.0,4.0.0)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.022
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.023
+!MESSAGE From: Dynamic Languages Toolkit - Ruby Development Tools 1.0.0.v20090610-1638-7B--E_EkMO1PJYsAZIz-C (org.eclipse.dltk.ruby.feature.group 1.0.0.v20090610-1638-7B--E_EkMO1PJYsAZIz-C)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.023
+!MESSAGE To: org.eclipse.dltk.core.feature.group [1.0.0,2.0.0)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.023
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.023
+!MESSAGE From: Eclipse Platform 3.5.1.R35x_v20090910-9gEeG1_FthkNDSP2odXdThaOu9GFDPn83DGB7 (org.eclipse.platform.feature.group 3.5.1.R35x_v20090910-9gEeG1_FthkNDSP2odXdThaOu9GFDPn83DGB7)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.023
+!MESSAGE To: org.eclipse.ant.core [3.2.100.v20090817_r351]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.023
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.023
+!MESSAGE From: Eclipse Platform 3.5.2.R35x_v20100210-0800-9hEiFzmFst-TiEn9hNYgDWg1XN8ulH_JvCNGB (org.eclipse.platform.feature.group 3.5.2.R35x_v20100210-0800-9hEiFzmFst-TiEn9hNYgDWg1XN8ulH_JvCNGB)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.023
+!MESSAGE To: org.eclipse.ant.core [3.2.101.v20091110_r352]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.023
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.023
+!MESSAGE From: Eclipse Platform 4.6.0.v20160606-1342 (org.eclipse.platform.feature.group 4.6.0.v20160606-1342)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.023
+!MESSAGE To: org.eclipse.ant.core [3.4.100.v20160505-0642]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2016-11-10 11:37:07.115
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10054 2016-11-10 11:37:07.115
+!MESSAGE Cannot complete the install because of a conflicting dependency.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.115
+!MESSAGE Software being installed: Dynamic Languages Toolkit - Ruby Development Tools 1.0.0.v20090610-1638-7B--E_EkMO1PJYsAZIz-C (org.eclipse.dltk.ruby.feature.group 1.0.0.v20090610-1638-7B--E_EkMO1PJYsAZIz-C)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.115
+!MESSAGE Software currently installed: Eclipse Platform 4.6.0.v20160606-1342 (org.eclipse.platform.feature.group 4.6.0.v20160606-1342)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.115
+!MESSAGE Only one of the following can be installed at once: 
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.115
+!MESSAGE Ant Build Tool Core 3.2.100.v20090817_r351 (org.eclipse.ant.core 3.2.100.v20090817_r351)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.115
+!MESSAGE Ant Build Tool Core 3.4.100.v20160505-0642 (org.eclipse.ant.core 3.4.100.v20160505-0642)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.115
+!MESSAGE Ant Build Tool Core 3.2.101.v20091110_r352 (org.eclipse.ant.core 3.2.101.v20091110_r352)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.115
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.115
+!MESSAGE From: Dynamic Languages Toolkit - Core Frameworks 1.0.1.v20090903-2153-7C-5EAAoOQBPtYaBfKz-L (org.eclipse.dltk.core.feature.group 1.0.1.v20090903-2153-7C-5EAAoOQBPtYaBfKz-L)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.115
+!MESSAGE To: org.eclipse.platform.feature.group [3.3.0,4.0.0)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.115
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.115
+!MESSAGE From: Dynamic Languages Toolkit - Core Frameworks 1.0.2.v20100208-7C-77EAAoORwQXXqBeY-d (org.eclipse.dltk.core.feature.group 1.0.2.v20100208-7C-77EAAoORwQXXqBeY-d)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.115
+!MESSAGE To: org.eclipse.platform.feature.group [3.3.0,4.0.0)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.115
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.115
+!MESSAGE From: Dynamic Languages Toolkit - Ruby Development Tools 1.0.0.v20090610-1638-7B--E_EkMO1PJYsAZIz-C (org.eclipse.dltk.ruby.feature.group 1.0.0.v20090610-1638-7B--E_EkMO1PJYsAZIz-C)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.115
+!MESSAGE To: org.eclipse.dltk.core.feature.group [1.0.0,2.0.0)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.115
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.115
+!MESSAGE From: Eclipse Platform 3.5.1.R35x_v20090910-9gEeG1_FthkNDSP2odXdThaOu9GFDPn83DGB7 (org.eclipse.platform.feature.group 3.5.1.R35x_v20090910-9gEeG1_FthkNDSP2odXdThaOu9GFDPn83DGB7)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.115
+!MESSAGE To: org.eclipse.ant.core [3.2.100.v20090817_r351]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.115
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.115
+!MESSAGE From: Eclipse Platform 3.5.2.R35x_v20100210-0800-9hEiFzmFst-TiEn9hNYgDWg1XN8ulH_JvCNGB (org.eclipse.platform.feature.group 3.5.2.R35x_v20100210-0800-9hEiFzmFst-TiEn9hNYgDWg1XN8ulH_JvCNGB)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.115
+!MESSAGE To: org.eclipse.ant.core [3.2.101.v20091110_r352]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.115
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.116
+!MESSAGE From: Eclipse Platform 4.6.0.v20160606-1342 (org.eclipse.platform.feature.group 4.6.0.v20160606-1342)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.116
+!MESSAGE To: org.eclipse.ant.core [3.4.100.v20160505-0642]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2016-11-10 11:37:07.126
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10054 2016-11-10 11:37:07.126
+!MESSAGE Cannot complete the install because of a conflicting dependency.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.126
+!MESSAGE Software being installed: Dynamic Languages Toolkit - Ruby Development Tools 1.0.0.v20090610-1638-7B--E_EkMO1PJYsAZIz-C (org.eclipse.dltk.ruby.feature.group 1.0.0.v20090610-1638-7B--E_EkMO1PJYsAZIz-C)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.126
+!MESSAGE Software currently installed: Eclipse Platform 4.6.0.v20160606-1342 (org.eclipse.platform.feature.group 4.6.0.v20160606-1342)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.126
+!MESSAGE Only one of the following can be installed at once: 
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.126
+!MESSAGE Ant Build Tool Core 3.2.100.v20090817_r351 (org.eclipse.ant.core 3.2.100.v20090817_r351)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.126
+!MESSAGE Ant Build Tool Core 3.4.100.v20160505-0642 (org.eclipse.ant.core 3.4.100.v20160505-0642)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.126
+!MESSAGE Ant Build Tool Core 3.2.101.v20091110_r352 (org.eclipse.ant.core 3.2.101.v20091110_r352)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.126
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.126
+!MESSAGE From: Dynamic Languages Toolkit - Core Frameworks 1.0.1.v20090903-2153-7C-5EAAoOQBPtYaBfKz-L (org.eclipse.dltk.core.feature.group 1.0.1.v20090903-2153-7C-5EAAoOQBPtYaBfKz-L)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.127
+!MESSAGE To: org.eclipse.platform.feature.group [3.3.0,4.0.0)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.127
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.127
+!MESSAGE From: Dynamic Languages Toolkit - Core Frameworks 1.0.2.v20100208-7C-77EAAoORwQXXqBeY-d (org.eclipse.dltk.core.feature.group 1.0.2.v20100208-7C-77EAAoORwQXXqBeY-d)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.127
+!MESSAGE To: org.eclipse.platform.feature.group [3.3.0,4.0.0)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.127
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.127
+!MESSAGE From: Dynamic Languages Toolkit - Ruby Development Tools 1.0.0.v20090610-1638-7B--E_EkMO1PJYsAZIz-C (org.eclipse.dltk.ruby.feature.group 1.0.0.v20090610-1638-7B--E_EkMO1PJYsAZIz-C)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.127
+!MESSAGE To: org.eclipse.dltk.core.feature.group [1.0.0,2.0.0)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.127
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.127
+!MESSAGE From: Eclipse Platform 3.5.1.R35x_v20090910-9gEeG1_FthkNDSP2odXdThaOu9GFDPn83DGB7 (org.eclipse.platform.feature.group 3.5.1.R35x_v20090910-9gEeG1_FthkNDSP2odXdThaOu9GFDPn83DGB7)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.127
+!MESSAGE To: org.eclipse.ant.core [3.2.100.v20090817_r351]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.127
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.127
+!MESSAGE From: Eclipse Platform 3.5.2.R35x_v20100210-0800-9hEiFzmFst-TiEn9hNYgDWg1XN8ulH_JvCNGB (org.eclipse.platform.feature.group 3.5.2.R35x_v20100210-0800-9hEiFzmFst-TiEn9hNYgDWg1XN8ulH_JvCNGB)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.127
+!MESSAGE To: org.eclipse.ant.core [3.2.101.v20091110_r352]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.127
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.127
+!MESSAGE From: Eclipse Platform 4.6.0.v20160606-1342 (org.eclipse.platform.feature.group 4.6.0.v20160606-1342)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.127
+!MESSAGE To: org.eclipse.ant.core [3.4.100.v20160505-0642]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2016-11-10 11:37:07.128
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10054 2016-11-10 11:37:07.128
+!MESSAGE Cannot complete the install because of a conflicting dependency.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.128
+!MESSAGE Software being installed: Dynamic Languages Toolkit - Ruby Development Tools 1.0.0.v20090610-1638-7B--E_EkMO1PJYsAZIz-C (org.eclipse.dltk.ruby.feature.group 1.0.0.v20090610-1638-7B--E_EkMO1PJYsAZIz-C)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.128
+!MESSAGE Software currently installed: Eclipse Platform 4.6.0.v20160606-1342 (org.eclipse.platform.feature.group 4.6.0.v20160606-1342)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.128
+!MESSAGE Only one of the following can be installed at once: 
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.128
+!MESSAGE Ant Build Tool Core 3.2.100.v20090817_r351 (org.eclipse.ant.core 3.2.100.v20090817_r351)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.128
+!MESSAGE Ant Build Tool Core 3.4.100.v20160505-0642 (org.eclipse.ant.core 3.4.100.v20160505-0642)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.128
+!MESSAGE Ant Build Tool Core 3.2.101.v20091110_r352 (org.eclipse.ant.core 3.2.101.v20091110_r352)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.128
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.128
+!MESSAGE From: Dynamic Languages Toolkit - Core Frameworks 1.0.1.v20090903-2153-7C-5EAAoOQBPtYaBfKz-L (org.eclipse.dltk.core.feature.group 1.0.1.v20090903-2153-7C-5EAAoOQBPtYaBfKz-L)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.128
+!MESSAGE To: org.eclipse.platform.feature.group [3.3.0,4.0.0)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.128
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.128
+!MESSAGE From: Dynamic Languages Toolkit - Core Frameworks 1.0.2.v20100208-7C-77EAAoORwQXXqBeY-d (org.eclipse.dltk.core.feature.group 1.0.2.v20100208-7C-77EAAoORwQXXqBeY-d)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.128
+!MESSAGE To: org.eclipse.platform.feature.group [3.3.0,4.0.0)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.128
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.128
+!MESSAGE From: Dynamic Languages Toolkit - Ruby Development Tools 1.0.0.v20090610-1638-7B--E_EkMO1PJYsAZIz-C (org.eclipse.dltk.ruby.feature.group 1.0.0.v20090610-1638-7B--E_EkMO1PJYsAZIz-C)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.128
+!MESSAGE To: org.eclipse.dltk.core.feature.group [1.0.0,2.0.0)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.128
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.128
+!MESSAGE From: Eclipse Platform 3.5.1.R35x_v20090910-9gEeG1_FthkNDSP2odXdThaOu9GFDPn83DGB7 (org.eclipse.platform.feature.group 3.5.1.R35x_v20090910-9gEeG1_FthkNDSP2odXdThaOu9GFDPn83DGB7)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.128
+!MESSAGE To: org.eclipse.ant.core [3.2.100.v20090817_r351]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.128
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.128
+!MESSAGE From: Eclipse Platform 3.5.2.R35x_v20100210-0800-9hEiFzmFst-TiEn9hNYgDWg1XN8ulH_JvCNGB (org.eclipse.platform.feature.group 3.5.2.R35x_v20100210-0800-9hEiFzmFst-TiEn9hNYgDWg1XN8ulH_JvCNGB)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.128
+!MESSAGE To: org.eclipse.ant.core [3.2.101.v20091110_r352]
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2016-11-10 11:37:07.128
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.128
+!MESSAGE From: Eclipse Platform 4.6.0.v20160606-1342 (org.eclipse.platform.feature.group 4.6.0.v20160606-1342)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2016-11-10 11:37:07.129
+!MESSAGE To: org.eclipse.ant.core [3.4.100.v20160505-0642]
+!SESSION 2016-11-10 11:39:01.537 -----------------------------------------------
+eclipse.buildId=4.6.0.I20160606-1100
+java.version=1.8.0_101
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=es_ES
+Framework arguments:  -product org.eclipse.epp.package.java.product -product org.eclipse.epp.package.java.product -keyring /Users/Diego/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch x86_64 -product org.eclipse.epp.package.java.product -data file:/Users/Diego/Desktop/POO/TPE/poo-2016b-07/ -product org.eclipse.epp.package.java.product -keyring /Users/Diego/.eclipse_keyring
+
+!ENTRY org.eclipse.core.net 1 0 2016-11-10 11:39:12.623
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
