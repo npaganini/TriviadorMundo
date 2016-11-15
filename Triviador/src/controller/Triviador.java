@@ -37,9 +37,9 @@ public class Triviador {
 	}
 
 	public void addPlayers() {
-		players.add(new Player("Jugador 1", 1000));
-		players.add(new Player("Jugador 2", 1000));
-		players.add(new Player("Jugador 3", 1000));
+		players.add(new Player("Jugador 1"));
+		players.add(new Player("Jugador 2"));
+		players.add(new Player("Jugador 3"));
 	}
 	
 	public void addMultipleChoiceQuestions() {

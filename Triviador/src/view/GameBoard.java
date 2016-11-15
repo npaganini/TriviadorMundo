@@ -216,7 +216,8 @@ public class GameBoard extends JFrame implements Serializable{
 		while(attackToComboBox.getModel().getSize() > 0)
 			attackToComboBox.removeItemAt(0);
 		for(Territory territory: attackingTerritory.getAdjacents())
-			attackToComboBox.addItem(territory.getName());
+			if(!attackingTerritory.getOwner().equals(territory.getOwner()))
+				attackToComboBox.addItem(territory.getName());
 	}
 	
 	public void setTotalArmiesPlayerOne(String armies){
