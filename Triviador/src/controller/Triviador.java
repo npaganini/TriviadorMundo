@@ -247,5 +247,5 @@ public class Triviador {
 		} catch (IOException i) {
 			i.printStackTrace();
 		}
-
+	}
 }
