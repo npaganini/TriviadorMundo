@@ -187,11 +187,9 @@ public class GameBoard extends JFrame implements Serializable{
 	    NextTurnButton.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		partida.changeTurn();
-	    		roundCount.setText((partida.getRoundCount().toString()));
-	    		lblEsElTurno.setText("Es el turno del jugador: " + partida.getActivePlayer().getName());
-	    		initializeAttackFromComboBox();
-	    		
-	    		
+	    		@SuppressWarnings("unused")
+				GameBoard gameBoard = new GameBoard(partida);
+				mainFrame.setVisible(false);	
 	    	}
 	    });
 	    layeredPane.add(NextTurnButton);
