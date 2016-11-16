@@ -56,7 +56,12 @@ public class StartGameInterface extends JFrame {
 		loadGameButton.setIcon(new ImageIcon(StartGameInterface.class.getResource("/view/resources/cargarPartida.jpg")));
 		loadGameButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("Cargando juego...");
+				partida.startNewGame();
+				GameBoard gameBoard = new GameBoard(partida);
 				frame.setVisible(false);
+	    		partida.loadGame();//Cargo el juego
+	    		System.out.println("Juego Cargado");
 			}
 		});
 		loadGameButton.setBounds(270, 418, 297, 62);

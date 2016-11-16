@@ -1,8 +1,10 @@
 package controller;
 
 import java.util.ArrayList;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import model.Answer;
@@ -241,6 +243,25 @@ public class Triviador {
 			out.close();
 		} catch (IOException i) {
 			i.printStackTrace(); 
+		}
+	}
+	
+	public void loadGame() {
+		Board game = null;
+		try {
+			FileInputStream file = new FileInputStream("src/controller/saves/out.bin");
+			ObjectInputStream input = new ObjectInputStream(file);
+			game = (Board) input.readObject();
+			input.close();
+			file.close();
+		} catch (IOException i) {
+			System.out.println("Error 404 Game not found");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		if( game!= null) {
+			this.board = game;
 		}
 	}
 }
