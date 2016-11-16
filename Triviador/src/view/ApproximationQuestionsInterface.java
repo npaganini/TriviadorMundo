@@ -42,9 +42,10 @@ public class ApproximationQuestionsInterface {
 		answer = new Answer();
 		
 		frame = new JFrame();
-		frame.setBounds(200, 300, 800, 600);
+		frame.setBounds(0, 0, 800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
 		
 		questionLabel = new JLabel(question.getQuestion());
 		questionLabel.setBackground(new Color(255, 255, 255));

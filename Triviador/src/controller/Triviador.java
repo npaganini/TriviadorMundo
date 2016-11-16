@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -60,12 +61,14 @@ public class Triviador {
 	}
 	
 	public MultipleChoiceQuestion getMultipleChoiceQuestion() {
+		Collections.shuffle(multipleChoiceQuestions);
 		MultipleChoiceQuestion question = multipleChoiceQuestions.get(0);
 		multipleChoiceQuestions.remove(0);
 		return question;	
 	}
 	
 	public AproximationQuestion getAproximationQuestion() {
+		Collections.shuffle(aproximationQuestions);
 		AproximationQuestion question = aproximationQuestions.get(0);
 		aproximationQuestions.remove(0);
 		return question;	

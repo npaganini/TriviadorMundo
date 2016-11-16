@@ -58,6 +58,7 @@ public class GameBoard extends JFrame implements Serializable{
 	    mainFrame.setTitle("Triviador");
 	    mainFrame.setSize(800, 600);
 	    mainFrame.setLocation(300,200);
+	    mainFrame.setLocationRelativeTo(null);
 	    
 	    layeredPane = new JLayeredPane();
 	    mainFrame.getContentPane().add(layeredPane, BorderLayout.CENTER);
