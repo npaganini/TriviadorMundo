@@ -240,7 +240,7 @@ public class Triviador {
 			out.writeObject(this.board);
 			out.close();
 		} catch (IOException i) {
-			i.printStackTrace();
+			i.printStackTrace(); 
 		}
 	}
 }

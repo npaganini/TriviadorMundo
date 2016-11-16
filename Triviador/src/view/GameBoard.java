@@ -169,7 +169,7 @@ public class GameBoard extends JFrame implements Serializable{
 	    saveGameButton.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		System.out.println("Guardando juego...");
-	    		partida.saveGame();
+	    		partida.saveGame();//Guardo el juego
 	    		System.out.println("Juego Guardado");
 	    	}
 	    });
