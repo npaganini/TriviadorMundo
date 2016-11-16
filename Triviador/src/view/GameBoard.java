@@ -139,7 +139,13 @@ public class GameBoard extends JFrame implements Serializable{
 	    attackButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
+					System.out.println("Empieza pelea");
 					partida.battle(partida.stringToTerritory((String) attackFromComboBox.getSelectedItem()), partida.stringToTerritory((String) attackToComboBox.getSelectedItem()));
+					@SuppressWarnings("unused")
+					GameBoard gameBoard = new GameBoard(partida);
+					mainFrame.setVisible(false);
+					System.out.println("Refresh board");
+					
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -162,7 +168,9 @@ public class GameBoard extends JFrame implements Serializable{
 	    saveGameButton = new JButton("Guardar");
 	    saveGameButton.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
-	    		
+	    		System.out.println("Guardando juego...");
+	    		partida.saveGame();
+	    		System.out.println("Juego Guardado");
 	    	}
 	    });
 	    saveGameButton.setBounds(679, 518, 103, 57);

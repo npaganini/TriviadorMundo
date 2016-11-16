@@ -1,11 +1,8 @@
 package controller;
 
 import java.util.ArrayList;
-import java.io.BufferedOutputStream;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import model.Answer;
@@ -239,13 +236,11 @@ public class Triviador {
 	
 	public void saveGame () {
 		try {
-			ObjectOutputStream file = new ObjectOutputStream(
-								new BufferedOutputStream(
-								new FileOutputStream("/controller/saves/triviador.out")));
-			file.writeObject(this.board);
-			file.close();
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("out.bin"));
+			out.writeObject(this.board);
+			out.close();
 		} catch (IOException i) {
 			i.printStackTrace();
 		}
-
+	}
 }
