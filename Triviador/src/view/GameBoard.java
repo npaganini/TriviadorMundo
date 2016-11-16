@@ -63,8 +63,9 @@ public class GameBoard extends JFrame implements Serializable{
 	    mainFrame.getContentPane().add(layeredPane, BorderLayout.CENTER);
 	    
 	    lblEsElTurno = new JLabel("Es el turno del jugador: " + partida.getActivePlayer().getName());
+	    lblEsElTurno.setForeground(Color.WHITE);
 	    lblEsElTurno.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-	    lblEsElTurno.setBounds(12, 492, 243, 16);
+	    lblEsElTurno.setBounds(25, 500, 243, 16);
 	    layeredPane.add(lblEsElTurno);
 	    
 	    playerOneLabel = new JLabel("Player 1");
@@ -110,7 +111,7 @@ public class GameBoard extends JFrame implements Serializable{
 	    attackFromLabel = new JLabel("Atacar desde:");
 	    attackFromLabel.setForeground(Color.WHITE);
 	    attackFromLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-	    attackFromLabel.setBounds(216, 519, 94, 16);
+	    attackFromLabel.setBounds(216, 523, 94, 16);
 	    layeredPane.add(attackFromLabel);
 	    attackFromComboBox = new JComboBox<String>();
 	    attackFromComboBox.setBounds(214, 544, 112, 27);
@@ -125,7 +126,7 @@ public class GameBoard extends JFrame implements Serializable{
 	    attackToLabel = new JLabel("Atacar a:");
 	    attackToLabel.setForeground(Color.WHITE);
 	    attackToLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-	    attackToLabel.setBounds(327, 520, 103, 16);
+	    attackToLabel.setBounds(326, 524, 103, 16);
 	    layeredPane.add(attackToLabel);
 	    attackToComboBox = new JComboBox<String>();
 	    attackToComboBox.setBounds(323, 544, 114, 27);
@@ -168,7 +169,7 @@ public class GameBoard extends JFrame implements Serializable{
 	    layeredPane.add(saveGameButton);
 	    
 	    backgroundImage = new JLabel();
-	    backgroundImage.setBounds(0, 0, 800, 600);
+	    backgroundImage.setBounds(0, -4, 800, 600);
 	    layeredPane.add(backgroundImage);
 	    backgroundImage.setIcon(new ImageIcon(GameBoard.class.getResource("/view/resources/triviadorBoard.jpg")));
 	    
