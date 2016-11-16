@@ -236,7 +236,7 @@ public class Triviador {
 	
 	public void saveGame () {
 		try {
-			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("out.bin"));
+			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/controller/saves/out.bin"));
 			out.writeObject(this.board);
 			out.close();
 		} catch (IOException i) {
