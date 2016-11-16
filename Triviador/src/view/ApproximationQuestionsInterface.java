@@ -13,6 +13,9 @@ import model.Board;
 import model.Player;
 
 import javax.swing.JTextField;
+
+import controller.Triviador;
+
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -71,7 +74,7 @@ public class ApproximationQuestionsInterface {
 			public void actionPerformed(ActionEvent e) {
 				answer.setAnswerAttacking(player1TextField.getText());
 				answer.setAnswerDefending(player2TextField.getText());
-				JOptionPane.showMessageDialog(null, Board.getCorrectAnswers(attackingPlayer, defendingPlayer, question, answer));
+				JOptionPane.showMessageDialog(null, Triviador.getCorrectAnswers(attackingPlayer, defendingPlayer, question, answer));
 				frame.dispose();
 			}
 		});

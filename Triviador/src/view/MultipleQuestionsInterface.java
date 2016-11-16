@@ -15,6 +15,7 @@ import controller.Triviador;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Font;
 
 public class MultipleQuestionsInterface extends JFrame {
 
@@ -56,8 +57,9 @@ public class MultipleQuestionsInterface extends JFrame {
 		getFrame().getContentPane().setLayout(null);
 		
 		questionLabel = new JLabel(question.getQuestion());
+		questionLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		questionLabel.setBackground(new Color(255, 255, 255));
-		questionLabel.setBounds(30, 15, 740, 100);
+		questionLabel.setBounds(86, 49, 613, 100);
 		getFrame().getContentPane().add(questionLabel);
 		
 		AP1Button = new JButton("A");
@@ -67,7 +69,7 @@ public class MultipleQuestionsInterface extends JFrame {
 					answer.setAnswerAttacking(question.getAnswer(0));
 			}
 		});
-		AP1Button.setBounds(30, 226, 50, 50);
+		AP1Button.setBounds(70, 226, 50, 50);
 		getFrame().getContentPane().add(AP1Button);
 		
 		BP1Button = new JButton("B");
@@ -77,7 +79,7 @@ public class MultipleQuestionsInterface extends JFrame {
 					answer.setAnswerAttacking(question.getAnswer(1));
 			}
 		});
-		BP1Button.setBounds(30, 286, 50, 50);
+		BP1Button.setBounds(70, 286, 50, 50);
 		getFrame().getContentPane().add(BP1Button);
 		
 		CP1Button = new JButton("C");
@@ -87,7 +89,7 @@ public class MultipleQuestionsInterface extends JFrame {
 					answer.setAnswerAttacking(question.getAnswer(2));
 			}
 		});
-		CP1Button.setBounds(30, 348, 50, 50);
+		CP1Button.setBounds(70, 348, 50, 50);
 		getFrame().getContentPane().add(CP1Button);
 		
 		DP1Button = new JButton("D");
@@ -97,7 +99,7 @@ public class MultipleQuestionsInterface extends JFrame {
 					answer.setAnswerAttacking(question.getAnswer(3));
 			}
 		});
-		DP1Button.setBounds(30, 410, 50, 50);
+		DP1Button.setBounds(70, 410, 50, 50);
 		getFrame().getContentPane().add(DP1Button);
 		
 		AP2Button = new JButton("A");
@@ -107,7 +109,7 @@ public class MultipleQuestionsInterface extends JFrame {
 					answer.setAnswerDefending(question.getAnswer(0));
 			}
 		});
-		AP2Button.setBounds(720, 226, 50, 50);
+		AP2Button.setBounds(676, 226, 50, 50);
 		getFrame().getContentPane().add(AP2Button);
 		
 		BP2Button = new JButton("B");
@@ -117,7 +119,7 @@ public class MultipleQuestionsInterface extends JFrame {
 					answer.setAnswerDefending(question.getAnswer(1));
 			}
 		});
-		BP2Button.setBounds(720, 286, 50, 50);
+		BP2Button.setBounds(676, 286, 50, 50);
 		getFrame().getContentPane().add(BP2Button);
 		
 		CP2Button = new JButton("C");
@@ -127,7 +129,7 @@ public class MultipleQuestionsInterface extends JFrame {
 					answer.setAnswerDefending(question.getAnswer(2));
 			}
 		});
-		CP2Button.setBounds(720, 348, 50, 50);
+		CP2Button.setBounds(676, 348, 50, 50);
 		getFrame().getContentPane().add(CP2Button);
 		
 		DP2Button = new JButton("D");
@@ -137,23 +139,23 @@ public class MultipleQuestionsInterface extends JFrame {
 					answer.setAnswerDefending(question.getAnswer(3));
 			}
 		});
-		DP2Button.setBounds(720, 410, 50, 50);
+		DP2Button.setBounds(676, 410, 50, 50);
 		getFrame().getContentPane().add(DP2Button);
 		
 		answerALabel = new JLabel(question.getAnswer(0));
-		answerALabel.setBounds(100, 226, 600, 50);
+		answerALabel.setBounds(140, 226, 530, 50);
 		getFrame().getContentPane().add(answerALabel);
 		
 		answerBLabel = new JLabel(question.getAnswer(1));
-		answerBLabel.setBounds(100, 286, 600, 50);
+		answerBLabel.setBounds(140, 286, 530, 50);
 		getFrame().getContentPane().add(answerBLabel);
 		
 		answerCLabel = new JLabel(question.getAnswer(2));
-		answerCLabel.setBounds(100, 348, 600, 50);
+		answerCLabel.setBounds(140, 348, 530, 50);
 		getFrame().getContentPane().add(answerCLabel);
 		
 		answerDLabel = new JLabel(question.getAnswer(3));
-		answerDLabel.setBounds(100, 410, 600, 50);
+		answerDLabel.setBounds(140, 410, 530, 50);
 		getFrame().getContentPane().add(answerDLabel);
 		
 		okButton = new JButton("OK");
@@ -168,9 +170,9 @@ public class MultipleQuestionsInterface extends JFrame {
 		
 		backgroundImage = new JLabel();
 		backgroundImage.setBackground(new Color(255, 255, 255));
-		backgroundImage.setBounds(0, 0, 800, 600);
+		backgroundImage.setBounds(0, -7, 800, 600);
 		getFrame().getContentPane().add(backgroundImage);
-		backgroundImage.setIcon(new ImageIcon(MultipleQuestionsInterface.class.getResource("/view/resources/map.jpg")));
+		backgroundImage.setIcon(new ImageIcon(MultipleQuestionsInterface.class.getResource("/view/resources/triviadorQuestion.jpg")));
 	}
 	
 	public Answer getAnswer() {

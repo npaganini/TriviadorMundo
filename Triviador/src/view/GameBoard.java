@@ -16,6 +16,7 @@ import javax.swing.UIManager;
 
 import controller.Triviador;
 import model.Territory;
+import java.awt.Color;
 
 public class GameBoard extends JFrame implements Serializable{
 	
@@ -25,16 +26,6 @@ public class GameBoard extends JFrame implements Serializable{
 	
 	private JFrame mainFrame;
 	private JLayeredPane layeredPane;
-	
-	private JButton americaCentralBtn;
-	private JButton americaDelSurBtn;
-	private JButton americaDelNorteBtn;
-	private JButton poloNorteBtn;
-	private JButton africaBtn;
-	private JButton europaBtn;
-	private JButton asiaBtn;
-	private JButton medioOrienteBtn;
-	private JButton oceaniaBtn;
 	
 	JLabel lblEsElTurno;
 	private JLabel playerOneLabel;
@@ -71,86 +62,58 @@ public class GameBoard extends JFrame implements Serializable{
 	    layeredPane = new JLayeredPane();
 	    mainFrame.getContentPane().add(layeredPane, BorderLayout.CENTER);
 	    
-	    americaCentralBtn = new JButton("America Central");
-	    americaCentralBtn.setBounds(138, 256, 117, 41);
-	    americaCentralBtn.setBackground(UIManager.getColor("Button.background"));
-	    layeredPane.add(americaCentralBtn);
-	    
-	    poloNorteBtn = new JButton("Polo Norte");
-	    poloNorteBtn.setBounds(226, 34, 117, 29);
-	    layeredPane.add(poloNorteBtn);
-	    
-	    oceaniaBtn = new JButton("Oceania");
-	    oceaniaBtn.setBounds(613, 359, 117, 29);
-	    layeredPane.add(oceaniaBtn);
-	    
-	    europaBtn = new JButton("Europa");
-	    europaBtn.setBounds(368, 131, 117, 29);
-	    layeredPane.add(europaBtn);
-	    
-	    medioOrienteBtn = new JButton("Medio Oriente");
-	    medioOrienteBtn.setBounds(508, 188, 136, 29);
-	    layeredPane.add(medioOrienteBtn);
-	    
-	    asiaBtn = new JButton("Asia");
-	    asiaBtn.setBounds(573, 98, 117, 29);
-	    layeredPane.add(asiaBtn);
-	    
-	    americaDelNorteBtn = new JButton("America del Norte");
-	    americaDelNorteBtn.setBounds(88, 159, 136, 58);
-	    layeredPane.add(americaDelNorteBtn);
-	    
-	    africaBtn = new JButton("Africa");
-	    africaBtn.setBounds(368, 294, 117, 29);
-	    layeredPane.add(africaBtn);
-	    
-	    americaDelSurBtn = new JButton("America del Sur");
-	    americaDelSurBtn.setBounds(187, 346, 117, 54);
-	    layeredPane.add(americaDelSurBtn);
-	    
 	    lblEsElTurno = new JLabel("Es el turno del jugador: " + partida.getActivePlayer().getName());
 	    lblEsElTurno.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 	    lblEsElTurno.setBounds(12, 492, 243, 16);
 	    layeredPane.add(lblEsElTurno);
 	    
 	    playerOneLabel = new JLabel("Player 1");
+	    playerOneLabel.setForeground(Color.WHITE);
 	    playerOneLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-	    playerOneLabel.setBounds(8, 524, 51, 16);
+	    playerOneLabel.setBounds(26, 524, 51, 16);
 	    layeredPane.add(playerOneLabel);
 	    playerOneArmyField = new JLabel(partida.getPlayer1().getAmountArmies().toString());
-	    playerOneArmyField.setBounds(8, 546, 64, 26);
+	    playerOneArmyField.setForeground(Color.WHITE);
+	    playerOneArmyField.setBounds(26, 546, 64, 26);
 	    layeredPane.add(playerOneArmyField);
 	    
 	    playerTwoLabel = new JLabel("Player 2");
+	    playerTwoLabel.setForeground(Color.WHITE);
 	    playerTwoLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-	    playerTwoLabel.setBounds(74, 524, 51, 16);
+	    playerTwoLabel.setBounds(92, 524, 51, 16);
 	    layeredPane.add(playerTwoLabel);
 	    playerTwoArmyField = new JLabel(partida.getPlayer2().getAmountArmies().toString());
-	    playerTwoArmyField.setBounds(74, 546, 60, 26);
+	    playerTwoArmyField.setForeground(Color.WHITE);
+	    playerTwoArmyField.setBounds(92, 546, 60, 26);
 	    layeredPane.add(playerTwoArmyField);
 	    
 	    playerThreeLabel = new JLabel("Player 3");
+	    playerThreeLabel.setForeground(Color.WHITE);
 	    playerThreeLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-	    playerThreeLabel.setBounds(138, 524, 51, 16);
+	    playerThreeLabel.setBounds(156, 524, 51, 16);
 	    layeredPane.add(playerThreeLabel);
 	    playerThreeArmyField = new JLabel(partida.getPlayer3().getAmountArmies().toString());
-	    playerThreeArmyField.setBounds(138, 546, 60, 26);
+	    playerThreeArmyField.setForeground(Color.WHITE);
+	    playerThreeArmyField.setBounds(156, 546, 60, 26);
 	    layeredPane.add(playerThreeArmyField);
 	    
 	    roundLabel = new JLabel("Ronda:");
+	    roundLabel.setForeground(Color.WHITE);
 	    roundLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-	    roundLabel.setBounds(530, 524, 49, 16);
+	    roundLabel.setBounds(518, 524, 49, 16);
 	    layeredPane.add(roundLabel);
 	    roundCount = new JLabel(partida.getRoundCount().toString());
-	    roundCount.setBounds(531, 543, 51, 26);
+	    roundCount.setForeground(Color.WHITE);
+	    roundCount.setBounds(519, 543, 51, 26);
 	    layeredPane.add(roundCount);
 	    
 	    attackFromLabel = new JLabel("Atacar desde:");
+	    attackFromLabel.setForeground(Color.WHITE);
 	    attackFromLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-	    attackFromLabel.setBounds(210, 519, 94, 16);
+	    attackFromLabel.setBounds(216, 519, 94, 16);
 	    layeredPane.add(attackFromLabel);
 	    attackFromComboBox = new JComboBox<String>();
-	    attackFromComboBox.setBounds(208, 544, 112, 27);
+	    attackFromComboBox.setBounds(214, 544, 112, 27);
 	    initializeAttackFromComboBox();
 	    attackFromComboBox.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
@@ -160,17 +123,18 @@ public class GameBoard extends JFrame implements Serializable{
 	    layeredPane.add(attackFromComboBox);
 	    
 	    attackToLabel = new JLabel("Atacar a:");
+	    attackToLabel.setForeground(Color.WHITE);
 	    attackToLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
-	    attackToLabel.setBounds(334, 520, 103, 16);
+	    attackToLabel.setBounds(327, 520, 103, 16);
 	    layeredPane.add(attackToLabel);
 	    attackToComboBox = new JComboBox<String>();
-	    attackToComboBox.setBounds(330, 544, 114, 27);
+	    attackToComboBox.setBounds(323, 544, 114, 27);
 	    layeredPane.add(attackToComboBox);
 	    
 	    attackButton = new JButton("Atacar");
 	    attackButton.setFont(new Font("Lucida Grande", Font.PLAIN, 12));
 	    attackButton.setSelectedIcon(new ImageIcon(GameBoard.class.getResource("/view/resources/flag.png")));
-	    attackButton.setBounds(451, 519, 71, 54);
+	    attackButton.setBounds(439, 519, 71, 54);
 	    attackButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -183,7 +147,7 @@ public class GameBoard extends JFrame implements Serializable{
 	    layeredPane.add(attackButton);
 	    
 	    NextTurnButton = new JButton("Pasar Turno");
-	    NextTurnButton.setBounds(584, 517, 103, 58);
+	    NextTurnButton.setBounds(572, 517, 103, 58);
 	    NextTurnButton.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		partida.changeTurn();
@@ -200,13 +164,13 @@ public class GameBoard extends JFrame implements Serializable{
 	    		
 	    	}
 	    });
-	    saveGameButton.setBounds(691, 518, 103, 57);
+	    saveGameButton.setBounds(679, 518, 103, 57);
 	    layeredPane.add(saveGameButton);
 	    
 	    backgroundImage = new JLabel();
-	    backgroundImage.setBounds(0, 0, 800, 484);
+	    backgroundImage.setBounds(0, 0, 800, 600);
 	    layeredPane.add(backgroundImage);
-	    backgroundImage.setIcon(new ImageIcon(GameBoard.class.getResource("/view/resources/map.jpg")));
+	    backgroundImage.setIcon(new ImageIcon(GameBoard.class.getResource("/view/resources/triviadorBoard.jpg")));
 	    
 	    mainFrame.setVisible(true);   
 	}
