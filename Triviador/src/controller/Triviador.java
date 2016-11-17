@@ -53,11 +53,11 @@ public class Triviador implements Serializable {
 	}
 	
 	public void addMultipleChoiceQuestions() {
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Â¿En quÃ© deporte se usa tiza?", new String[] {"Futbol", "Tenis", "Golf", "Pool"}, 3 ));
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Â¿Cuantas manos tiene un caballo?", new String[] {"0", "2", "3", "4"}, 1 ));
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Â¿Cuales son las dos primeras palabras de la Biblia?", new String[] {"Una vez", "Al comienzo", "Al principio", "En ese"}, 2 ));
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Â¿En que arbol crecen los datiles?", new String[] {"Palmera", "Sauce", "Tilo", "Ninguno"}, 0 ));
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Â¿Cual es el segundo idioma mas hablado?", new String[] {"EspaÃ±ol", "Ingles", "Frances", "Chino"}, 1 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("¿En que deporte se usa tiza?", new String[] {"Futbol", "Tenis", "Golf", "Pool"}, 3 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("¿Cuantas manos tiene un caballo?", new String[] {"0", "2", "3", "4"}, 1 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("¿Cuales son las dos primeras palabras de la Biblia?", new String[] {"Una vez", "Al comienzo", "Al principio", "En ese"}, 2 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("¿En que arbol crecen los datiles?", new String[] {"Palmera", "Sauce", "Tilo", "Ninguno"}, 0 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("¿Cual es el segundo idioma mas hablado?", new String[] {"EspaÃ±ol", "Ingles", "Frances", "Chino"}, 1 ));
 	}
 	
 	public void addAproximationQuestions() {
