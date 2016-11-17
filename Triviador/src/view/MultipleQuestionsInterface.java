@@ -196,11 +196,19 @@ public class MultipleQuestionsInterface extends JFrame {
 			}
 			else {
 				JOptionPane.showMessageDialog(null, "Attacking player answered correctly");
-				partida.getDefendingTerritory().setOwner(partida.getAttackingTerritory().getOwner());
-				partida.getDefendingTerritory().getOwner().removeTerritories(partida.getDefendingTerritory());
-				partida.getAttackingTerritory().getOwner().addTerritories(partida.getDefendingTerritory());
-				partida.getDefendingTerritory().addArmies(partida.getAttackingTerritory().getAmountArmies());
-				new GameBoard(partida);
+				partida.getDefendingTerritory().getClimate().decreaseRemainingDifficulty();
+				if(partida.getDefendingTerritory().getClimate().getRemainingDifficulty()<=0){
+					partida.getDefendingTerritory().getClimate().restoreRemainingDifficulty();
+					partida.getDefendingTerritory().setOwner(partida.getAttackingTerritory().getOwner());
+					partida.getDefendingTerritory().getOwner().removeTerritories(partida.getDefendingTerritory());
+					partida.getAttackingTerritory().getOwner().addTerritories(partida.getDefendingTerritory());
+					partida.getDefendingTerritory().addArmies(partida.getAttackingTerritory().getAmountArmies());
+					new GameBoard(partida);
+				}
+				else{
+					this.dispose();
+					new MultipleQuestionsInterface(partida);
+				}		
 			}
 		}
 		else if(question.getCorrectAnswer().equals(answer.getAnswerDefending())) {

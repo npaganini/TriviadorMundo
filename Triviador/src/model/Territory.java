@@ -12,17 +12,16 @@ public class Territory implements Serializable {
 	private Set<Territory> adjacents;
 	private Integer amountArmies;
 	private Player owner;
-	private Integer x;
-	private Integer y;
+	private Climate climate;
 	
-	public Territory(String name, Integer amountArmies, Integer x, Integer y) {
+	
+	public Territory(String name, Integer amountArmies, Climate climate) {
 		super();
 		this.name = name;
 		this.adjacents = new HashSet<Territory>();
 		this.amountArmies = amountArmies;
 		this.owner = null;
-		this.x=x;
-		this.y=y;
+		this.climate=climate;
 	}
 
 	public String getName() {
@@ -35,14 +34,6 @@ public class Territory implements Serializable {
 	
 	public Set<Territory> getAdjacents() {
 		return adjacents;
-	}
-	
-	public Integer getX(){
-		return x;
-	}
-	
-	public Integer getY(){
-		return y;
 	}
 	
 	public void addAdjacents(Territory adjacentTerritory) {
@@ -79,6 +70,10 @@ public class Territory implements Serializable {
 	
 	public void loseArmies(Integer n) {
 		amountArmies-=n;
+	}
+	
+	public Climate getClimate(){
+		return climate;
 	}
 	
 }
