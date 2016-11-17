@@ -53,15 +53,31 @@ public class Triviador implements Serializable {
 	}
 	
 	public void addMultipleChoiceQuestions() {
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("ï¿½En que deporte se usa tiza?", new String[] {"Futbol", "Tenis", "Golf", "Pool"}, 3 ));
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("ï¿½Cuantas manos tiene un caballo?", new String[] {"0", "2", "3", "4"}, 1 ));
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("ï¿½Cuales son las dos primeras palabras de la Biblia?", new String[] {"Una vez", "Al comienzo", "Al principio", "En ese"}, 2 ));
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("ï¿½En que arbol crecen los datiles?", new String[] {"Palmera", "Sauce", "Tilo", "Ninguno"}, 0 ));
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("ï¿½Cual es el segundo idioma mas hablado?", new String[] {"EspaÃ±ol", "Ingles", "Frances", "Chino"}, 1 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("¿En que deporte se usa tiza?", new String[] {"Futbol", "Tenis", "Golf", "Pool"}, 3 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("¿Cuantas manos tiene un caballo?", new String[] {"0", "2", "3", "4"}, 1 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("¿Cuales son las dos primeras palabras de la Biblia?", new String[] {"Una vez", "Al comienzo", "Al principio", "En ese"}, 2 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("¿En que arbol crecen los datiles?", new String[] {"Palmera", "Sauce", "Tilo", "Ninguno"}, 0 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("¿Cual es el segundo idioma mas hablado?", new String[] {"EspaÃ±ol", "Ingles", "Frances", "Chino"}, 1 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual es el nombre de pila del cantante Bieber?", new String[] {"Steven", "Justin", "Mary", "John"}, 1));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual es la identidad secreta de Clark Kent?", new String[] {"Batman", "Harry Potter", "Esteban Kramer", "Superman"}, 3));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Quien gano el Oscar a mejor actor en el 2015?", new String[] {"Leonardo DiCaprio", "Tom Hanks", "Eddie Redmayne", "Matthew McConaughey"}, 2));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Quien gano el FIFA Balon de Oro en el 2015?", new String[] {"Lionel Messi", "Cristiano Ronaldo", "Diego Maradona", "Juan Roman Riquelme"}, 3));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cuales de los siguientes temas no entraban al 1er parcial del 2do cuatrimestre del 2016?", new String[] {"Diagramas UML", "Collections", "Metaprogramming", "Iterators"}, 3));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual era hasta el 2015 el video mas visto en Youtube?", new String[] {"Sorry de Justin Bieber", "Vlog del Fin del Mundo de Jonathan Katan", "Uptown Funk de Bruno Mars", "Gangnam Style de Psy"}, 3));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual de los siguientes no es un dios de la mitologia griega?", new String[] {"Zeus", "Apolo", "Borr", "Baco"}, 2));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual de los siguientes juegos RTS fue el primero en lanzarse?", new String[] {"Command & Conquer: Red Alert 2", "Age of Empires II: The Age of Kings", "Warhammer 40000: Dawn of War", "Warcraft III: Reign of Chaos"}, 1));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Quien fue el DJ #1 segun la revista DJ MAG en el 2015?", new String[] {"Dimitri Vegas & Like Mike", "Skrillex", "David Guetta", "Hardwell"}, 0));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual de los siguientes no es un desierto?", new String[] {"Sahara", "Antartida", "Atacama", "Malesia"}, 3));
+		
 	}
 	
 	public void addAproximationQuestions() {
-		aproximationQuestions.add(new AproximationQuestion("Â¿En que aÃ±o se independizo Argentina?", 1816));
+		aproximationQuestions.add(new AproximationQuestion("¿En que ano se independizo Argentina?", 1816));
+		aproximationQuestions.add(new AproximationQuestion("¿Cuantos ganadores del premios nobel son argentinos?", 5));
+		aproximationQuestions.add(new AproximationQuestion("¿Cuantos miles de millones vivian en China en el 2013?", 1357));
+		aproximationQuestions.add(new AproximationQuestion("¿En que ano se fundo el ITBA?", 1959));
+		aproximationQuestions.add(new AproximationQuestion("¿Cuantos mogul vienen en un paquete de Moguls?", 8));
+		aproximationQuestions.add(new AproximationQuestion("¿Cuantos dientes permanentes tiene un ser humano promedio?", 32));
 	}
 	
 	public MultipleChoiceQuestion getMultipleChoiceQuestion() {
@@ -89,6 +105,11 @@ public class Triviador implements Serializable {
             nextPlayer();
         } else {
             turnCount++;
+        }
+        for(Player p: players) {
+        	if(!hasTerritories(p)) {
+        		players.remove(p);
+        	}
         }
         nextPlayer();
         return null;
