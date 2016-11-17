@@ -72,7 +72,7 @@ public class MultipleQuestionsInterface extends JFrame {
 					answer.setAnswerAttacking(question.getAnswer(0));
 			}
 		});
-		AP1Button.setBounds(70, 226, 50, 50);
+		AP1Button.setBounds(70, 180, 50, 50);
 		getFrame().getContentPane().add(AP1Button);
 		
 		BP1Button = new JButton("B");
@@ -82,7 +82,7 @@ public class MultipleQuestionsInterface extends JFrame {
 					answer.setAnswerAttacking(question.getAnswer(1));
 			}
 		});
-		BP1Button.setBounds(70, 286, 50, 50);
+		BP1Button.setBounds(70, 240, 50, 50);
 		getFrame().getContentPane().add(BP1Button);
 		
 		CP1Button = new JButton("C");
@@ -92,7 +92,7 @@ public class MultipleQuestionsInterface extends JFrame {
 					answer.setAnswerAttacking(question.getAnswer(2));
 			}
 		});
-		CP1Button.setBounds(70, 348, 50, 50);
+		CP1Button.setBounds(70, 302, 50, 50);
 		getFrame().getContentPane().add(CP1Button);
 		
 		DP1Button = new JButton("D");
@@ -102,7 +102,7 @@ public class MultipleQuestionsInterface extends JFrame {
 					answer.setAnswerAttacking(question.getAnswer(3));
 			}
 		});
-		DP1Button.setBounds(70, 410, 50, 50);
+		DP1Button.setBounds(70, 364, 50, 50);
 		getFrame().getContentPane().add(DP1Button);
 		
 		AP2Button = new JButton("A");
@@ -112,7 +112,7 @@ public class MultipleQuestionsInterface extends JFrame {
 					answer.setAnswerDefending(question.getAnswer(0));
 			}
 		});
-		AP2Button.setBounds(676, 226, 50, 50);
+		AP2Button.setBounds(676, 180, 50, 50);
 		getFrame().getContentPane().add(AP2Button);
 		
 		BP2Button = new JButton("B");
@@ -122,7 +122,7 @@ public class MultipleQuestionsInterface extends JFrame {
 					answer.setAnswerDefending(question.getAnswer(1));
 			}
 		});
-		BP2Button.setBounds(676, 286, 50, 50);
+		BP2Button.setBounds(676, 240, 50, 50);
 		getFrame().getContentPane().add(BP2Button);
 		
 		CP2Button = new JButton("C");
@@ -132,7 +132,7 @@ public class MultipleQuestionsInterface extends JFrame {
 					answer.setAnswerDefending(question.getAnswer(2));
 			}
 		});
-		CP2Button.setBounds(676, 348, 50, 50);
+		CP2Button.setBounds(676, 302, 50, 50);
 		getFrame().getContentPane().add(CP2Button);
 		
 		DP2Button = new JButton("D");
@@ -142,33 +142,34 @@ public class MultipleQuestionsInterface extends JFrame {
 					answer.setAnswerDefending(question.getAnswer(3));
 			}
 		});
-		DP2Button.setBounds(676, 410, 50, 50);
+		DP2Button.setBounds(676, 364, 50, 50);
 		getFrame().getContentPane().add(DP2Button);
 		
 		answerALabel = new JLabel(question.getAnswer(0));
-		answerALabel.setBounds(140, 226, 530, 50);
+		answerALabel.setBounds(140, 180, 530, 50);
 		getFrame().getContentPane().add(answerALabel);
 		
 		answerBLabel = new JLabel(question.getAnswer(1));
-		answerBLabel.setBounds(140, 286, 530, 50);
+		answerBLabel.setBounds(140, 240, 530, 50);
 		getFrame().getContentPane().add(answerBLabel);
 		
 		answerCLabel = new JLabel(question.getAnswer(2));
-		answerCLabel.setBounds(140, 348, 530, 50);
+		answerCLabel.setBounds(140, 302, 530, 50);
 		getFrame().getContentPane().add(answerCLabel);
 		
 		answerDLabel = new JLabel(question.getAnswer(3));
-		answerDLabel.setBounds(140, 410, 530, 50);
+		answerDLabel.setBounds(140, 364, 530, 50);
 		getFrame().getContentPane().add(answerDLabel);
 		
-		okButton = new JButton("OK");
+		okButton = new JButton("");
+		okButton.setIcon(new ImageIcon(MultipleQuestionsInterface.class.getResource("/view/resources/responderButton.jpg")));
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				getCorrectAnswers();
 				frame.setVisible(false);
 			}
 		});
-		okButton.setBounds(370, 480, 60, 60);
+		okButton.setBounds(254, 480, 284, 60);
 		getFrame().getContentPane().add(okButton);
 		
 		backgroundImage = new JLabel();

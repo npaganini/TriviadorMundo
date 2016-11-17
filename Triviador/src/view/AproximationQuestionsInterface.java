@@ -16,8 +16,10 @@ import controller.Triviador;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
-public class AproximationQuestionsInterface {
+@SuppressWarnings("serial")
+public class AproximationQuestionsInterface extends JFrame {
 
 	private Triviador partida;
 	private Answer answer;
@@ -49,11 +51,12 @@ public class AproximationQuestionsInterface {
 		frame.setLocationRelativeTo(null);
 		
 		questionLabel = new JLabel(question.getQuestion());
+		questionLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 18));
 		questionLabel.setBackground(new Color(255, 255, 255));
-		questionLabel.setBounds(30, 15, 740, 100);
+		questionLabel.setBounds(107, 15, 593, 100);
 		frame.getContentPane().add(questionLabel);
 		
-		player1Label = new JLabel("Player 1 please type your answer");
+		player1Label = new JLabel("Jugador 1, escriba su respuesta:");
 		player1Label.setBounds(110, 193, 260, 50);
 		frame.getContentPane().add(player1Label);
 		
@@ -62,7 +65,7 @@ public class AproximationQuestionsInterface {
 		frame.getContentPane().add(player1TextField);
 		player1TextField.setColumns(10);
 		
-		player2Label = new JLabel("Player 2 please type your answer");
+		player2Label = new JLabel("Jugador 2, escriba su respuesta:");
 		player2Label.setBounds(430, 193, 260, 50);
 		frame.getContentPane().add(player2Label);
 		
@@ -71,7 +74,12 @@ public class AproximationQuestionsInterface {
 		frame.getContentPane().add(player2TextField);
 		player2TextField.setColumns(10);
 		
-		okButton = new JButton("OK");
+		okButton = new JButton("");
+		okButton.setIcon(new ImageIcon(AproximationQuestionsInterface.class.getResource("/view/resources/responderButton.jpg")));
+		okButton.setBorderPainted(false);
+		okButton.setBorderPainted(false);
+		okButton.setOpaque(false);
+		okButton.setContentAreaFilled(false);
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				answer.setAnswerAttacking(player1TextField.getText());
@@ -80,14 +88,14 @@ public class AproximationQuestionsInterface {
 				frame.setVisible(false);;
 			}
 		});
-		okButton.setBounds(370, 400, 60, 60);
+		okButton.setBounds(246, 400, 294, 60);
 		frame.getContentPane().add(okButton);
 		
 		backgroundImage = new JLabel();
 		backgroundImage.setBackground(new Color(255, 255, 255));
-		backgroundImage.setBounds(0, 0, 800, 572);
+		backgroundImage.setBounds(0, -7, 800, 600);
 		frame.getContentPane().add(backgroundImage);
-		backgroundImage.setIcon(new ImageIcon(AproximationQuestionsInterface.class.getResource("/view/resources/map.jpg")));
+		backgroundImage.setIcon(new ImageIcon(AproximationQuestionsInterface.class.getResource("/view/resources/triviadorQuestion.jpg")));
 		
 		frame.setVisible(true);
 	}
@@ -106,11 +114,19 @@ public class AproximationQuestionsInterface {
 		
 		if(answerAttacking < answerDefending) {
 			JOptionPane.showMessageDialog(null, "Attacking player is closer than defending player");
-			partida.getDefendingTerritory().setOwner(partida.getAttackingTerritory().getOwner());
-			partida.getDefendingTerritory().getOwner().removeTerritories(partida.getDefendingTerritory());
-			partida.getAttackingTerritory().getOwner().addTerritories(partida.getDefendingTerritory());
-			partida.getDefendingTerritory().addArmies(partida.getAttackingTerritory().getAmountArmies());
-			new GameBoard(partida);
+			partida.getDefendingTerritory().getClimate().decreaseRemainingDifficulty();
+			if(partida.getDefendingTerritory().getClimate().getRemainingDifficulty()<=0){
+				partida.getDefendingTerritory().getClimate().restoreRemainingDifficulty();
+				partida.getDefendingTerritory().setOwner(partida.getAttackingTerritory().getOwner());
+				partida.getDefendingTerritory().getOwner().removeTerritories(partida.getDefendingTerritory());
+				partida.getAttackingTerritory().getOwner().addTerritories(partida.getDefendingTerritory());
+				partida.getDefendingTerritory().addArmies(partida.getAttackingTerritory().getAmountArmies());
+				new GameBoard(partida);
+			}
+			else{
+				this.dispose();
+				new MultipleQuestionsInterface(partida);
+			}
 		}
 		else if(answerAttacking > answerDefending) {
 			JOptionPane.showMessageDialog(null, "Defending player is closer than attacking player");
@@ -121,18 +137,4 @@ public class AproximationQuestionsInterface {
 			new AproximationQuestionsInterface(partida);
 		}
 	}
-	
-	/*public static void main(String[] args) {
-		AproximationQuestion question = new AproximationQuestion("hola", 100);
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ApproximationQuestionsInterface window = new ApproximationQuestionsInterface(question);
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
 }
