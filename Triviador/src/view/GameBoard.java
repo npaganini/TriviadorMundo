@@ -13,6 +13,7 @@ import javax.swing.JLayeredPane;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import controller.Triviador;
+import model.FileManager;
 import model.Territory;
 import java.awt.Color;
 
@@ -50,6 +51,7 @@ public class GameBoard extends JFrame implements Serializable{
 	public GameBoard(Triviador partida) {
 		
 		this.partida = partida;
+		
 		
 		mainFrame = new JFrame();
 	    mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -167,7 +169,8 @@ public class GameBoard extends JFrame implements Serializable{
 	    saveGameButton.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent e) {
 	    		System.out.println("Guardando juego...");
-	    		partida.saveGame();//Guardo el juego
+	    		FileManager file = new FileManager();
+	    		file.saveGame(partida);//Guardo el juego
 	    		System.out.println("Juego Guardado");
 	    	}
 	    });

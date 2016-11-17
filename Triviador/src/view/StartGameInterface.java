@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import controller.Triviador;
+import model.FileManager;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -58,9 +59,9 @@ public class StartGameInterface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Cargando juego...");
 				partida.startNewGame();
-				new GameBoard(partida);
+				FileManager file = new FileManager();
+				new GameBoard(file.loadGame()); //Cargo el juego
 				frame.setVisible(false);
-	    		partida.loadGame();//Cargo el juego
 	    		System.out.println("Juego Cargado");
 			}
 		});

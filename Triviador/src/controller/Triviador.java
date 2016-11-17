@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
 import model.AproximationQuestion;
 import model.Board;
@@ -14,7 +15,10 @@ import model.MultipleChoiceQuestion;
 import model.Player;
 import model.Territory;
 
-public class Triviador {
+public class Triviador implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
 	private Board board;
 	private ArrayList<Player> players;
 	private ArrayList<MultipleChoiceQuestion> multipleChoiceQuestions;
@@ -159,35 +163,6 @@ public class Triviador {
 	
 	public Player getPlayer3() {
 		return players.get(2);
-	}
-	
-	public void saveGame () {
-		try {
-			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("src/controller/saves/out.bin"));
-			out.writeObject(this.board);
-			out.close();
-		} catch (IOException i) {
-			i.printStackTrace(); 
-		}
-	}
-	
-	public void loadGame() {
-		Board game = null;
-		try {
-			FileInputStream file = new FileInputStream("src/controller/saves/out.bin");
-			ObjectInputStream input = new ObjectInputStream(file);
-			game = (Board) input.readObject();
-			input.close();
-			file.close();
-		} catch (IOException i) {
-			System.out.println("Error 404 Game not found");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-		
-		if( game!= null) {
-			this.board = game;
-		}
 	}
 
 	public Territory getAttackingTerritory() {

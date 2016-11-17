@@ -1,6 +1,11 @@
 package model;
 
-public class Climate {
+import java.io.Serializable;
+
+public class Climate implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
 	private Integer difficulty;
 	private Integer remainingDifficulty;
 	
