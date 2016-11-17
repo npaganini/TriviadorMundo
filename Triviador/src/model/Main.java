@@ -10,8 +10,7 @@ public class Main implements Serializable {
 
 	public static void main(String args[]) throws Exception{	
 		Triviador partida = new Triviador();
-		@SuppressWarnings("unused")
-		StartGameInterface startGame = new StartGameInterface(partida);
+		new StartGameInterface(partida);
 		
 		/*//CREO EL BOARD
 		StartGameInterface startingWindow = new StartGameInterface();

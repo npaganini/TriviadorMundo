@@ -8,15 +8,11 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import model.Answer;
 import model.AproximationQuestion;
 import model.Board;
 import model.MultipleChoiceQuestion;
-import model.NotAdjacentException;
 import model.Player;
 import model.Territory;
-import view.ApproximationQuestionsInterface;
-import view.MultipleQuestionsInterface;
 
 public class Triviador {
 	private Board board;
@@ -24,6 +20,8 @@ public class Triviador {
 	private ArrayList<MultipleChoiceQuestion> multipleChoiceQuestions;
 	private ArrayList<AproximationQuestion> aproximationQuestions;
 	private Player activePlayer;
+	private Territory attackingTerritory;
+	private Territory defendingTerritory;
 	private Integer turnCount;
 	private Integer roundCount;
 	private final static Integer MAX_ROUNDS = 9;
@@ -37,6 +35,8 @@ public class Triviador {
 		aproximationQuestions = new ArrayList<AproximationQuestion>();
 		addAproximationQuestions();
 		activePlayer = null;
+		attackingTerritory = null;
+		defendingTerritory = null;
 		turnCount = 0;
 		roundCount = 0;
 		
@@ -110,84 +110,6 @@ public class Triviador {
             }
         }
 		return null;
-	}
-	
-	public void battle(Territory active, Territory defending) throws Exception {
-		Player[] possibleWinner = {active.getOwner(), null};
-		
-		if(!defending.isAdjacent(active)) {
-            throw new NotAdjacentException("" + active.getName() + " can't attack " + defending.getName());
-        }
-        
-        MultipleChoiceQuestion multipleChoiceQuestion = getMultipleChoiceQuestion();
-        MultipleQuestionsInterface window1 = new MultipleQuestionsInterface(multipleChoiceQuestion, active.getOwner(), defending.getOwner());
-		ApproximationQuestionsInterface window2;
-        window1.getFrame().setVisible(true);
-		
-		if(window1.getAnswer().getWinner().length == 2) {
-			do {
-				AproximationQuestion aproximationQuestion = getAproximationQuestion();
-				window2 = new ApproximationQuestionsInterface(aproximationQuestion, active.getOwner(), defending.getOwner());
-				window2.getFrame().setVisible(true);
-			}
-			while(window2.getAnswer().getWinner().length == 2);
-			
-			if(window2.getAnswer().getWinner().equals(possibleWinner)) {
-				defending.setOwner(active.getOwner());
-				defending.getOwner().removeTerritories(defending);
-				active.getOwner().addTerritories(defending);
-				defending.addArmies(active.getAmountArmies());
-			}
-		} else if(window1.getAnswer().getWinner().equals(possibleWinner)) {
-			defending.setOwner(active.getOwner());
-			defending.getOwner().removeTerritories(defending);
-			active.getOwner().addTerritories(defending);
-			defending.addArmies(active.getAmountArmies());
-		}
-	}
-	
-	public static String getCorrectAnswers(Player attackingPlayer, Player defendingPlayer, MultipleChoiceQuestion question, Answer answer) {
-		if(question.getCorrectAnswer().equals(answer.getAnswerAttacking())) {
-			if(question.getCorrectAnswer().equals(answer.getAnswerDefending())) {
-				Player[] winner = {attackingPlayer, defendingPlayer};
-				answer.setWinner(winner);
-				return "Both players answered correctly";
-			}
-			else {
-				Player[] winner = {attackingPlayer};
-				answer.setWinner(winner);
-				return "Attacking player answered correctly";
-			}
-		}
-		else if(question.getCorrectAnswer().equals(answer.getAnswerDefending())) {
-			Player[] winner = {defendingPlayer};
-			answer.setWinner(winner);
-			return "Defending player answered correctly";
-		}
-		else {
-			return "Neither player answered correcly";
-		}
-	}
-	
-	public static String getCorrectAnswers(Player attackingPlayer, Player defendingPlayer, AproximationQuestion question, Answer answer) {
-		Integer answerAttacking = Math.abs(question.getAnswer() - Integer.parseInt(answer.getAnswerAttacking()));
-		Integer answerDefending = Math.abs(question.getAnswer() - Integer.parseInt(answer.getAnswerDefending()));
-		
-		if(answerAttacking < answerDefending) {
-			Player[] winner = {attackingPlayer};
-			answer.setWinner(winner);
-			return "Attacking player is closer than defending player";
-		}
-		else if(answerAttacking > answerDefending) {
-			Player[] winner = {defendingPlayer};
-			answer.setWinner(winner);
-			return "Defending player is closer than attacking player";
-		}
-		else {
-			Player[] winner = {attackingPlayer, defendingPlayer};
-			answer.setWinner(winner);
-			return "Both players answered " + answer.getAnswerAttacking() + " and the answer was: " + question.getAnswer() + ". Lets try again";
-		}
 	}
 
 	public Boolean hasTerritories(Player player) {
@@ -267,4 +189,21 @@ public class Triviador {
 			this.board = game;
 		}
 	}
+
+	public Territory getAttackingTerritory() {
+		return attackingTerritory;
+	}
+
+	public void setAttackingTerritory(Territory attackingTerritory) {
+		this.attackingTerritory = attackingTerritory;
+	}
+
+	public Territory getDefendingTerritory() {
+		return defendingTerritory;
+	}
+
+	public void setDefendingTerritory(Territory defendingTerritory) {
+		this.defendingTerritory = defendingTerritory;
+	}
+	
 }

@@ -40,10 +40,9 @@ public class StartGameInterface extends JFrame {
 		newGameButton.setBorderPainted(false);
 		newGameButton.setIcon(new ImageIcon(StartGameInterface.class.getResource("/view/resources/nuevaPartida.jpg")));
 		newGameButton.addActionListener(new ActionListener() {
-			@SuppressWarnings({ "unused" })
 			public void actionPerformed(ActionEvent e) {
 				partida.startNewGame();
-				GameBoard gameBoard = new GameBoard(partida);
+				new GameBoard(partida);
 				frame.setVisible(false);
 			}
 		});
@@ -59,7 +58,7 @@ public class StartGameInterface extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Cargando juego...");
 				partida.startNewGame();
-				GameBoard gameBoard = new GameBoard(partida);
+				new GameBoard(partida);
 				frame.setVisible(false);
 	    		partida.loadGame();//Cargo el juego
 	    		System.out.println("Juego Cargado");

@@ -9,9 +9,6 @@ import javax.swing.JOptionPane;
 
 import model.Answer;
 import model.AproximationQuestion;
-import model.Board;
-import model.Player;
-
 import javax.swing.JTextField;
 
 import controller.Triviador;
@@ -20,9 +17,11 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class ApproximationQuestionsInterface {
+public class AproximationQuestionsInterface {
 
+	private Triviador partida;
 	private Answer answer;
+	private AproximationQuestion question;
 	
 	private JFrame frame;
 	
@@ -38,8 +37,10 @@ public class ApproximationQuestionsInterface {
 	private JLabel backgroundImage;
 	
 
-	public ApproximationQuestionsInterface(AproximationQuestion question, Player attackingPlayer, Player defendingPlayer) {
+	public AproximationQuestionsInterface(Triviador partida) {
+		this.partida = partida;
 		answer = new Answer();
+		question = partida.getAproximationQuestion();
 		
 		frame = new JFrame();
 		frame.setBounds(0, 0, 800, 600);
@@ -75,8 +76,8 @@ public class ApproximationQuestionsInterface {
 			public void actionPerformed(ActionEvent e) {
 				answer.setAnswerAttacking(player1TextField.getText());
 				answer.setAnswerDefending(player2TextField.getText());
-				JOptionPane.showMessageDialog(null, Triviador.getCorrectAnswers(attackingPlayer, defendingPlayer, question, answer));
-				frame.dispose();
+				getCorrectAnswers();
+				frame.setVisible(false);;
 			}
 		});
 		okButton.setBounds(370, 400, 60, 60);
@@ -86,7 +87,9 @@ public class ApproximationQuestionsInterface {
 		backgroundImage.setBackground(new Color(255, 255, 255));
 		backgroundImage.setBounds(0, 0, 800, 572);
 		frame.getContentPane().add(backgroundImage);
-		backgroundImage.setIcon(new ImageIcon(ApproximationQuestionsInterface.class.getResource("/view/resources/map.jpg")));
+		backgroundImage.setIcon(new ImageIcon(AproximationQuestionsInterface.class.getResource("/view/resources/map.jpg")));
+		
+		frame.setVisible(true);
 	}
 	
 	public Answer getAnswer() {
@@ -95,6 +98,28 @@ public class ApproximationQuestionsInterface {
 	
 	public JFrame getFrame() {
 		return frame;
+	}
+	
+	public void getCorrectAnswers() {
+		Integer answerAttacking = Math.abs(question.getAnswer() - Integer.parseInt(answer.getAnswerAttacking()));
+		Integer answerDefending = Math.abs(question.getAnswer() - Integer.parseInt(answer.getAnswerDefending()));
+		
+		if(answerAttacking < answerDefending) {
+			JOptionPane.showMessageDialog(null, "Attacking player is closer than defending player");
+			partida.getDefendingTerritory().setOwner(partida.getAttackingTerritory().getOwner());
+			partida.getDefendingTerritory().getOwner().removeTerritories(partida.getDefendingTerritory());
+			partida.getAttackingTerritory().getOwner().addTerritories(partida.getDefendingTerritory());
+			partida.getDefendingTerritory().addArmies(partida.getAttackingTerritory().getAmountArmies());
+			new GameBoard(partida);
+		}
+		else if(answerAttacking > answerDefending) {
+			JOptionPane.showMessageDialog(null, "Defending player is closer than attacking player");
+			new GameBoard(partida);
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "Both players answered " + answer.getAnswerAttacking() + " and the answer was: " + question.getAnswer() + ". Lets try again");
+			new AproximationQuestionsInterface(partida);
+		}
 	}
 	
 	/*public static void main(String[] args) {

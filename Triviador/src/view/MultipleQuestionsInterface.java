@@ -3,8 +3,6 @@ package view;
 import javax.swing.JFrame;
 import model.Answer;
 import model.MultipleChoiceQuestion;
-import model.Player;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -24,7 +22,9 @@ public class MultipleQuestionsInterface extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	private Triviador partida;
 	private Answer answer;
+	private MultipleChoiceQuestion question;
 	
 	private JFrame frame;
 	
@@ -48,7 +48,9 @@ public class MultipleQuestionsInterface extends JFrame {
 	
 	private JLabel backgroundImage;
 	
-	public MultipleQuestionsInterface(MultipleChoiceQuestion question, Player attackingPlayer, Player defendingPlayer) {
+	public MultipleQuestionsInterface(Triviador partida) {
+		this.partida = partida;
+		question = partida.getMultipleChoiceQuestion();
 		answer = new Answer();
 		
 		frame = new JFrame();
@@ -162,8 +164,8 @@ public class MultipleQuestionsInterface extends JFrame {
 		okButton = new JButton("OK");
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, Triviador.getCorrectAnswers(attackingPlayer, defendingPlayer, question, answer));				
-				frame.dispose();
+				getCorrectAnswers();
+				frame.setVisible(false);
 			}
 		});
 		okButton.setBounds(370, 480, 60, 60);
@@ -174,6 +176,8 @@ public class MultipleQuestionsInterface extends JFrame {
 		backgroundImage.setBounds(0, -7, 800, 600);
 		getFrame().getContentPane().add(backgroundImage);
 		backgroundImage.setIcon(new ImageIcon(MultipleQuestionsInterface.class.getResource("/view/resources/triviadorQuestion.jpg")));
+		
+		frame.setVisible(true);
 	}
 	
 	public Answer getAnswer() {
@@ -182,6 +186,31 @@ public class MultipleQuestionsInterface extends JFrame {
 	
 	public JFrame getFrame() {
 		return frame;
+	}
+	
+	public void getCorrectAnswers() {
+		if(question.getCorrectAnswer().equals(answer.getAnswerAttacking())) {
+			if(question.getCorrectAnswer().equals(answer.getAnswerDefending())) {
+				JOptionPane.showMessageDialog(null, "Both players answered correctly!");
+				new AproximationQuestionsInterface(partida);
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "Attacking player answered correctly");
+				partida.getDefendingTerritory().setOwner(partida.getAttackingTerritory().getOwner());
+				partida.getDefendingTerritory().getOwner().removeTerritories(partida.getDefendingTerritory());
+				partida.getAttackingTerritory().getOwner().addTerritories(partida.getDefendingTerritory());
+				partida.getDefendingTerritory().addArmies(partida.getAttackingTerritory().getAmountArmies());
+				new GameBoard(partida);
+			}
+		}
+		else if(question.getCorrectAnswer().equals(answer.getAnswerDefending())) {
+			JOptionPane.showMessageDialog(null, "Defending player answered correctly");
+			new GameBoard(partida);
+		}
+		else {
+			JOptionPane.showMessageDialog(null, "Neither player answered correcly");
+			new GameBoard(partida);
+		}
 	}
 	
 	/*public static void main(String[] args) {

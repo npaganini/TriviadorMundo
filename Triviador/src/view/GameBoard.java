@@ -12,8 +12,6 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLayeredPane;
 import java.awt.Font;
 import javax.swing.JComboBox;
-import javax.swing.UIManager;
-
 import controller.Triviador;
 import model.Territory;
 import java.awt.Color;
@@ -140,12 +138,11 @@ public class GameBoard extends JFrame implements Serializable{
 	    attackButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					System.out.println("Empieza pelea");
-					partida.battle(partida.stringToTerritory((String) attackFromComboBox.getSelectedItem()), partida.stringToTerritory((String) attackToComboBox.getSelectedItem()));
+					partida.setAttackingTerritory(partida.stringToTerritory((String) attackFromComboBox.getSelectedItem()));
+					partida.setDefendingTerritory(partida.stringToTerritory((String) attackToComboBox.getSelectedItem()));
 					@SuppressWarnings("unused")
-					GameBoard gameBoard = new GameBoard(partida);
+					MultipleQuestionsInterface window = new MultipleQuestionsInterface(partida);
 					mainFrame.setVisible(false);
-					System.out.println("Refresh board");
 					
 				} catch (Exception e1) {
 					e1.printStackTrace();
