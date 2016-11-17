@@ -78,19 +78,20 @@ public class Triviador implements Serializable {
 		return question;	
 	}
 	
-	public void changeTurn() {
+	public Player changeTurn() {
         if(turnCount == (players.size()-1)) {
             turnCount = 0;
             roundCount++;
             if(roundCount == MAX_ROUNDS) {
-                getWinner();                                    // ACA DEBERIA TERMINAR EL JUEGO!
-                return;
+                Player winner = getWinner();
+                return winner;
             }
             nextPlayer();
         } else {
             turnCount++;
         }
         nextPlayer();
+        return null;
 	}
 	
 	private void nextPlayer() {
@@ -104,12 +105,12 @@ public class Triviador implements Serializable {
 	public Player getWinner() {
         Integer max = 0;
         for(Player p: players) {
-            if(p.getAmountArmies() > max) {
-                max = p.getAmountArmies();
+            if(p.getTerritories().size() > max) {
+                max = p.getTerritories().size();
             }
         }
         for(Player p: players) {
-            if(p.getAmountArmies() == max && max != 0) {
+            if(p.getTerritories().size() == max && max != 0) {
                 return p;
             }
         }
