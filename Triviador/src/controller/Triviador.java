@@ -132,20 +132,7 @@ public class Triviador implements Serializable {
 	}
 	
 	public void changeTurn() {
-		/*
-		Iterator<Player> iter = players.iterator();
-		while (iter.hasNext()) {
-		    Player p = iter.next();
-		    if (!hasTerritories(p)) {
-        		JOptionPane.showMessageDialog(null, p.getName() + " perdio la partida.");
-		        players.remove(p);
-		    }
-		    if(p.getTerritories().size()>= board.getTerritories().size()){
-    			this.setGameWinner(p);
-        	}
-		}
-		*/
-		ArrayList<Player> playerLost = new ArrayList();
+		ArrayList<Player> playerLost = new ArrayList<>();
         for(Player p: players) {
         	if(!hasTerritories(p)) {
         		JOptionPane.showMessageDialog(null, p.getName() + " perdio la partida.");
