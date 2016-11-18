@@ -223,19 +223,4 @@ public class MultipleQuestionsInterface extends JFrame {
 			new GameBoard(partida);
 		}
 	}
-	
-	/*public static void main(String[] args) {
-		String[] answers = {"a", "b", "c", "d"};
-		MultipleChoiceQuestion question = new MultipleChoiceQuestion("hola", answers, 0);
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MultipleQuestionsInterface window = new MultipleQuestionsInterface(question);
-					window.getFrame().setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
 }

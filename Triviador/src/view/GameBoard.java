@@ -19,7 +19,7 @@ import model.FileManager;
 import model.Territory;
 import java.awt.Color;
 
-public class GameBoard extends JFrame implements Serializable{
+public class GameBoard extends JFrame implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
