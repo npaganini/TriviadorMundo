@@ -10,7 +10,7 @@ public class TestJunitController {
 	
 	@Test
 	public void testCheckChngTurn() {
-		//controllerTest.changeTurn();								//comodification error
+		controllerTest.changeTurn();								//comodification error
 		int turnCount = controllerTest.getTurnCount() + 1;
 		int roundCount = controllerTest.getRoundCount() + 1;
 		System.out.println(turnCount);

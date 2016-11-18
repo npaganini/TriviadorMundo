@@ -1,6 +1,9 @@
 package controller;
 
 import java.util.ArrayList;
+
+import java.util.Iterator;
+
 import java.util.Collections;
 
 import javax.swing.JOptionPane;
@@ -129,14 +132,31 @@ public class Triviador implements Serializable {
 	}
 	
 	public void changeTurn() {
+		/*
+		Iterator<Player> iter = players.iterator();
+		while (iter.hasNext()) {
+		    Player p = iter.next();
+		    if (!hasTerritories(p)) {
+        		JOptionPane.showMessageDialog(null, p.getName() + " perdio la partida.");
+		        players.remove(p);
+		    }
+		    if(p.getTerritories().size()>= board.getTerritories().size()){
+    			this.setGameWinner(p);
+        	}
+		}
+		*/
+		ArrayList<Player> playerLost = new ArrayList();
         for(Player p: players) {
         	if(!hasTerritories(p)) {
         		JOptionPane.showMessageDialog(null, p.getName() + " perdio la partida.");
-        		players.remove(p);
+        		playerLost.add(p);
         	}
         	if(p.getTerritories().size()>= board.getTerritories().size()){
     			this.setGameWinner(p);
         	}
+        }
+        for(Player pLost: playerLost) {
+        	players.remove(pLost);
         }
         if(turnCount == (players.size()-1)) {
             turnCount = 0;
