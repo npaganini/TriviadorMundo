@@ -127,6 +127,9 @@ public class Triviador implements Serializable {
         	if(!hasTerritories(p)) {
         		players.remove(p);
         	}
+        	if(p.getTerritories().size()>= board.getTerritories().size()){
+    			this.setGameWinner(p);
+        	}
         }
         if(turnCount == (players.size()-1)) {
             turnCount = 0;
