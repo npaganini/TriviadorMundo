@@ -83,7 +83,7 @@ public class Board implements Serializable {
 	}
 
 	public void distributeTerritories(ArrayList<Player> players) {
-		int i = 0;  /* Este metodo solo se usa al principio de la partida! */
+		int i = 0;
 		for(Territory t: territories) {
             Player p = players.get(i%3);
 			p.addTerritories(t);

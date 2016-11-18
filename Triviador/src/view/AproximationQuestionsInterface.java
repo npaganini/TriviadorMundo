@@ -134,9 +134,10 @@ public class AproximationQuestionsInterface extends JFrame {
 			if(partida.getDefendingTerritory().getClimate().getRemainingDifficulty()<=0){
 				JOptionPane.showMessageDialog(null, "Conquistaste " + partida.getDefendingTerritory().getName() + "!");
 				partida.getActivePlayer().addArmies(ARMIES_NUMBER);
+				partida.setDefendingPlayer(partida.getDefendingTerritory().getOwner());
 				partida.getDefendingTerritory().getClimate().restoreRemainingDifficulty();
 				partida.getDefendingTerritory().setOwner(partida.getAttackingTerritory().getOwner());
-				partida.getDefendingTerritory().getOwner().removeTerritories(partida.getDefendingTerritory());
+				partida.getDefendingPlayer().removeTerritories(partida.getDefendingTerritory());
 				partida.getAttackingTerritory().getOwner().addTerritories(partida.getDefendingTerritory());
 				partida.getDefendingTerritory().addArmies(partida.getAttackingTerritory().getAmountArmies());
 				new GameBoard(partida);

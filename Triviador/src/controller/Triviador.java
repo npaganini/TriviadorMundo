@@ -2,11 +2,9 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+
+import javax.swing.JOptionPane;
+
 import java.io.Serializable;
 
 import model.AproximationQuestion;
@@ -29,6 +27,7 @@ public class Triviador implements Serializable {
 	private Integer turnCount;
 	private Integer roundCount;
 	private Player gameWinner;
+	private Player defendingPlayer;
 	private final static Integer MAX_ROUNDS = 9;
 	
 	public Triviador() {
@@ -45,6 +44,7 @@ public class Triviador implements Serializable {
 		turnCount = 0;
 		roundCount = 0;
 		gameWinner=null;
+		defendingPlayer=null;
 		
 	}
 
@@ -125,6 +125,7 @@ public class Triviador implements Serializable {
 	public void changeTurn() {
         for(Player p: players) {
         	if(!hasTerritories(p)) {
+        		JOptionPane.showMessageDialog(null, p.getName() + " perdio la partida.");
         		players.remove(p);
         	}
         	if(p.getTerritories().size()>= board.getTerritories().size()){
@@ -151,6 +152,10 @@ public class Triviador implements Serializable {
 	
 	private void nextPlayer() {
         int auxIndex = players.lastIndexOf(activePlayer) + 1;
+        if(players.get(auxIndex).getTerritories().size()==0)
+        {
+        	auxIndex++;
+        }
         if(auxIndex == players.size()) {
             auxIndex = 0;
         }
@@ -243,6 +248,14 @@ public class Triviador implements Serializable {
 
 	public Territory getDefendingTerritory() {
 		return defendingTerritory;
+	}
+	
+	public Player getDefendingPlayer(){
+		return defendingPlayer;
+	}
+	
+	public void setDefendingPlayer(Player player){
+		defendingPlayer=player;
 	}
 
 	public void setDefendingTerritory(Territory defendingTerritory) {
