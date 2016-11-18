@@ -132,6 +132,7 @@ public class AproximationQuestionsInterface extends JFrame {
 			JOptionPane.showMessageDialog(null, "Attacking player is closer than defending player");
 			partida.getDefendingTerritory().getClimate().decreaseRemainingDifficulty();
 			if(partida.getDefendingTerritory().getClimate().getRemainingDifficulty()<=0){
+				JOptionPane.showMessageDialog(null, "Conquistaste " + partida.getDefendingTerritory().getName() + "!");
 				partida.getActivePlayer().addArmies(ARMIES_NUMBER);
 				partida.getDefendingTerritory().getClimate().restoreRemainingDifficulty();
 				partida.getDefendingTerritory().setOwner(partida.getAttackingTerritory().getOwner());

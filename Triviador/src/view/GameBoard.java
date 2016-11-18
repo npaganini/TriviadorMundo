@@ -163,7 +163,7 @@ public class GameBoard extends JFrame implements Serializable {
 	    	public void actionPerformed(ActionEvent e) {	
 	    		partida.changeTurn();
 	    		if(partida.getGameWinner()!=null){
-	    			JOptionPane.showMessageDialog(null, "El ganador de la partida es: "+ partida.getPlayer1().getName());
+	    			JOptionPane.showMessageDialog(null, "El ganador de la partida es: "+ partida.getGameWinner().getName() + " con " + partida.getGameWinner().getAmountArmies() + " puntos!");
 	    			mainFrame.setVisible(false);
 	    		}
 	    		else{
