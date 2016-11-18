@@ -16,9 +16,7 @@ import java.awt.Color;
 import java.awt.Font;
 
 /**
-* Clase que construye la interfaz en donde se va a mostrar la
-* multipleChoiceQuestion. 
-* 
+* Class that makes the interface where the multiple choice question will be shown.
 */
 
 
@@ -200,12 +198,13 @@ public class MultipleQuestionsInterface extends JFrame {
 	}
 	
 	/**
-	* si la respuesta es correcta tengo que ver si el jugador respondio
-	* la cantidad de preguntas correctas para conquistar el territorio
-	* (esto depende del clima del territorio). Si lo hizo, lo conquista,
-	* si no, tiene que seguir contestando preguntas multiple choice.
-	* Si pierde, se termina la batalla.
-	* si empata tiene que responder una aproximation question.
+	* If the answer is correct, checks if the amount of questions answered to capture the
+	* territory has been met (it depends on the climate of the territory).
+	* If this condition is met, the territory is conquered and the score is changed.
+	* If not enough questions have been answered yet, it asks another question.
+	* If both players answers correctly, it asks an approximation question.
+	* If attacking player doesn't answer correctly, the battle ends and neither the score nor
+	* the territory's owner is changed.
 	*/
 	
 	public void getCorrectAnswers() {

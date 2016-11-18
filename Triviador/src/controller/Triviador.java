@@ -117,6 +117,12 @@ public class Triviador implements Serializable {
 		
 	}
 	
+	/**
+	 * Makes the collection of multiple choice questions random, removes one
+	 * from the collection and returns it to be asked. This makes it so that
+	 * no questions are repeated.
+	 * @return A multiple choice question chosen randomly from the set.
+	 */
 	public MultipleChoiceQuestion getMultipleChoiceQuestion() {
 		Collections.shuffle(multipleChoiceQuestions);
 		MultipleChoiceQuestion question = multipleChoiceQuestions.get(0);
@@ -131,6 +137,13 @@ public class Triviador implements Serializable {
 		return question;	
 	}
 	
+	/**
+	 * Changes the turn of the current player to the next player. If active player is player 3, it moves to player 1.
+	 * Also changes the round after the 3 players have played their turn.
+	 * The starting player of each round changes with each new round.
+	 * Also removes players who have lost from the game while keeping intact the score they had.
+	 * Asks for winner if a player has all territories or MAX_ROUNDS are reached.
+	 */
 	public void changeTurn() {
 		ArrayList<Player> playerLost = new ArrayList<>();
         for(Player p: players) {
@@ -162,6 +175,10 @@ public class Triviador implements Serializable {
         nextPlayer();
 	}
 	
+	/**
+	 * Gets the next player in the iteration.
+	 * If player 3 is currently playing, it makes player 1 the current player.
+	 */
 	private void nextPlayer() {
         int auxIndex = players.lastIndexOf(activePlayer) + 1;
         if(auxIndex >= players.size()) {

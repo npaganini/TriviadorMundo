@@ -81,7 +81,11 @@ public class Board implements Serializable {
 		territories.add(asia);
 		territories.add(oceania);
 	}
-
+	
+	/**
+	 * Distributes territories evenly among the 3 players as it initializes
+	 * @param players
+	 */
 	public void distributeTerritories(ArrayList<Player> players) {
 		int i = 0;
 		for(Territory t: territories) {

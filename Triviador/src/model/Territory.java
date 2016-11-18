@@ -21,13 +21,13 @@ public class Territory implements Serializable {
 	private Set<Territory> alreadyAttacked;
 	
 	/**
-	* Crea un nuevo territorio
+	* Creates a new territory.
 	*
-	* @param name nombre del territorio
-	* @param adjacents son los territorios que son adyacentes a este
-	* @amountArmies la cantidad de soldados que tiene el territorio
-	* @owner el jugador que tiene este territorio
-	* @climate el tipo de clima del territorio
+	* @param Name for the territory.
+	* @param Adjacent territories to this territory.
+	* @amountArmies Fictitious amount of armies that contains this territory.
+	* @owner Player who owns this territory.
+	* @climate Sets the difficulty of capturing this territory.
 	*/
 	
 	public Territory(String name, Integer amountArmies, Climate climate) {
