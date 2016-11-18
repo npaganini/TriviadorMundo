@@ -6,7 +6,6 @@ import org.junit.runner.notification.Failure;
 
 public class ControllerTestRunner {
 	public static void main(String[] args) {
-		// Result result = JUnitCore.runClasses(Triviador.class);
 		Result result = JUnitCore.runClasses(TestJunitController.class);
 		
 		for(Failure failure: result.getFailures()) {

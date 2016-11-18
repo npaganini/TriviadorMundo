@@ -7,12 +7,24 @@ public class TestJunitController {
 	static final int MAX_ROUNDS = 9;
 	
 	Triviador controllerTest = new Triviador();
-
-	//test to check appraisal
+	
 	@Test
 	public void testCheckChngTurn() {
 		controllerTest.changeTurn();
 		int turnCount = controllerTest.getTurnCount() + 1;
+		int roundCount = controllerTest.getRoundCount() + 1;
+		System.out.println(turnCount);
+		assertEquals(turnCount, 2);
+		assertEquals(roundCount, 1);
+	}
+}
+	
+/*
+	@Test
+	public void testCheckChngTurn() {
+		controllerTest.changeTurn();
+		int turnCount = controllerTest.getTurnCount() + 1;
+		//int turnCount = controllerTest.getTurnCount() + 1;
 		int roundCount = controllerTest.getRoundCount() + 1;
 		assertEquals(turnCount, 2);
 		assertEquals(roundCount, 1);
@@ -20,7 +32,6 @@ public class TestJunitController {
 		for(int i = 0; i < MAX_ROUNDS * 3; i++) {
 			controllerTest.changeTurn();
 		}
-		
+		*/
 		//assertEquals()
-	}
-}
+

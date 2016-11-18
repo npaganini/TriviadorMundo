@@ -96,7 +96,7 @@ public class Triviador implements Serializable {
 		return question;	
 	}
 	
-	public Player changeTurn() {
+	public void changeTurn() {
         if(turnCount == (players.size()-1)) {
             turnCount = 0;
             roundCount++;
@@ -113,8 +113,11 @@ public class Triviador implements Serializable {
         		players.remove(p);
         	}
         }
+        if(players.size() == 1) {
+        	this.setGameWinner(getWinner());
+        	return;
+        }
         nextPlayer();
-        return null;
 	}
 	
 	private void nextPlayer() {
