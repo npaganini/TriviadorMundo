@@ -28,6 +28,9 @@ public class Triviador implements Serializable {
 	private Integer roundCount;
 	private Player gameWinner;
 	private Player defendingPlayer;
+	private Integer player1Score;
+	private Integer player2Score;
+	private Integer player3Score;
 	private final static Integer MAX_ROUNDS = 9;
 	
 	public Triviador() {
@@ -45,6 +48,9 @@ public class Triviador implements Serializable {
 		roundCount = 0;
 		gameWinner=null;
 		defendingPlayer=null;
+		player1Score = 0;
+		player2Score = 0;
+		player3Score = 0;
 		
 	}
 
@@ -152,12 +158,11 @@ public class Triviador implements Serializable {
 	
 	private void nextPlayer() {
         int auxIndex = players.lastIndexOf(activePlayer) + 1;
-        if(auxIndex == players.size()) {
+        if(auxIndex >= players.size()) {
             auxIndex = 0;
         }
-        if(players.get(auxIndex).getTerritories().size()==0)
-        {
-        	auxIndex++;
+        if(players.get(auxIndex) == null) {
+        	nextPlayer();
         }
         activePlayer = players.get(auxIndex);
     }
@@ -218,16 +223,28 @@ public class Triviador implements Serializable {
 		return MAX_ROUNDS;
 	}
 	
-	public Player getPlayer1() {
-		return players.get(0);
+	public void addToPlayer1Score(Integer score) {
+		player1Score += score;
+	}
+
+	public void addToPlayer2Score(Integer score) {
+		player2Score += score;
 	}
 	
-	public Player getPlayer2() {
-		return players.get(1);
+	public void addToPlayer3Score(Integer score) {
+		player3Score += score;
 	}
 	
-	public Player getPlayer3() {
-		return players.get(2);
+	public Integer getPlayer1Score() {
+		return player1Score;
+	}
+	
+	public Integer getPlayer2Score() {
+		return player2Score;
+	}
+	
+	public Integer getPlayer3Score() {
+		return player3Score;
 	}
 
 	public Territory getAttackingTerritory() {
@@ -261,5 +278,4 @@ public class Triviador implements Serializable {
 	public void setDefendingTerritory(Territory defendingTerritory) {
 		this.defendingTerritory = defendingTerritory;
 	}
-	
 }

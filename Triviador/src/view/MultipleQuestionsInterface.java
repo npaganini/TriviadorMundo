@@ -220,6 +220,12 @@ public class MultipleQuestionsInterface extends JFrame {
 				if(partida.getDefendingTerritory().getClimate().getRemainingDifficulty()<=0){
 					JOptionPane.showMessageDialog(null, "Conquistaste " + partida.getDefendingTerritory().getName() + "!");
 					partida.getActivePlayer().addArmies(ARMIES_NUMBER);
+					if(partida.getActivePlayer().getName() == "Jugador 1")
+						partida.addToPlayer1Score(ARMIES_NUMBER);
+					if(partida.getActivePlayer().getName() == "Jugador 2")
+						partida.addToPlayer2Score(ARMIES_NUMBER);
+					if(partida.getActivePlayer().getName() == "Jugador 3")
+						partida.addToPlayer3Score(ARMIES_NUMBER);
 					partida.setDefendingPlayer(partida.getDefendingTerritory().getOwner());
 					partida.getDefendingTerritory().getClimate().restoreRemainingDifficulty();
 					partida.getDefendingTerritory().setOwner(partida.getAttackingTerritory().getOwner());

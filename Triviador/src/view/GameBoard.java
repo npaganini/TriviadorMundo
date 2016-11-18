@@ -76,7 +76,7 @@ public class GameBoard extends JFrame implements Serializable {
 	    playerOneLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 	    playerOneLabel.setBounds(26, 524, 51, 16);
 	    layeredPane.add(playerOneLabel);
-	    playerOneArmyField = new JLabel(partida.getPlayer1().getAmountArmies().toString());
+	    playerOneArmyField = new JLabel(partida.getPlayer1Score().toString());
 	    playerOneArmyField.setForeground(Color.WHITE);
 	    playerOneArmyField.setBounds(26, 546, 64, 26);
 	    layeredPane.add(playerOneArmyField);
@@ -86,7 +86,7 @@ public class GameBoard extends JFrame implements Serializable {
 	    playerTwoLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 	    playerTwoLabel.setBounds(92, 524, 51, 16);
 	    layeredPane.add(playerTwoLabel);
-	    playerTwoArmyField = new JLabel(partida.getPlayer2().getAmountArmies().toString());
+	    playerTwoArmyField = new JLabel(partida.getPlayer2Score().toString());
 	    playerTwoArmyField.setForeground(Color.WHITE);
 	    playerTwoArmyField.setBounds(92, 546, 60, 26);
 	    layeredPane.add(playerTwoArmyField);
@@ -96,7 +96,7 @@ public class GameBoard extends JFrame implements Serializable {
 	    playerThreeLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 13));
 	    playerThreeLabel.setBounds(156, 524, 51, 16);
 	    layeredPane.add(playerThreeLabel);
-	    playerThreeArmyField = new JLabel(partida.getPlayer3().getAmountArmies().toString());
+	    playerThreeArmyField = new JLabel(partida.getPlayer3Score().toString());
 	    playerThreeArmyField.setForeground(Color.WHITE);
 	    playerThreeArmyField.setBounds(156, 546, 60, 26);
 	    layeredPane.add(playerThreeArmyField);
