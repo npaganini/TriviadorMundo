@@ -132,6 +132,7 @@ public class AproximationQuestionsInterface extends JFrame {
 		}
 		else if(answerAttacking > answerDefending) {
 			JOptionPane.showMessageDialog(null, "Defending player is closer than attacking player");
+			partida.getAttackingTerritory().addAlreadyAttackedTerritory(partida.getDefendingTerritory());
 			new GameBoard(partida);
 		}
 		else {

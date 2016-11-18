@@ -93,4 +93,9 @@ public class Player implements Serializable {
 		return true;
 	}
 	
+	public void resetAlreadyAttacked() {
+		for(Territory t: territories) {
+			t.removeAlreadyAttacked();
+		}
+	}
 }

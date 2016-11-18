@@ -86,7 +86,6 @@ public class Board implements Serializable {
 			p.addArmies(t.getAmountArmies());
             i++;
 		}
-		
 	}
 
 	public Set<Territory> getTerritories() {

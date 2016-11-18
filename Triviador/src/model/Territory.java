@@ -13,15 +13,16 @@ public class Territory implements Serializable {
 	private Integer amountArmies;
 	private Player owner;
 	private Climate climate;
+	private Set<Territory> alreadyAttacked;
 	
 	
 	public Territory(String name, Integer amountArmies, Climate climate) {
-		super();
 		this.name = name;
 		this.adjacents = new HashSet<Territory>();
 		this.amountArmies = amountArmies;
 		this.owner = null;
 		this.climate=climate;
+		this.alreadyAttacked = new HashSet<Territory>();
 	}
 
 	public String getName() {
@@ -76,4 +77,17 @@ public class Territory implements Serializable {
 		return climate;
 	}
 	
+	public void addAlreadyAttackedTerritory(Territory territory) {
+		alreadyAttacked.add(territory);
+	}
+	
+	public boolean hasAttackedTerritory(Territory territory) {
+		if(alreadyAttacked.contains(territory))
+			return true;
+		return false;
+	}
+	
+	public void removeAlreadyAttacked() {
+		alreadyAttacked.removeAll(alreadyAttacked);
+	}
 }

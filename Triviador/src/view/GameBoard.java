@@ -142,12 +142,14 @@ public class GameBoard extends JFrame implements Serializable {
 	    attackButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
-					partida.setAttackingTerritory(partida.stringToTerritory((String) attackFromComboBox.getSelectedItem()));
-					partida.setDefendingTerritory(partida.stringToTerritory((String) attackToComboBox.getSelectedItem()));
-					@SuppressWarnings("unused")
-					MultipleQuestionsInterface window = new MultipleQuestionsInterface(partida);
-					mainFrame.setVisible(false);
-					
+					Territory attackingTerritory = partida.stringToTerritory((String) attackFromComboBox.getSelectedItem());
+					Territory defendingTerritory = partida.stringToTerritory((String) attackToComboBox.getSelectedItem());
+					if(attackingTerritory != null && defendingTerritory != null) {
+						partida.setAttackingTerritory(attackingTerritory);
+						partida.setDefendingTerritory(defendingTerritory);
+						new MultipleQuestionsInterface(partida);
+						mainFrame.setVisible(false);
+					}
 				} catch (Exception e1) {
 					e1.printStackTrace();
 				}
@@ -161,12 +163,12 @@ public class GameBoard extends JFrame implements Serializable {
 	    	public void actionPerformed(ActionEvent e) {	
 	    		partida.changeTurn();
 	    		if(partida.getGameWinner()!=null){
-	    			mainFrame.setVisible(false);
 	    			JOptionPane.showMessageDialog(null, "El ganador de la partida es: "+ partida.getPlayer1().getName());
-	    			mainFrame.dispose();
+	    			mainFrame.setVisible(false);
 	    		}
 	    		else{
-					GameBoard gameBoard = new GameBoard(partida);
+					partida.getActivePlayer().resetAlreadyAttacked();
+	    			new GameBoard(partida);
 					mainFrame.setVisible(false);	
 	    		}
 	    	}
@@ -205,8 +207,10 @@ public class GameBoard extends JFrame implements Serializable {
 		while(attackToComboBox.getModel().getSize() > 0)
 			attackToComboBox.removeItemAt(0);
 		for(Territory territory: attackingTerritory.getAdjacents())
-			if(!attackingTerritory.getOwner().equals(territory.getOwner()))
-				attackToComboBox.addItem(territory.getName());
+			if(!attackingTerritory.getOwner().equals(territory.getOwner())) {
+				if(!attackingTerritory.hasAttackedTerritory(territory))
+					attackToComboBox.addItem(territory.getName());
+			}
 	}
 	
 	public void setTotalArmiesPlayerOne(String armies){

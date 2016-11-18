@@ -162,7 +162,7 @@ public class MultipleQuestionsInterface extends JFrame {
 		answerDLabel.setBounds(140, 364, 530, 50);
 		getFrame().getContentPane().add(answerDLabel);
 		
-		okButton = new JButton("");
+		okButton = new JButton("OK");
 		okButton.setIcon(new ImageIcon(MultipleQuestionsInterface.class.getResource("/view/resources/responderButton.jpg")));
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -216,10 +216,12 @@ public class MultipleQuestionsInterface extends JFrame {
 		}
 		else if(question.getCorrectAnswer().equals(answer.getAnswerDefending())) {
 			JOptionPane.showMessageDialog(null, "Defending player answered correctly");
+			partida.getAttackingTerritory().addAlreadyAttackedTerritory(partida.getDefendingTerritory());
 			new GameBoard(partida);
 		}
 		else {
 			JOptionPane.showMessageDialog(null, "Neither player answered correcly");
+			partida.getAttackingTerritory().addAlreadyAttackedTerritory(partida.getDefendingTerritory());
 			new GameBoard(partida);
 		}
 	}
