@@ -66,7 +66,7 @@ public class Triviador implements Serializable {
 	public void addMultipleChoiceQuestions() {
 		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Quien es el entrenador de Rafael Nadal?", new String[] {"Su tio", "Ismael Rodriguez", "Joathan Gonzaga", "Su padre"}, 3 ));
 		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Como obtuvo Jack los boletos para viajar en el Titanic (en la pelicula Titanic)?", new String[] {"En un juego de poker", "Los compro", "En una apuesta", "En un juego de Bingo"}, 0 ));
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual de estos eventos no forma parte del triatlon “Hombres de hierro?", new String[] {"Ciclismo", "Carreras a caballo", "Natacion", "Carreras de larga distancia"}, 0 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual de estos eventos no forma parte del triatlon “Hombres de hierro?", new String[] {"Ciclismo", "Carreras a caballo", "Natacion", "Carreras de larga distancia"}, 1 ));
 		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Donde se origino el voleibol?", new String[] {"Las Vegas", "Nueva York", "Londres", "Massachussets"}, 0 ));
 		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Como se llama el cantante de Metallica?", new String[] {"Axel Rose", "James Hetfield", "Roger Daltrey", "James Franco"}, 1 ));
 		multipleChoiceQuestions.add(new MultipleChoiceQuestion("En que arbol crecen los datiles?", new String[] {"Palmera", "Sauce", "Tilo", "Ninguno"}, 0 ));
