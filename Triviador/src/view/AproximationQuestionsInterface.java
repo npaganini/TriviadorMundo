@@ -18,6 +18,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
+/**
+* Clase que construye la interfaz en donde se va a mostrar la
+* aproximationQuestion. 
+*/
+
+
 @SuppressWarnings("serial")
 public class AproximationQuestionsInterface extends JFrame {
 
@@ -108,6 +114,15 @@ public class AproximationQuestionsInterface extends JFrame {
 	public JFrame getFrame() {
 		return frame;
 	}
+	
+	/**
+	* si la respuesta es correcta tengo que ver si el jugador respondio
+	* la cantidad de preguntas correctas para conquistar el territorio
+	* (esto depende del clima del territorio). Si lo hizo, lo conquista,
+	* si no, tiene que seguir contestando preguntas multiple choice.
+	* Si pierde, se termina la batalla.
+	* si empata tiene que responder una aproximation question nuevamente.
+	*/
 	
 	public void getCorrectAnswers() {
 		Integer answerAttacking = Math.abs(question.getAnswer() - Integer.parseInt(answer.getAnswerAttacking()));

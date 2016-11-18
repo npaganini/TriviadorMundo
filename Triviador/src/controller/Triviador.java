@@ -55,9 +55,11 @@ public class Triviador implements Serializable {
 	}
 	
 	public void addMultipleChoiceQuestions() {
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("En que deporte se usa tiza?", new String[] {"Futbol", "Tenis", "Golf", "Pool"}, 3 ));
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cuantas manos tiene un caballo?", new String[] {"0", "2", "3", "4"}, 1 ));
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cuales son las dos primeras palabras de la Biblia?", new String[] {"Una vez", "Al comienzo", "Al principio", "En ese"}, 2 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Quien es el entrenador de Rafael Nadal?", new String[] {"Su tio", "Ismael Rodriguez", "Joathan Gonzaga", "Su padre"}, 3 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Como obtuvo JAck los boletos para viajan en el Titanic (en la pelicula Titanic)?", new String[] {"En un juego de poker", "Lo compro", "En una apuesta", "En un juego de Bingo"}, 3 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual de estos eventos no forma parte del triatlon “Hombres de hierro?", new String[] {"Ciclismo", "Carreras a caballo", "Natacion", "Carreras de larga distancia"}, 0 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Donde se origino el voleibol?", new String[] {"Las Vegas", "Nueva York", "Londres", "Massachussets"}, 0 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Como se llama el cantante de Metallica?", new String[] {"Axel Rose", "James Hetfield", "Roger Daltrey", "James Franco"}, 3 ));
 		multipleChoiceQuestions.add(new MultipleChoiceQuestion("En que arbol crecen los datiles?", new String[] {"Palmera", "Sauce", "Tilo", "Ninguno"}, 0 ));
 		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual es el segundo idioma mas hablado?", new String[] {"Español", "Ingles", "Frances", "Chino"}, 1 ));
 		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual es el nombre de pila del cantante Bieber?", new String[] {"Steven", "Justin", "Mary", "John"}, 1));
@@ -70,6 +72,21 @@ public class Triviador implements Serializable {
 		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual de los siguientes juegos RTS fue el primero en lanzarse?", new String[] {"Command & Conquer: Red Alert 2", "Age of Empires II: The Age of Kings", "Warhammer 40000: Dawn of War", "Warcraft III: Reign of Chaos"}, 1));
 		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Quien fue el DJ #1 segun la revista DJ MAG en el 2015?", new String[] {"Dimitri Vegas & Like Mike", "Skrillex", "David Guetta", "Hardwell"}, 0));
 		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual de los siguientes no es un desierto?", new String[] {"Sahara", "Antartida", "Atacama", "Malesia"}, 3));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Quien es mayor?", new String[] {"Gaidamac", "Mirtha Legrand", "Susana Gimenez", "Carmen Barbieri"}, 0));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual es la primera regla del Club de la Pelea?", new String[] {"Se debe pelear sin camisa", "Se debe pelear sin zapatos", "No hay reglas", "No hablar del Club de la Pelea"}, 2));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("De donde proviene el reggae?", new String[] {"Cuba", "Haiti", "Jamaica", "Republica Dominicana"}, 3));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Quien pinto La Sagrada Familia del Cordero?", new String[] {"Rafael Sanzio", "Velazquez", "Giorgione", "Paul Klee"}, 0));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Como murio la poetisa Alfonsina Storni?", new String[] {"En un accidente automovilistico", "Fue asesinada", "De muerte natural", "Se suicido"}, 3));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("En que era aparecieron los dinosaurios?", new String[] {"Paleozoica", "Mesozoica", "Precambrica", "Cenozoica"}, 1));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Como se llama la snesibilidad dolorosa de los sonidos?", new String[] {"Hipocusia", "Hiperacusia", "Micropsia", "Hipoalgesia"}, 1));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Como se mide la fuerza del viento en el mar?", new String[] {"Pies", "Nudos", "Zancadas", "Kilometros por hora"}, 1));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual de estos paises africanos NO tiene costa?", new String[] {"Sudafrica", "Tunez", "Chad", "Marruecos"}, 2));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual es la capital de Finlandia?", new String[] {"Helsinki", "Berna", "Estocolmo", "Oslo"}, 0));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Que ciudad tiene mas poblacion?", new String[] {"Rio Cuarto", "Tandil", "La Plata", "Viedma"}, 2));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cuantos siglos duro El Siglo de Oro?", new String[] {"Dos", "Uno", "Tres", "Medio"}, 0));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Para que fue creado el plan MArshall en 1947?", new String[] {"Regalo", "Conquista", "Reconstruccion", "Comercio"}, 2));
+
+
 		
 	}
 	
@@ -80,6 +97,15 @@ public class Triviador implements Serializable {
 		aproximationQuestions.add(new AproximationQuestion("En que ano se fundo el ITBA?", 1959));
 		aproximationQuestions.add(new AproximationQuestion("Cuantos mogul vienen en un paquete de Moguls?", 8));
 		aproximationQuestions.add(new AproximationQuestion("Cuantos dientes permanentes tiene un ser humano promedio?", 32));
+		aproximationQuestions.add(new AproximationQuestion("En que año murio Francisco Franco?", 1975));
+		aproximationQuestions.add(new AproximationQuestion("En que año comenzo la Revolucion Francesa?", 1789));
+		aproximationQuestions.add(new AproximationQuestion("En que año fallecio Steve Jobs?", 2011));
+		aproximationQuestions.add(new AproximationQuestion("En que año se descubrio la tumba de Tutankhamon?", 1921));
+		aproximationQuestions.add(new AproximationQuestion("En que año tuvo lugar el ataque a Pearl Harbor?", 1941));
+		aproximationQuestions.add(new AproximationQuestion("Cuantos soldados argentinos murieron en la Guerra de las Malvinas?", 649));
+		aproximationQuestions.add(new AproximationQuestion("Cuantos siglos duro El Siglo de Oro ?", 2));
+		aproximationQuestions.add(new AproximationQuestion("A cuantas personas mato Tiburon en su primer pelicula ?", 11));
+		
 	}
 	
 	public MultipleChoiceQuestion getMultipleChoiceQuestion() {

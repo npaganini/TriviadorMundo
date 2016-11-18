@@ -2,6 +2,11 @@ package model;
 
 import java.io.Serializable;
 
+/**
+* Clase que representa una pregunta en la que va a tener 4
+* posibles respuestas pero solo una correcta.
+*/
+
 public class MultipleChoiceQuestion extends Question implements Serializable {
 
 	private static final long serialVersionUID = 1L;

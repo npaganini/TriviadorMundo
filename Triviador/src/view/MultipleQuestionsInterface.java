@@ -15,6 +15,13 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Font;
 
+/**
+* Clase que construye la interfaz en donde se va a mostrar la
+* multipleChoiceQuestion. 
+* 
+*/
+
+
 public class MultipleQuestionsInterface extends JFrame {
 
 	/**
@@ -162,7 +169,9 @@ public class MultipleQuestionsInterface extends JFrame {
 		answerDLabel.setBounds(140, 364, 530, 50);
 		getFrame().getContentPane().add(answerDLabel);
 		
-		okButton = new JButton("OK");
+		okButton = new JButton("");
+		okButton.setOpaque(false);
+		okButton.setBorderPainted(false);
 		okButton.setIcon(new ImageIcon(MultipleQuestionsInterface.class.getResource("/view/resources/responderButton.jpg")));
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -170,7 +179,7 @@ public class MultipleQuestionsInterface extends JFrame {
 				frame.setVisible(false);
 			}
 		});
-		okButton.setBounds(254, 480, 284, 60);
+		okButton.setBounds(254, 480, 297, 60);
 		getFrame().getContentPane().add(okButton);
 		
 		backgroundImage = new JLabel();
@@ -189,6 +198,15 @@ public class MultipleQuestionsInterface extends JFrame {
 	public JFrame getFrame() {
 		return frame;
 	}
+	
+	/**
+	* si la respuesta es correcta tengo que ver si el jugador respondio
+	* la cantidad de preguntas correctas para conquistar el territorio
+	* (esto depende del clima del territorio). Si lo hizo, lo conquista,
+	* si no, tiene que seguir contestando preguntas multiple choice.
+	* Si pierde, se termina la batalla.
+	* si empata tiene que responder una aproximation question.
+	*/
 	
 	public void getCorrectAnswers() {
 		if(question.getCorrectAnswer().equals(answer.getAnswerAttacking())) {

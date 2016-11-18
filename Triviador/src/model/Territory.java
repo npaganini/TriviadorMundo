@@ -5,6 +5,11 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+* Clase que representa un territorio en el mapa.
+*
+*/
+
 public class Territory implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -15,6 +20,15 @@ public class Territory implements Serializable {
 	private Climate climate;
 	private Set<Territory> alreadyAttacked;
 	
+	/**
+	* Crea un nuevo territorio
+	*
+	* @param name nombre del territorio
+	* @param adjacents son los territorios que son adyacentes a este
+	* @amountArmies la cantidad de soldados que tiene el territorio
+	* @owner el jugador que tiene este territorio
+	* @climate el tipo de clima del territorio
+	*/
 	
 	public Territory(String name, Integer amountArmies, Climate climate) {
 		this.name = name;

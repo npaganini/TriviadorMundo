@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+/** 
+* Clase que representa el tablero del juego. Aca se crean los
+* diferentes territoirios.
+*/
+
 public class Board implements Serializable {
 
 	private static final long serialVersionUID = 1L;
