@@ -152,7 +152,6 @@ public class Triviador implements Serializable {
                 Player winner = getWinner();
                 this.setGameWinner(winner);
             }
-            nextPlayer();
         } else {
             turnCount++;
         }
