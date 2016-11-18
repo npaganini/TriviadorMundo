@@ -10,6 +10,8 @@ import java.awt.event.ActionListener;
 import java.io.Serializable;
 import java.awt.event.ActionEvent;
 import javax.swing.JLayeredPane;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JComboBox;
 import controller.Triviador;
@@ -156,11 +158,17 @@ public class GameBoard extends JFrame implements Serializable{
 	    NextTurnButton = new JButton("Pasar Turno");
 	    NextTurnButton.setBounds(572, 517, 103, 58);
 	    NextTurnButton.addActionListener(new ActionListener() {
-	    	public void actionPerformed(ActionEvent e) {
+	    	public void actionPerformed(ActionEvent e) {	
 	    		partida.changeTurn();
-	    		@SuppressWarnings("unused")
-				GameBoard gameBoard = new GameBoard(partida);
-				mainFrame.setVisible(false);	
+	    		if(partida.getGameWinner()!=null){
+	    			mainFrame.setVisible(false);
+	    			JOptionPane.showMessageDialog(null, "El ganador de la partida es: "+ partida.getPlayer1().getName());
+	    			mainFrame.dispose();
+	    		}
+	    		else{
+					GameBoard gameBoard = new GameBoard(partida);
+					mainFrame.setVisible(false);	
+	    		}
 	    	}
 	    });
 	    layeredPane.add(NextTurnButton);

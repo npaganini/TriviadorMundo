@@ -25,6 +25,7 @@ public class MultipleQuestionsInterface extends JFrame {
 	private Triviador partida;
 	private Answer answer;
 	private MultipleChoiceQuestion question;
+	private final static Integer ARMIES_NUMBER=100;
 	
 	private JFrame frame;
 	
@@ -199,6 +200,7 @@ public class MultipleQuestionsInterface extends JFrame {
 				JOptionPane.showMessageDialog(null, "Attacking player answered correctly");
 				partida.getDefendingTerritory().getClimate().decreaseRemainingDifficulty();
 				if(partida.getDefendingTerritory().getClimate().getRemainingDifficulty()<=0){
+					partida.getActivePlayer().addArmies(ARMIES_NUMBER);
 					partida.getDefendingTerritory().getClimate().restoreRemainingDifficulty();
 					partida.getDefendingTerritory().setOwner(partida.getAttackingTerritory().getOwner());
 					partida.getDefendingTerritory().getOwner().removeTerritories(partida.getDefendingTerritory());

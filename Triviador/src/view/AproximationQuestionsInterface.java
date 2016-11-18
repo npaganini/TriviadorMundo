@@ -24,6 +24,7 @@ public class AproximationQuestionsInterface extends JFrame {
 	private Triviador partida;
 	private Answer answer;
 	private AproximationQuestion question;
+	private final static Integer ARMIES_NUMBER=100;
 	
 	private JFrame frame;
 	
@@ -116,6 +117,7 @@ public class AproximationQuestionsInterface extends JFrame {
 			JOptionPane.showMessageDialog(null, "Attacking player is closer than defending player");
 			partida.getDefendingTerritory().getClimate().decreaseRemainingDifficulty();
 			if(partida.getDefendingTerritory().getClimate().getRemainingDifficulty()<=0){
+				partida.getActivePlayer().addArmies(ARMIES_NUMBER);
 				partida.getDefendingTerritory().getClimate().restoreRemainingDifficulty();
 				partida.getDefendingTerritory().setOwner(partida.getAttackingTerritory().getOwner());
 				partida.getDefendingTerritory().getOwner().removeTerritories(partida.getDefendingTerritory());

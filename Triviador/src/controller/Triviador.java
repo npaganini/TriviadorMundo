@@ -28,6 +28,7 @@ public class Triviador implements Serializable {
 	private Territory defendingTerritory;
 	private Integer turnCount;
 	private Integer roundCount;
+	private Player gameWinner;
 	private final static Integer MAX_ROUNDS = 9;
 	
 	public Triviador() {
@@ -43,6 +44,7 @@ public class Triviador implements Serializable {
 		defendingTerritory = null;
 		turnCount = 0;
 		roundCount = 0;
+		gameWinner=null;
 		
 	}
 
@@ -53,11 +55,11 @@ public class Triviador implements Serializable {
 	}
 	
 	public void addMultipleChoiceQuestions() {
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("¿En que deporte se usa tiza?", new String[] {"Futbol", "Tenis", "Golf", "Pool"}, 3 ));
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("¿Cuantas manos tiene un caballo?", new String[] {"0", "2", "3", "4"}, 1 ));
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("¿Cuales son las dos primeras palabras de la Biblia?", new String[] {"Una vez", "Al comienzo", "Al principio", "En ese"}, 2 ));
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("¿En que arbol crecen los datiles?", new String[] {"Palmera", "Sauce", "Tilo", "Ninguno"}, 0 ));
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("¿Cual es el segundo idioma mas hablado?", new String[] {"EspaÃ±ol", "Ingles", "Frances", "Chino"}, 1 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("En que deporte se usa tiza?", new String[] {"Futbol", "Tenis", "Golf", "Pool"}, 3 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cuantas manos tiene un caballo?", new String[] {"0", "2", "3", "4"}, 1 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cuales son las dos primeras palabras de la Biblia?", new String[] {"Una vez", "Al comienzo", "Al principio", "En ese"}, 2 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("En que arbol crecen los datiles?", new String[] {"Palmera", "Sauce", "Tilo", "Ninguno"}, 0 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual es el segundo idioma mas hablado?", new String[] {"EspaÃ±ol", "Ingles", "Frances", "Chino"}, 1 ));
 		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual es el nombre de pila del cantante Bieber?", new String[] {"Steven", "Justin", "Mary", "John"}, 1));
 		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual es la identidad secreta de Clark Kent?", new String[] {"Batman", "Harry Potter", "Esteban Kramer", "Superman"}, 3));
 		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Quien gano el Oscar a mejor actor en el 2015?", new String[] {"Leonardo DiCaprio", "Tom Hanks", "Eddie Redmayne", "Matthew McConaughey"}, 2));
@@ -72,12 +74,12 @@ public class Triviador implements Serializable {
 	}
 	
 	public void addAproximationQuestions() {
-		aproximationQuestions.add(new AproximationQuestion("¿En que ano se independizo Argentina?", 1816));
-		aproximationQuestions.add(new AproximationQuestion("¿Cuantos ganadores del premios nobel son argentinos?", 5));
-		aproximationQuestions.add(new AproximationQuestion("¿Cuantos miles de millones vivian en China en el 2013?", 1357));
-		aproximationQuestions.add(new AproximationQuestion("¿En que ano se fundo el ITBA?", 1959));
-		aproximationQuestions.add(new AproximationQuestion("¿Cuantos mogul vienen en un paquete de Moguls?", 8));
-		aproximationQuestions.add(new AproximationQuestion("¿Cuantos dientes permanentes tiene un ser humano promedio?", 32));
+		aproximationQuestions.add(new AproximationQuestion("En que ano se independizo Argentina?", 1816));
+		aproximationQuestions.add(new AproximationQuestion("Cuantos ganadores del premios nobel son argentinos?", 5));
+		aproximationQuestions.add(new AproximationQuestion("Cuantos miles de millones vivian en China en el 2013?", 1357));
+		aproximationQuestions.add(new AproximationQuestion("En que ano se fundo el ITBA?", 1959));
+		aproximationQuestions.add(new AproximationQuestion("Cuantos mogul vienen en un paquete de Moguls?", 8));
+		aproximationQuestions.add(new AproximationQuestion("Cuantos dientes permanentes tiene un ser humano promedio?", 32));
 	}
 	
 	public MultipleChoiceQuestion getMultipleChoiceQuestion() {
@@ -100,7 +102,7 @@ public class Triviador implements Serializable {
             roundCount++;
             if(roundCount == MAX_ROUNDS) {
                 Player winner = getWinner();
-                return winner;
+                this.setGameWinner(winner);
             }
             nextPlayer();
         } else {
@@ -197,6 +199,14 @@ public class Triviador implements Serializable {
 
 	public void setAttackingTerritory(Territory attackingTerritory) {
 		this.attackingTerritory = attackingTerritory;
+	}
+	
+	public void setGameWinner(Player player){
+		gameWinner=player;
+	}
+	
+	public Player getGameWinner(){
+		return gameWinner;
 	}
 
 	public Territory getDefendingTerritory() {
