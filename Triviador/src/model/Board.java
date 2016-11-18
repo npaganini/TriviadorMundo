@@ -24,15 +24,15 @@ public class Board implements Serializable {
 	public void addTerritories() {
 
 		
-		Territory americaDelSur = new Territory("America del Sur", 100, new Climate(2));
-		Territory americaCentral = new Territory("America Central", 100, new Climate(2));
-		Territory americaDelNorte = new Territory("America del Norte", 100, new Climate(2));
+		Territory americaDelSur = new Territory("America del Sur", 100, new Climate(1));
+		Territory americaCentral = new Territory("America Central", 100, new Climate(1));
+		Territory americaDelNorte = new Territory("America del Norte", 100, new Climate(1));
 		Territory poloNorte = new Territory("Polo Norte", 100, new Climate(3));
-		Territory europa = new Territory("Europa", 100, new Climate(2));
+		Territory europa = new Territory("Europa", 100, new Climate(1));
 		Territory africa = new Territory("Africa", 100, new Climate(2));
 		Territory medioOriente = new Territory("MedioOriente", 100, new Climate(2));
-		Territory oceania = new Territory("Oceania", 100, new Climate(2));
-		Territory asia = new Territory("Asia", 100, new Climate(2));
+		Territory oceania = new Territory("Oceania", 100, new Climate(1));
+		Territory asia = new Territory("Asia", 100, new Climate(1));
 		
 		americaDelSur.addAdjacents(americaCentral);
 		americaDelSur.addAdjacents(africa);
