@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import controller.Triviador;
+import model.FileManager;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -30,28 +31,41 @@ public class StartGameInterface extends JFrame {
 		
 		frame = new JFrame();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(300, 200, 800, 600);
+		frame.setBounds(0, 0, 800, 600);
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
 		
 		newGameButton = new JButton("New Game");
+		newGameButton.setOpaque(false);
+		newGameButton.setContentAreaFilled(false);
+		newGameButton.setBorderPainted(false);
+		newGameButton.setIcon(new ImageIcon(StartGameInterface.class.getResource("/view/resources/nuevaPartida.jpg")));
 		newGameButton.addActionListener(new ActionListener() {
-			@SuppressWarnings({ "unused" })
 			public void actionPerformed(ActionEvent e) {
 				partida.startNewGame();
-				GameBoard gameBoard = new GameBoard(partida);
+				new GameBoard(partida);
 				frame.setVisible(false);
 			}
 		});
-		newGameButton.setBounds(360, 348, 120, 25);
+		newGameButton.setBounds(270, 329, 297, 62);
 		frame.getContentPane().add(newGameButton);
 		
 		loadGameButton = new JButton("Load Game");
+		loadGameButton.setOpaque(false);
+		loadGameButton.setContentAreaFilled(false);
+		loadGameButton.setBorderPainted(false);
+		loadGameButton.setIcon(new ImageIcon(StartGameInterface.class.getResource("/view/resources/cargarPartida.jpg")));
 		loadGameButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("Cargando juego...");
+				partida.startNewGame();
+				FileManager file = new FileManager();
+				new GameBoard(file.loadGame()); //Cargo el juego
 				frame.setVisible(false);
+	    		System.out.println("Juego Cargado");
 			}
 		});
-		loadGameButton.setBounds(360, 414, 120, 25);
+		loadGameButton.setBounds(270, 418, 297, 62);
 		frame.getContentPane().add(loadGameButton);
 		
 		backgroundImage = new JLabel();

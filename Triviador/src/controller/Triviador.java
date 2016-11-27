@@ -2,24 +2,38 @@ package controller;
 
 import java.util.ArrayList;
 
-import model.Answer;
+import java.util.Iterator;
+
+import java.util.Collections;
+
+import javax.swing.JOptionPane;
+
+import java.io.Serializable;
+
 import model.AproximationQuestion;
 import model.Board;
 import model.MultipleChoiceQuestion;
-import model.NotAdjacentException;
 import model.Player;
 import model.Territory;
-import view.ApproximationQuestionsInterface;
-import view.MultipleQuestionsInterface;
 
-public class Triviador {
+public class Triviador implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
 	private Board board;
 	private ArrayList<Player> players;
 	private ArrayList<MultipleChoiceQuestion> multipleChoiceQuestions;
 	private ArrayList<AproximationQuestion> aproximationQuestions;
 	private Player activePlayer;
+	private Territory attackingTerritory;
+	private Territory defendingTerritory;
 	private Integer turnCount;
 	private Integer roundCount;
+	private Player gameWinner;
+	private Player defendingPlayer;
+	private Integer player1Score;
+	private Integer player2Score;
+	private Integer player3Score;
 	private final static Integer MAX_ROUNDS = 9;
 	
 	public Triviador() {
@@ -31,8 +45,15 @@ public class Triviador {
 		aproximationQuestions = new ArrayList<AproximationQuestion>();
 		addAproximationQuestions();
 		activePlayer = null;
+		attackingTerritory = null;
+		defendingTerritory = null;
 		turnCount = 0;
 		roundCount = 0;
+		gameWinner=null;
+		defendingPlayer=null;
+		player1Score = 0;
+		player2Score = 0;
+		player3Score = 0;
 		
 	}
 
@@ -43,143 +64,149 @@ public class Triviador {
 	}
 	
 	public void addMultipleChoiceQuestions() {
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("¿En qué deporte se usa tiza?", new String[] {"Futbol", "Tenis", "Golf", "Pool"}, 3 ));
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("¿Cuantas manos tiene un caballo?", new String[] {"0", "2", "3", "4"}, 1 ));
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("¿Cuales son las dos primeras palabras de la Biblia?", new String[] {"Una vez", "Al comienzo", "Al principio", "En ese"}, 2 ));
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("¿En que arbol crecen los datiles?", new String[] {"Palmera", "Sauce", "Tilo", "Ninguno"}, 0 ));
-		multipleChoiceQuestions.add(new MultipleChoiceQuestion("¿Cual es el segundo idioma mas hablado?", new String[] {"Español", "Ingles", "Frances", "Chino"}, 1 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Quien es el entrenador de Rafael Nadal?", new String[] {"Su tio", "Ismael Rodriguez", "Joathan Gonzaga", "Su padre"}, 3 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Como obtuvo Jack los boletos para viajar en el Titanic (en la pelicula Titanic)?", new String[] {"En un juego de poker", "Los compro", "En una apuesta", "En un juego de Bingo"}, 0 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual de estos eventos no forma parte del triatlon “Hombres de hierro?", new String[] {"Ciclismo", "Carreras a caballo", "Natacion", "Carreras de larga distancia"}, 1 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Donde se origino el voleibol?", new String[] {"Las Vegas", "Nueva York", "Londres", "Massachussets"}, 0 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Como se llama el cantante de Metallica?", new String[] {"Axel Rose", "James Hetfield", "Roger Daltrey", "James Franco"}, 1 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("En que arbol crecen los datiles?", new String[] {"Palmera", "Sauce", "Tilo", "Ninguno"}, 0 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual es el segundo idioma mas hablado?", new String[] {"Español", "Ingles", "Frances", "Chino"}, 1 ));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual es el nombre de pila del cantante Bieber?", new String[] {"Steven", "Justin", "Mary", "John"}, 1));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual es la identidad secreta de Clark Kent?", new String[] {"Batman", "Harry Potter", "Esteban Kramer", "Superman"}, 3));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Quien gano el Oscar a mejor actor en el 2015?", new String[] {"Leonardo DiCaprio", "Tom Hanks", "Eddie Redmayne", "Matthew McConaughey"}, 2));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Quien gano el FIFA Balon de Oro en el 2015?", new String[] {"Lionel Messi", "Cristiano Ronaldo", "Diego Maradona", "Juan Roman Riquelme"}, 0));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cuales de los siguientes temas no entraban al 1er parcial del 2do cuatrimestre del 2016?", new String[] {"Diagramas UML", "Collections", "Metaprogramming", "Iterators"}, 3));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual era hasta el 2015 el video mas visto en Youtube?", new String[] {"Sorry de Justin Bieber", "Vlog del Fin del Mundo de Jonathan Katan", "Uptown Funk de Bruno Mars", "Gangnam Style de Psy"}, 3));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual de los siguientes no es un dios de la mitologia griega?", new String[] {"Zeus", "Apolo", "Borr", "Baco"}, 2));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual de los siguientes juegos RTS fue el primero en lanzarse?", new String[] {"Command & Conquer: Red Alert 2", "Age of Empires II: The Age of Kings", "Warhammer 40000: Dawn of War", "Warcraft III: Reign of Chaos"}, 1));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Quien fue el DJ #1 segun la revista DJ MAG en el 2015?", new String[] {"Dimitri Vegas & Like Mike", "Skrillex", "David Guetta", "Hardwell"}, 0));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual de los siguientes no es un desierto?", new String[] {"Sahara", "Antartida", "Atacama", "Malesia"}, 3));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Quien es mayor?", new String[] {"Gaidamac", "Mirtha Legrand", "Susana Gimenez", "Carmen Barbieri"}, 0));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual es la primera regla del Club de la Pelea?", new String[] {"Se debe pelear sin camisa", "Se debe pelear sin zapatos", "No hay reglas", "No hablar del Club de la Pelea"}, 3));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("De donde proviene el reggae?", new String[] {"Cuba", "Haiti", "Jamaica", "Republica Dominicana"}, 3));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Quien pinto La Sagrada Familia del Cordero?", new String[] {"Rafael Sanzio", "Velazquez", "Giorgione", "Paul Klee"}, 0));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Como murio la poetisa Alfonsina Storni?", new String[] {"En un accidente automovilistico", "Fue asesinada", "De muerte natural", "Se suicido"}, 3));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("En que era aparecieron los dinosaurios?", new String[] {"Paleozoica", "Mesozoica", "Precambrica", "Cenozoica"}, 1));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Como se llama la sensibilidad dolorosa de los sonidos?", new String[] {"Hipocusia", "Hiperacusia", "Micropsia", "Hipoalgesia"}, 1));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Como se mide la fuerza del viento en el mar?", new String[] {"Pies", "Nudos", "Zancadas", "Kilometros por hora"}, 1));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual de estos paises africanos NO tiene costa?", new String[] {"Sudafrica", "Tunez", "Chad", "Marruecos"}, 2));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cual es la capital de Finlandia?", new String[] {"Helsinki", "Berna", "Estocolmo", "Oslo"}, 0));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Que ciudad tiene mas poblacion?", new String[] {"Rio Cuarto", "Tandil", "La Plata", "Viedma"}, 2));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Cuantos siglos duro El Siglo de Oro?", new String[] {"Dos", "Uno", "Tres", "Medio"}, 0));
+		multipleChoiceQuestions.add(new MultipleChoiceQuestion("Para que fue creado el plan MArshall en 1947?", new String[] {"Regalo", "Conquista", "Reconstruccion", "Comercio"}, 2));
+
+
+		
 	}
 	
 	public void addAproximationQuestions() {
-		aproximationQuestions.add(new AproximationQuestion("¿En que año se independizo Argentina?", 1816));
+		aproximationQuestions.add(new AproximationQuestion("En que ano se independizo Argentina?", 1816));
+		aproximationQuestions.add(new AproximationQuestion("Cuantos ganadores del premios nobel son argentinos?", 5));
+		aproximationQuestions.add(new AproximationQuestion("Cuantos miles de millones vivian en China en el 2013?", 1357));
+		aproximationQuestions.add(new AproximationQuestion("En que ano se fundo el ITBA?", 1959));
+		aproximationQuestions.add(new AproximationQuestion("Cuantos mogul vienen en un paquete de Moguls?", 8));
+		aproximationQuestions.add(new AproximationQuestion("Cuantos dientes permanentes tiene un ser humano promedio?", 32));
+		aproximationQuestions.add(new AproximationQuestion("En que año murio Francisco Franco?", 1975));
+		aproximationQuestions.add(new AproximationQuestion("En que año comenzo la Revolucion Francesa?", 1789));
+		aproximationQuestions.add(new AproximationQuestion("En que año fallecio Steve Jobs?", 2011));
+		aproximationQuestions.add(new AproximationQuestion("En que año se descubrio la tumba de Tutankhamon?", 1921));
+		aproximationQuestions.add(new AproximationQuestion("En que año tuvo lugar el ataque a Pearl Harbor?", 1941));
+		aproximationQuestions.add(new AproximationQuestion("Cuantos soldados argentinos murieron en la Guerra de las Malvinas?", 649));
+		aproximationQuestions.add(new AproximationQuestion("Cuantos siglos duro El Siglo de Oro ?", 2));
+		aproximationQuestions.add(new AproximationQuestion("A cuantas personas mato Tiburon en su primer pelicula ?", 11));
+		
 	}
 	
+	/**
+	 * Makes the collection of multiple choice questions random, removes one
+	 * from the collection and returns it to be asked. This makes it so that
+	 * no questions are repeated.
+	 * @return A multiple choice question chosen randomly from the set.
+	 */
 	public MultipleChoiceQuestion getMultipleChoiceQuestion() {
+		Collections.shuffle(multipleChoiceQuestions);
 		MultipleChoiceQuestion question = multipleChoiceQuestions.get(0);
 		multipleChoiceQuestions.remove(0);
 		return question;	
 	}
 	
 	public AproximationQuestion getAproximationQuestion() {
+		Collections.shuffle(aproximationQuestions);
 		AproximationQuestion question = aproximationQuestions.get(0);
 		aproximationQuestions.remove(0);
 		return question;	
 	}
 	
+	/**
+	 * Changes the turn of the current player to the next player. If active player is player 3, it moves to player 1.
+	 * Also changes the round after the 3 players have played their turn.
+	 * The starting player of each round changes with each new round.
+	 * Also removes players who have lost from the game while keeping intact the score they had.
+	 * Asks for winner if a player has all territories or MAX_ROUNDS are reached.
+	 */
 	public void changeTurn() {
+		ArrayList<Player> playerLost = new ArrayList<>();
+        for(Player p: players) {
+        	if(!hasTerritories(p)) {
+        		JOptionPane.showMessageDialog(null, p.getName() + " perdio la partida.");
+        		playerLost.add(p);
+        	}
+        	if(p.getTerritories().size()>= board.getTerritories().size()){
+    			this.setGameWinner(p);
+        	}
+        }
+        for(Player pLost: playerLost) {
+        	players.remove(pLost);
+        }
         if(turnCount == (players.size()-1)) {
             turnCount = 0;
             roundCount++;
             if(roundCount == MAX_ROUNDS) {
-                getWinner();                                    // ACA DEBERIA TERMINAR EL JUEGO!
-                return;
+                Player winner = getWinner();
+                this.setGameWinner(winner);
             }
-            nextPlayer();
         } else {
             turnCount++;
+        }
+        if(players.size() == 1) {
+        	this.setGameWinner(getWinner());
+        	return;
         }
         nextPlayer();
 	}
 	
+	/**
+	 * Gets the next player in the iteration.
+	 * If player 3 is currently playing, it makes player 1 the current player.
+	 */
 	private void nextPlayer() {
         int auxIndex = players.lastIndexOf(activePlayer) + 1;
-        if(auxIndex == players.size()) {
+        if(auxIndex >= players.size()) {
             auxIndex = 0;
+        }
+        if(players.get(auxIndex) == null) {
+        	nextPlayer();
         }
         activePlayer = players.get(auxIndex);
     }
 	
+	/**
+	 * Checks amount of territories to assign a winner.
+	 * @returns Player who won.
+	 */
 	public Player getWinner() {
         Integer max = 0;
         for(Player p: players) {
-            if(p.getAmountArmies() > max) {
-                max = p.getAmountArmies();
+            if(p.getTerritories().size() > max) {
+                max = p.getTerritories().size();
             }
         }
         for(Player p: players) {
-            if(p.getAmountArmies() == max && max != 0) {
+            if(p.getTerritories().size() == max && max != 0) {
                 return p;
             }
         }
 		return null;
-	}
-	
-	public void battle(Territory active, Territory defending) throws Exception {
-		Player[] possibleWinner = {active.getOwner(), null};
-		
-		if(!defending.isAdjacent(active)) {
-            throw new NotAdjacentException("" + active.getName() + " can't attack " + defending.getName());
-        }
-        
-        MultipleChoiceQuestion multipleChoiceQuestion = getMultipleChoiceQuestion();
-        MultipleQuestionsInterface window1 = new MultipleQuestionsInterface(multipleChoiceQuestion, active.getOwner(), defending.getOwner());
-		ApproximationQuestionsInterface window2;
-        window1.getFrame().setVisible(true);
-		
-		if(window1.getAnswer().getWinner().length == 2) {
-			do {
-				AproximationQuestion aproximationQuestion = getAproximationQuestion();
-				window2 = new ApproximationQuestionsInterface(aproximationQuestion, active.getOwner(), defending.getOwner());
-				window2.getFrame().setVisible(true);
-			}
-			while(window2.getAnswer().getWinner().length == 2);
-			
-			if(window2.getAnswer().getWinner().equals(possibleWinner)) {
-				defending.setOwner(active.getOwner());
-				defending.getOwner().removeTerritories(defending);
-				active.getOwner().addTerritories(defending);
-				defending.addArmies(active.getAmountArmies());
-			}
-		} else if(window1.getAnswer().getWinner().equals(possibleWinner)) {
-			defending.setOwner(active.getOwner());
-			defending.getOwner().removeTerritories(defending);
-			active.getOwner().addTerritories(defending);
-			defending.addArmies(active.getAmountArmies());
-		}
-	}
-	
-	public static String getCorrectAnswers(Player attackingPlayer, Player defendingPlayer, MultipleChoiceQuestion question, Answer answer) {
-		if(question.getCorrectAnswer().equals(answer.getAnswerAttacking())) {
-			if(question.getCorrectAnswer().equals(answer.getAnswerDefending())) {
-				Player[] winner = {attackingPlayer, defendingPlayer};
-				answer.setWinner(winner);
-				return "Both players answered correctly";
-			}
-			else {
-				Player[] winner = {attackingPlayer};
-				answer.setWinner(winner);
-				return "Attacking player answered correctly";
-			}
-		}
-		else if(question.getCorrectAnswer().equals(answer.getAnswerDefending())) {
-			Player[] winner = {defendingPlayer};
-			answer.setWinner(winner);
-			return "Defending player answered correctly";
-		}
-		else {
-			return "Neither player answered correcly";
-		}
-	}
-	
-	public static String getCorrectAnswers(Player attackingPlayer, Player defendingPlayer, AproximationQuestion question, Answer answer) {
-		Integer answerAttacking = Math.abs(question.getAnswer() - Integer.parseInt(answer.getAnswerAttacking()));
-		Integer answerDefending = Math.abs(question.getAnswer() - Integer.parseInt(answer.getAnswerDefending()));
-		
-		if(answerAttacking < answerDefending) {
-			Player[] winner = {attackingPlayer};
-			answer.setWinner(winner);
-			return "Attacking player is closer than defending player";
-		}
-		else if(answerAttacking > answerDefending) {
-			Player[] winner = {defendingPlayer};
-			answer.setWinner(winner);
-			return "Defending player is closer than attacking player";
-		}
-		else {
-			Player[] winner = {attackingPlayer, defendingPlayer};
-			answer.setWinner(winner);
-			return "Both players answered " + answer.getAnswerAttacking() + " and the answer was: " + question.getAnswer() + ". Lets try again";
-		}
 	}
 
 	public Boolean hasTerritories(Player player) {
@@ -219,15 +246,59 @@ public class Triviador {
 		return MAX_ROUNDS;
 	}
 	
-	public Player getPlayer1() {
-		return players.get(0);
+	public void addToPlayer1Score(Integer score) {
+		player1Score += score;
+	}
+
+	public void addToPlayer2Score(Integer score) {
+		player2Score += score;
 	}
 	
-	public Player getPlayer2() {
-		return players.get(1);
+	public void addToPlayer3Score(Integer score) {
+		player3Score += score;
 	}
 	
-	public Player getPlayer3() {
-		return players.get(2);
+	public Integer getPlayer1Score() {
+		return player1Score;
+	}
+	
+	public Integer getPlayer2Score() {
+		return player2Score;
+	}
+	
+	public Integer getPlayer3Score() {
+		return player3Score;
+	}
+
+	public Territory getAttackingTerritory() {
+		return attackingTerritory;
+	}
+
+	public void setAttackingTerritory(Territory attackingTerritory) {
+		this.attackingTerritory = attackingTerritory;
+	}
+	
+	public void setGameWinner(Player player){
+		gameWinner=player;
+	}
+	
+	public Player getGameWinner(){
+		return gameWinner;
+	}
+
+	public Territory getDefendingTerritory() {
+		return defendingTerritory;
+	}
+	
+	public Player getDefendingPlayer(){
+		return defendingPlayer;
+	}
+	
+	public void setDefendingPlayer(Player player){
+		defendingPlayer=player;
+	}
+
+	public void setDefendingTerritory(Territory defendingTerritory) {
+		this.defendingTerritory = defendingTerritory;
 	}
 }

@@ -5,6 +5,11 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+* Clase que representa un territorio en el mapa.
+*
+*/
+
 public class Territory implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -12,17 +17,26 @@ public class Territory implements Serializable {
 	private Set<Territory> adjacents;
 	private Integer amountArmies;
 	private Player owner;
-	private Integer x;
-	private Integer y;
+	private Climate climate;
+	private Set<Territory> alreadyAttacked;
 	
-	public Territory(String name, Integer amountArmies, Integer x, Integer y) {
-		super();
+	/**
+	* Creates a new territory.
+	*
+	* @param Name for the territory.
+	* @param Adjacent territories to this territory.
+	* @amountArmies Fictitious amount of armies that contains this territory.
+	* @owner Player who owns this territory.
+	* @climate Sets the difficulty of capturing this territory.
+	*/
+	
+	public Territory(String name, Integer amountArmies, Climate climate) {
 		this.name = name;
 		this.adjacents = new HashSet<Territory>();
 		this.amountArmies = amountArmies;
 		this.owner = null;
-		this.x=x;
-		this.y=y;
+		this.climate=climate;
+		this.alreadyAttacked = new HashSet<Territory>();
 	}
 
 	public String getName() {
@@ -35,14 +49,6 @@ public class Territory implements Serializable {
 	
 	public Set<Territory> getAdjacents() {
 		return adjacents;
-	}
-	
-	public Integer getX(){
-		return x;
-	}
-	
-	public Integer getY(){
-		return y;
 	}
 	
 	public void addAdjacents(Territory adjacentTerritory) {
@@ -81,4 +87,21 @@ public class Territory implements Serializable {
 		amountArmies-=n;
 	}
 	
+	public Climate getClimate(){
+		return climate;
+	}
+	
+	public void addAlreadyAttackedTerritory(Territory territory) {
+		alreadyAttacked.add(territory);
+	}
+	
+	public boolean hasAttackedTerritory(Territory territory) {
+		if(alreadyAttacked.contains(territory))
+			return true;
+		return false;
+	}
+	
+	public void removeAlreadyAttacked() {
+		alreadyAttacked.removeAll(alreadyAttacked);
+	}
 }

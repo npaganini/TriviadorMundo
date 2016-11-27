@@ -1,5 +1,10 @@
 package model;
 
+/**
+* Clase en la que se guarda la respuesta del jugador que ataca
+* y el jugador que responde.
+*/
+
 public class Answer {
 	private String answerAttacking;
 	private String answerDefending;

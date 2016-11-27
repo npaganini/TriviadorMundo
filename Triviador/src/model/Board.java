@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+/** 
+* Clase que representa el tablero del juego. Aca se crean los
+* diferentes territoirios.
+*/
+
 public class Board implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -17,15 +22,17 @@ public class Board implements Serializable {
 	}
 	
 	public void addTerritories() {
-		Territory americaDelSur = new Territory("America del Sur", 100, 187, 346);
-		Territory americaCentral = new Territory("America Central", 100, 138, 256);
-		Territory americaDelNorte = new Territory("America del Norte", 100, 88, 159);
-		Territory poloNorte = new Territory("Polo Norte", 100, 226, 34);
-		Territory europa = new Territory("Europa", 100, 368, 131);
-		Territory africa = new Territory("Africa", 100, 368, 294);
-		Territory medioOriente = new Territory("MedioOriente", 100, 508, 188);
-		Territory asia = new Territory("Asia", 100, 573, 98);
-		Territory oceania = new Territory("Oceania", 100, 613, 359);
+
+		
+		Territory americaDelSur = new Territory("America del Sur", 100, new Climate(1));
+		Territory americaCentral = new Territory("America Central", 100, new Climate(1));
+		Territory americaDelNorte = new Territory("America del Norte", 100, new Climate(1));
+		Territory poloNorte = new Territory("Polo Norte", 100, new Climate(3));
+		Territory europa = new Territory("Europa", 100, new Climate(1));
+		Territory africa = new Territory("Africa", 100, new Climate(2));
+		Territory medioOriente = new Territory("MedioOriente", 100, new Climate(2));
+		Territory oceania = new Territory("Oceania", 100, new Climate(1));
+		Territory asia = new Territory("Asia", 100, new Climate(1));
 		
 		americaDelSur.addAdjacents(americaCentral);
 		americaDelSur.addAdjacents(africa);
@@ -74,9 +81,13 @@ public class Board implements Serializable {
 		territories.add(asia);
 		territories.add(oceania);
 	}
-
+	
+	/**
+	 * Distributes territories evenly among the 3 players as it initializes
+	 * @param players
+	 */
 	public void distributeTerritories(ArrayList<Player> players) {
-		int i = 0;  /* Este metodo solo se usa al principio de la partida! */
+		int i = 0;
 		for(Territory t: territories) {
             Player p = players.get(i%3);
 			p.addTerritories(t);
@@ -84,7 +95,6 @@ public class Board implements Serializable {
 			p.addArmies(t.getAmountArmies());
             i++;
 		}
-		
 	}
 
 	public Set<Territory> getTerritories() {
